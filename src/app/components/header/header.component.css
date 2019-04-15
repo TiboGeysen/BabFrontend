@@ -1,0 +1,48 @@
+.navbar{
+    height: 80px;
+    width: 100%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: red;
+    align-items: center;
+    z-index: 2;
+    font-size: 16px;
+    color: white;
+}
+
+.logo{
+    width: 80px;
+    height: 54px;
+}
+
+.merk{
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.item{
+    margin-right: 15px;
+    padding: 5px;
+    display: inline-flex;
+    vertical-align: middle;
+}
+
+.item:hover{
+    color:red;
+    background-color: white;
+    border: transparent 2px solid;
+    border-radius: 10px;
+    transition: all 1s ease-in-out 0s;
+}
+
+i{
+    padding-right: 5px;
+    font-size: 20px;
+}
+
+.profile{
+    position: absolute;
+    right: 0;
+}
