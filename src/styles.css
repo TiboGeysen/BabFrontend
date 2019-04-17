@@ -9,3 +9,8 @@ body{
     padding: 0px;
     margin: 0px;
 }  
+
+.container .mat-tab-label{
+    color: 		#C60907;
+    opacity: 0.5;
+}
