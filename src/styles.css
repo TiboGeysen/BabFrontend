@@ -5,12 +5,35 @@
     font-family: 'Bitter', serif;
 }
 
+a{
+    all:unset;
+    cursor:pointer;
+}
+
+
+
 body{
     padding: 0px;
     margin: 0px;
-}  
+}
 
-.container .mat-tab-label{
+.contentcontainer{
+    padding-top: 80px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contentcontainer .mat-tab-label{
     color: 		#C60907;
     opacity: 0.5;
 }
+
+
+
+

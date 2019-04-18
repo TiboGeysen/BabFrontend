@@ -1,0 +1,11 @@
+.message{
+    margin-bottom: 25px;
+}
+
+.button{
+    border: solid 1px #C60907;
+    color: #C60907;
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+}

@@ -1,17 +1,17 @@
 <nav class="navbar">
   <div class="merk">
-    <a><img class="logo" src="../../../assets/images/logo.jpg"></a>
+    <a [routerLink]="['home']"><img class="logo" src="../../../assets/images/logo.jpg"></a>
   </div>
   <div class="navigatie">
-    <a class="item">Home</a>
+    <a class="item" [routerLink]="['home']">Home</a>
     <a class="item">Historie</a>
     <a class="item">Zoek bieren/brouwers</a>
   </div>
   <div class="profile">
-    <a class="item">
+    <a class="item" [routerLink]="['registreer']">
       <i class="material-icons">account_circle</i> Registreer
     </a>
-    <a class="item">
+    <a class="item" [routerLink]="['login']">
       <i class="material-icons">forward</i> Login</a>
   </div>
 </nav>
