@@ -3,7 +3,7 @@
     width: 90%;
     margin-right: 5%;
     margin-left: 5%;
-    border-bottom: 2px solid 		#C60907;
+    border-bottom: 2px solid        #C60907;
     display: flex;
     position: absolute;
     top: 0;
@@ -12,7 +12,7 @@
     align-items: center;
     z-index: 2;
     font-size: 16px;
-    color: 		#C60907;
+    color: black;
 }
 
 .logo{
@@ -30,14 +30,25 @@
     padding: 5px;
     display: inline-flex;
     vertical-align: middle;
+    border-bottom: 2px solid transparent;
+}
+
+.navigatie .active-link{
+    border-bottom: #C60907 2px solid;
+    color: #C60907;
+}
+
+.profile .active-link{
+    border-bottom: #C60907 2px solid;
+    color: #C60907;
 }
 
 .item:hover{
-    color:white;
-    background-color: 		#C60907;
-    border: transparent 2px solid;
-    border-radius: 10px;
-    transition: all 1s ease-in-out 0s;
+    border-bottom: #C60907 2px solid;
+    color: #C60907;
+    opacity: 0.6;
+    transition-delay: 250ms;
+    transition-duration: 1500ms;
 }
 
 i{
@@ -49,3 +60,4 @@ i{
     position: absolute;
     right: 0;
 }
+
