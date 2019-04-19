@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-registerpage',
-  templateUrl: './registerpage.component.html',
-  styleUrls: ['./registerpage.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class RegisterpageComponent implements OnInit {
+export class RegisterComponent implements OnInit {
 
   constructor() { }
 
@@ -16,8 +16,6 @@ export class RegisterpageComponent implements OnInit {
     this.gebruiker = new FormGroup({
       gebruikersnaam: new FormControl("Tibo", Validators.required)
     })
-
-
   }
 
 }
