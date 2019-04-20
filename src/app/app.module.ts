@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +15,7 @@ import { BiervdmaandComponent } from './components/biervdmaand/biervdmaand.compo
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { MaterialModule } from './material/material.module';
 import { UserModule } from './user/user.module';
+import { BrouwerModule } from './brouwer/brouwer.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,9 @@ import { UserModule } from './user/user.module';
     BrowserAnimationsModule,
     MaterialModule,
     UserModule,
+    BrouwerModule,
     AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

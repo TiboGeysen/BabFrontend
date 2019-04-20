@@ -1,0 +1,38 @@
+<div class="contentcontainer">
+  <p>ZOEK HET GEWENSTE BIER</p>
+  <div class="filter">
+    <div class="filtertop">
+      <input matInput placeholder="Naam bier" type="text" [(ngModel)]="naamBier" />
+      <input matInput placeholder="Naam brouwer" type="text" [(ngModel)]="naamBrouwer" />
+      <input matInput placeholder="Percentage" type="number" min="0" [(ngModel)]="percentage" max="40" />
+    </div>
+    <div class="filterbottom">
+
+      <input matInput placeholder="Kleur" type="text" [(ngModel)]="kleur" />
+      <input matInput placeholder="Smaak" type="text" [(ngModel)]="smaak" />
+
+    </div>
+  </div>
+  <table>
+    <tr>
+      <th>Brouwer</th>
+      <th>Naam</th>
+      <th>Kleur</th>
+      <th>Smaak</th>
+      <th>Percentage</th>
+      <th>Primeur</th>
+      <th>Voeg toe aan lijst</th>
+      <th>Meer</th>
+    </tr>
+    <tr *ngFor="let bier of (bieren$ | async | bierfilter:naamBier:smaak:kleur:percentage)" class="items">
+      <td>{{bier.brouwerId}}</td>
+      <td>{{bier.naam}}</td>
+      <td>{{bier.kleur}}</td>
+      <td>{{bier.smaak}}</td>
+      <td>{{bier.percentage}}</td>
+      <td>{{bier.isPrimeur}}</td>
+      <td class="add"><i class="material-icons">add</i></td>
+      <td class="more"><i class="material-icons">more_horiz</i></td>
+    </tr>
+  </table>
+</div>

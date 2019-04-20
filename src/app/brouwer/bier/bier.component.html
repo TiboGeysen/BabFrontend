@@ -1,0 +1,19 @@
+<div class="contentcontainer">
+  <div *ngIf="(bieren$ | async) as bieren; else loadingOrError">
+
+    <div *ngFor="let bier of bieren">
+      {{bier.percentage}}
+    </div>
+  </div>
+</div>
+<ng-template #loadingOrError>
+  <mat-card>
+    <mat-error *ngIf="(loadingError$ | async) as errorMessage; else loading">
+      Error loading the recipe list: {{ errorMessage }}. <br />
+      Please try again later.
+    </mat-error>
+    <ng-template #loading>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+  </mat-card>
+</ng-template>
