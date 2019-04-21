@@ -9,14 +9,16 @@ import { BierlijstComponent } from './bierlijst/bierlijst.component';
 import { BrouwerfilterPipe } from './brouwerfilter.pipe';
 import { BierfilterPipe } from './bierfilter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddbierComponent } from '../brouwer/addbier/addbier.component';
 
 
 const routes: Routes = [
-  { path: "bieren", component: BierlijstComponent }
+  { path: "bieren", component: BierlijstComponent },
+  { path: "voegtoe", component: AddbierComponent }
 ]
 
 @NgModule({
-  declarations: [BierComponent, BrouwerComponent, BierlijstComponent, BrouwerfilterPipe, BierfilterPipe],
+  declarations: [BierComponent, BrouwerComponent, BierlijstComponent, BrouwerfilterPipe, BierfilterPipe, AddbierComponent],
   imports: [
     CommonModule,
     HttpClientModule,
