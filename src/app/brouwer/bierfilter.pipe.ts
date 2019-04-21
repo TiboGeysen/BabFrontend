@@ -6,17 +6,25 @@ import { Bier } from './bier.model';
 })
 export class BierfilterPipe implements PipeTransform {
 
-  transform(bieren: Bier[], naamBier: string, smaak: string, kleur: string, percentage: number): Bier[] {
+  transform(bieren: Bier[], naamBier: string, smaak: string, kleur: string, percentage: number, naamBrouwer: string): Bier[] {
 
-    if (!naamBier && !smaak && !kleur && !percentage)
+    if (!naamBier && !smaak && !kleur && !percentage && !naamBrouwer)
       return bieren;
+    if (naamBier)
+      bieren = bieren.filter(bier => bier.naam.toLowerCase().startsWith(naamBier.toLowerCase()));
 
-    bieren = bieren.filter(bier => bier.naam.toLowerCase().startsWith(naamBier));
-    bieren = bieren.filter(bier => bier.smaak.toLowerCase().startsWith(smaak));
-    bieren = bieren.filter(bier => bier.kleur.toLowerCase().startsWith(kleur));
-    bieren = bieren.filter(bier => bier.percentage === percentage);
+    if (smaak)
+      bieren = bieren.filter(bier => bier.smaak.toLowerCase().startsWith(smaak.toLowerCase()));
+
+    if (kleur)
+      bieren = bieren.filter(bier => bier.kleur.toLowerCase().startsWith(kleur.toLowerCase()));
+
+    //if(naamBrouwer)
+    //bieren = bieren.filter(bier => bier.naamBrouwer.toLowerCase().startsWith(naamBrouwer));
+
+    if (percentage)
+      bieren = bieren.filter(bier => bier.percentage === percentage);
 
     return bieren;
   }
-
 }
