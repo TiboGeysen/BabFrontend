@@ -1,20 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Bitter');
+@import '~@angular/material/theming';
+@include mat-core();
 
 *{
     font-family: 'Bitter', serif;
 }
 
-a{
-    all:unset;
-    cursor:pointer;
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    
+    min-width: 300px;
+    padding: 0px;
+    margin: 0 0 60px;
+    padding-bottom: 20px;
 }
 
 
 
-body{
-    padding: 0px;
-    margin: 0px;
+a{
+    all:unset;
+    cursor:pointer;
 }
 
 .contentcontainer{

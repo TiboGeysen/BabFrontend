@@ -1,0 +1,35 @@
+<div class="container">
+  <div mat-dialog-content class="header">
+    <div class="badge"><span>999</span><span>{{data.percentage}}%</span></div>
+    <h1>{{data.naambier}}</h1>
+    <h2>Brouwerij de halve maan</h2>
+  </div>
+  <hr>
+  <div mat-dialog-content class="body">
+    <div class="row">
+      <p>{{data.kleur}}</p>
+      <p>{{data.biersoort}}</p>
+      <p>{{data.smaak}}</p>
+      <p>{{data.soortgisting}}</p>
+    </div>
+    <div class="row">
+      <p *ngIf='data.opvat === "Ja"; else nietvat'>Op vat </p>
+      <ng-template #nietvat>
+        <p>Niet op vat </p>
+      </ng-template>
+      <p *ngIf='data.recent === "Ja"; else nietrecent'>Recent bier </p>
+      <ng-template #nietrecent>
+        <p>Geen recent bier </p>
+      </ng-template>
+      <p *ngIf='data.primeur === "Ja"; else geenprimeur'>Primeur</p>
+      <ng-template #geenprimeur>
+        <p>Geen primeur</p>
+      </ng-template>
+    </div>
+  </div>
+  <hr>
+  <div mat-dialog-content class="description">
+    <p>{{data.omschrijving}}</p>
+    <button>Voeg nu toe aan uw lijst!</button>
+  </div>
+</div>

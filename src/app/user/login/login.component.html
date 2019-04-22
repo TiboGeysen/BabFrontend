@@ -3,18 +3,14 @@
     <a [routerLink]="['/home']"><img class="logo" src="../../../assets/images/logo.jpg"></a>
     <form [formGroup]="gebruiker" (ngSubmit)=onSubmit()>
       <p>Meld je aan</p>
-      <mat-form-field>
-        <div class="input">
-          <i class="material-icons">perm_identity</i>
-          <input matInput aria-label="name" placeholder="Gebruikersnaam" type="text" formControlName="gebruikersnaam" />
-        </div>
-      </mat-form-field>
-      <mat-form-field>
-        <div class="input">
-          <i class="material-icons">lock</i>
-          <input matInput aria-label="name" placeholder="Wachtwoord" type="password" formControlName="wachtwoord" />
-        </div>
-      </mat-form-field>
+      <div class="input">
+        <i class="material-icons">perm_identity</i>
+        <input matInput aria-label="name" placeholder="Gebruikersnaam" type="text" formControlName="gebruikersnaam" />
+      </div>
+      <div class="input">
+        <i class="material-icons">lock</i>
+        <input matInput aria-label="name" placeholder="Wachtwoord" type="password" formControlName="wachtwoord" />
+      </div>
       <button type="submit" [disabled]="!gebruiker.valid">
         Meld aan
       </button>

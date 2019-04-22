@@ -1,3 +1,6 @@
+
+
+
 table{
     border: 1px solid black;
     margin-top: 20px;
@@ -39,13 +42,14 @@ th{
     background-color: #C60907;
     color: white;
     transition-duration: 1s;
-    
+    cursor: pointer;
 }
 
 .more:hover{
     background-color: #C60907;
     color: white;
     transition-duration: 1s;
+    cursor: pointer;
 }
 
 .filter{

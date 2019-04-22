@@ -56,8 +56,11 @@ export class Bier {
         return this._bierSoort;
     }
 
-    get isOpVat(): boolean {
-        return this._opVat;
+    get isOpVat(): string {
+        if (this._opVat === true)
+            return "Ja";
+        else
+            return "Nee";
     }
 
     get soortGisting(): string {
@@ -72,12 +75,18 @@ export class Bier {
         return this._omschrijving;
     }
 
-    get isRecent(): boolean {
-        return this._recent;
+    get isRecent(): string {
+        if (this._recent === true)
+            return "Ja";
+        else
+            return "Nee";
     }
 
-    get isPrimeur(): boolean {
-        return this._primeur
+    get isPrimeur(): string {
+        if (this._primeur === true)
+            return "Ja";
+        else
+            return "Nee";
     }
 }
 

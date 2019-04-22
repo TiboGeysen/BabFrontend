@@ -10,6 +10,7 @@ import { BrouwerfilterPipe } from './brouwerfilter.pipe';
 import { BierfilterPipe } from './bierfilter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddbierComponent } from '../brouwer/addbier/addbier.component';
+import { DetailbierComponent } from './detailbier/detailbier.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  declarations: [BierComponent, BrouwerComponent, BierlijstComponent, BrouwerfilterPipe, BierfilterPipe, AddbierComponent],
+  declarations: [BierComponent, BrouwerComponent, BierlijstComponent, BrouwerfilterPipe, BierfilterPipe, AddbierComponent, DetailbierComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -26,6 +27,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild(routes)
-  ]
+  ],
+  entryComponents: [DetailbierComponent]
 })
 export class BrouwerModule { }

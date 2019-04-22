@@ -24,11 +24,14 @@ export class BierdataService {
         this.loadingError$.next(err.statusText);
         return of(null);
       }),
-
       map(
         (list: any[]): Bier[] => list.map(Bier.fromJson)
       )
     );
+  }
+
+  voegBierToe(bier: Bier) {
+    return this.http.post(`${environment.apiUrl}/bieren`, bier.toJson())
   }
 
 }

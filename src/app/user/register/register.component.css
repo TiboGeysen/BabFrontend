@@ -8,7 +8,12 @@ form{
     flex-direction: column;
 }
 
-mat-form-field{
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
     margin-bottom: 10px;
     border: 1px solid gray;
     background-color: lightgray;
@@ -17,21 +22,7 @@ mat-form-field{
     text-align: center;
     width: 300px;
     font-size: 13px;
-}
 
-mat-form-field:focus{
-    
-    border: 2px solid #C60907;
-    background-color:  #C60907;
-    color:white;
-}
-
-.input{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
-    height: 100%
 }
 
 i{

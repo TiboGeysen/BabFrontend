@@ -25,7 +25,7 @@ import { BrouwerModule } from './brouwer/brouwer.module';
     HomepageComponent,
     BiervdmaandComponent,
     EvenementenpageComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,

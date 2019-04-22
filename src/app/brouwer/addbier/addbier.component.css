@@ -1,5 +1,7 @@
+
+
 p { 
-    color: #C60907;
+    color:#C60907; 
     font-weight: bold;
     font-size: 14px
 }
@@ -20,19 +22,46 @@ form{
     align-items: center;
     flex-direction: column;
     height: 100%
+    
 }
 
 input{
     width: 250px;
     font-size: 13px;
-    margin-bottom: 10px;
+    height: 18px;
+    margin-top: 10px;
     border: 1px solid gray;
     background-color: lightgray;
     border-radius: 15px;
     padding: 5px;
     text-align: center;
     outline: none;
+}
 
+select{
+    width: 262px;
+    height: 30px;
+    font-size: 13px;
+    margin-top: 10px;
+    border: 1px solid gray;
+    background-color: lightgray;
+    border-radius: 15px;
+    padding: 5px;
+    text-align-last: center;
+    outline: none;
+}
+
+textarea{
+    width: 250px;
+    height: 30px;
+    font-size: 13px;
+    margin-top: 10px;
+    border: 1px solid gray;
+    background-color: lightgray;
+    border-radius: 15px;
+    padding: 5px;
+    text-align-last: center;
+    outline: none;
 }
 
 button{
@@ -44,4 +73,27 @@ button{
     padding: 10px;
     background-color:  #C60907;
     color: white;
+}
+
+.checkbox{
+    height: 30px;
+    width: 320px;
+}
+
+.checkbox label{
+    font-size: 13px;
+}
+
+.checkbox input{
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: 15px;
+    vertical-align: bottom
+}
+
+.error{
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
 }

@@ -4,10 +4,11 @@ export class Brouwer {
     constructor(
         private _naam: string,
         private _bieren = new Array<Bier>(),
+        private _stand: number,
     ) { }
 
     static fromJson(json: any): Brouwer {
-        const brouwer = new Brouwer(json.naam, json.bieren.map(bier => bier.fromJson));
+        const brouwer = new Brouwer(json.naam, json.bieren.map(bier => bier.fromJson), json.stand);
         return brouwer;
     }
 
@@ -15,6 +16,7 @@ export class Brouwer {
         return {
             naam: this._naam,
             bieren: this._bieren.map(bier => bier.toJson()),
+            stand: this._stand
         };
     }
 

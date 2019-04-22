@@ -1,0 +1,83 @@
+.container{
+    background-color: white;
+    width: 400px;
+    border: 0px transparent solid;
+    border-radius: 8px;
+    position: relative;
+}
+
+.badge{
+    background-color: #C60907;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 80%;
+    width: 50px;
+    height: 60px;
+    text-align: center;
+}
+
+.badge span{
+    margin-top: 5px;
+}
+
+.header{
+    margin-left: 5px;
+    text-align: center;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: bold;
+    color: #C60907;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+}
+
+.row{
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.row p{
+    border: 1px solid gray;
+    border-radius: 7px;
+    padding: 4px;
+    margin-right: 2px;
+    font-size: 13px;
+}
+
+h2{
+    font-size: 14px;
+    color: #cccccc;
+    margin-top: 13px;
+    margin-bottom: 0px;
+}
+
+.description{
+    text-align: center;
+}
+
+.description button{
+    outline: none;
+    color: white;
+    background-color: #C60907;
+    width: 100%;
+    border: 0px transparent solid;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 0 0 8px 8px;
+}
+
+.description button:hover{
+    cursor:pointer;
+}
