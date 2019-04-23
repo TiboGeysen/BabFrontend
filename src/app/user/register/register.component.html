@@ -12,15 +12,16 @@
         <input matInput aria-label="name" placeholder="Gebruikersnaam of brouwerij" type="text"
           formControlName="gebruikersnaam" />
       </div>
-
-      <div class="input">
-        <i class="material-icons">lock</i>
-        <input matInput aria-label="name" placeholder="Wachtwoord" type="password" formControlName="wachtwoord" />
+      <div formGroupName="passwordGroup">
+        <div class="input">
+          <i class="material-icons">lock</i>
+          <input matInput aria-label="name" placeholder="Wachtwoord" type="password" formControlName="wachtwoord" />
+        </div>
+        <div class="input">
+          <i class="material-icons">lock</i>
+          <input matInput aria-label="name" placeholder="Bevestig wachtwoord" type="password"
+            formControlName="herhaalwachtwoord" /></div>
       </div>
-      <div class="input">
-        <i class="material-icons">lock</i>
-        <input matInput aria-label="name" placeholder="Bevestig wachtwoord" type="password"
-          formControlName="herhaalwachtwoord" /></div>
       <button type="submit" [disabled]="!gebruiker.valid">
         Registreer
       </button>

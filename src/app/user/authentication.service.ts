@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { HttpClient } from 'selenium-webdriver/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +29,53 @@ export class AuthenticationService {
 
   }
 
+  login(gebruikersnaam: string, password: string): Observable<boolean> {
+    return this.http.post(`${environment.apiUrl}/gebruikers`,
+      { gebruikersnaam, password }, { responseType: "text" }).pipe(
+        map((token: any) => {
+          if (token) {
+            localStorage.setItem(this._tokenKey, token);
+            this._user$.next(gebruikersnaam);
+            console.log("Werkt");
+            return true;
+          } else {
+            console.log("Werkt niet");
+            return false;
+          }
+        })
+      );
+  }
+
+  register(email: string, gebruikersnaam: string, password: string): Observable<boolean> {
+    return this.http.post(`${environment.apiUrl}/gebruikers/register`, { email, gebruikersnaam, password, passwordConfirmation: password }, { responseType: "text" }).pipe(
+      map((token: any) => {
+        if (token) {
+          localStorage.setItem(this._tokenKey, token);
+          this._user$.next(gebruikersnaam);
+          return true;
+        } else return false;
+      }
+      ));
+  }
+
+  logout() {
+    if (this._user$.getValue()) {
+      localStorage.removeItem(this._tokenKey);
+      this._user$.next(null);
+    }
+  }
+
+  checkEmail = (email: string): Observable<boolean> => {
+    return this.http.get<boolean>(`${environment.apiUrl}/gebruikers/checkEmail`, {
+      params: { email }
+    });
+  }
+
+  checkUsername = (username: string): Observable<boolean> => {
+    return this.http.get<boolean>(`${environment.apiUrl}/gebruikers/checkUsername`, {
+      params: { username }
+    });
+  }
 }
 
 function parseJwt(token) {

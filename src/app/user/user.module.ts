@@ -8,6 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { Routes, RouterModule } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registreer', component: RegisterComponent }
@@ -19,6 +21,7 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
+    HttpClientModule,
     RouterModule.forChild(routes)
   ]
 })
