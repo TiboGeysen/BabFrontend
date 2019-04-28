@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,9 +10,11 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class LoginComponent implements OnInit {
 
-  public gebruiker: FormGroup;
+  public gebruiker: FormGroup
+  public errorMsg: string;
 
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -23,6 +26,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.login(this.gebruiker.value.gebruikersnaam, this.gebruiker.value.wachtwoord).subscribe();
+    this.authService.login(this.gebruiker.value.gebruikersnaam, this.gebruiker.value.wachtwoord).subscribe(
+      val => {
+        if (val) {
+          if (this.authService.redirectUrl) {
+            this.router.navigateByUrl(this.authService.redirectUrl);
+            this.authService.redirectUrl = undefined;
+          } else {
+            this.router.navigate(['/voegtoe']);
+          }
+        }
+      }, err => this.errorMsg = err.error
+
+    );
   }
 }

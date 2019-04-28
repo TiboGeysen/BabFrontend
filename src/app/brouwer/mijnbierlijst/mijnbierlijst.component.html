@@ -1,5 +1,5 @@
 <div class="contentcontainer">
-  <p>ZOEK HET GEWENSTE BIER</p>
+  <p>Jouw biertjes</p>
   <div class="filter">
     <div class="filtertop">
       <input matInput placeholder="Naam bier" type="text" [(ngModel)]="naamBier" />
@@ -11,8 +11,17 @@
       <input matInput placeholder="Smaak" type="text" [(ngModel)]="smaak" />
     </div>
   </div>
-  <app-bier *ngFor="let bier of (bieren$ | async | bierfilter:naamBier:smaak:kleur:percentage:naamBrouwer)"
-    [bier]="bier" [brouwer$]="getBrouwer$(bier.brouwerId)">
-  </app-bier>
-
+  <div *ngIf="(mijnBieren$ | async) as mijnBieren; else loading">
+    <div *ngIf="!(mijnBieren.length == 0); else geen">
+      <app-bier *ngFor="let bier of (mijnBieren | bierfilter:naamBier:smaak:kleur:percentage:naamBrouwer)" [bier]="bier"
+        [brouwer$]="getBrouwer$(bier.brouwerId)">
+      </app-bier>
+    </div>
+  </div>
+  <ng-template #geen>
+    <div>Uw lijst is leeg</div>
+  </ng-template>
+  <ng-template #loading>
+    <div>Uw lijst wordt geladen</div>
+  </ng-template>
 </div>

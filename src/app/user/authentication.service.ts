@@ -12,6 +12,8 @@ export class AuthenticationService {
   private readonly _tokenKey = 'currentUser';
   private _user$: BehaviorSubject<string>;
 
+  public redirectUrl: string;
+
   constructor(private http: HttpClient) {
 
     let parsedToken = parseJwt(localStorage.getItem(this._tokenKey));
@@ -29,6 +31,16 @@ export class AuthenticationService {
 
   }
 
+  get user$(): BehaviorSubject<string> {
+    return this._user$;
+  }
+
+  get token(): string {
+    const token = localStorage.getItem(this._tokenKey);
+    //null or empty
+    return !!token ? token : '';
+  }
+
   login(gebruikersnaam: string, password: string): Observable<boolean> {
     return this.http.post(`${environment.apiUrl}/gebruikers`,
       { gebruikersnaam, password }, { responseType: "text" }).pipe(
@@ -36,10 +48,8 @@ export class AuthenticationService {
           if (token) {
             localStorage.setItem(this._tokenKey, token);
             this._user$.next(gebruikersnaam);
-            console.log("Werkt");
             return true;
           } else {
-            console.log("Werkt niet");
             return false;
           }
         })
@@ -57,6 +67,11 @@ export class AuthenticationService {
       }
       ));
   }
+
+  getGebruikersClaims() {
+    return this.http.get(`${environment.apiUrl}/gebruikers/gebruikerClaims`);
+  }
+
 
   logout() {
     if (this._user$.getValue()) {

@@ -5,6 +5,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -16,7 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ],
 
   exports: [
@@ -24,7 +26,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTabsModule,
     MatProgressSpinnerModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule
   ]
 })
 export class MaterialModule { }

@@ -63,3 +63,18 @@ p{
     height:108px;
     width:160px;
 }
+
+@media (max-width: 400px){
+    button{
+        width: 250px;
+    }
+
+    .input{
+        width: 238px;
+    }
+
+    .logo{
+        height: 68px;
+        width: 100px;
+    }
+}

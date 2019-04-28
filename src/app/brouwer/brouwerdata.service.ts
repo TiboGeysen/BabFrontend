@@ -27,4 +27,12 @@ export class BrouwerdataService {
       )
     );
   }
+
+  getBrouwer$(id : number): Observable<Brouwer> {
+    return this.http.get(`${environment.apiUrl}/brouwers/${id}`).pipe(
+      map(
+        (brouwer: any): Brouwer => Brouwer.fromJson(brouwer)
+      )
+    );
+  }
 }

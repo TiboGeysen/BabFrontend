@@ -1,1 +1,28 @@
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+mat-card{
+    background-color: #C60907;
+    color: white;
+    margin: 5px;
+    width: 150px;
+}
+
+mat-card-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.row{
+    width: 75px;
+}
+
+b{
+    color: black;
+}
+
+mat-card-content div.col{
+    flex-direction: column;
+}
+
+i:hover{
+    cursor: pointer;
+}

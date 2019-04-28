@@ -13,7 +13,8 @@
     color: white;
     position: absolute;
     top: 0;
-    left: 80%;
+    right:0;
+        border-radius: 0 8px 0 0;
     width: 50px;
     height: 60px;
     text-align: center;
@@ -29,17 +30,33 @@
 }
 
 h1{
+    width: 300px;
     font-size: 20px;
     font-weight: bold;
     color: #C60907;
 }
 
-.body{
+.body, .mobile{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items:center;
+    margin-right: 15px;
 }
+
+th, td{
+    width: 55px;
+    text-align: center;
+    padding: 4px;
+}
+
+th{
+    font-weight: 400;
+    background-color: #C60907;
+    color: white;
+}
+
+
 
 .row{
     margin-left: 5px;
@@ -48,15 +65,18 @@ h1{
     flex-direction: row;
 }
 
-.row p{
+.row div{
     border: 1px solid gray;
     border-radius: 7px;
     padding: 4px;
-    margin-right: 2px;
+    margin-right: 4px;
     font-size: 13px;
+    height: 55px;
+    text-align:center;
 }
 
 h2{
+    width: 300px;
     font-size: 14px;
     color: #cccccc;
     margin-top: 13px;
@@ -73,11 +93,72 @@ h2{
     background-color: #C60907;
     width: 100%;
     border: 0px transparent solid;
-    height: 30px;
+    height: 60px;
     font-size: 16px;
     border-radius: 0 0 8px 8px;
 }
 
 .description button:hover{
     cursor:pointer;
+}
+
+@media(max-width: 560px){
+    .container{
+        width: 300px;
+    }
+
+    h1{
+        width: 200px;
+    }
+
+    h2{
+        width: 200px;
+    }
+
+    .body, .mobile{
+        margin-right: 5px;
+    }
+}
+
+@media(min-width: 561px){
+}
+
+@media(max-width: 450px){
+    .container{
+        width: 190px;
+    }
+
+    .header{
+        text-align: left;
+    }
+
+    h1{
+        font-size: 16px;
+        width:125px;
+    }
+
+    h2{
+        font-size: 12px;
+        width:125px;
+    }
+
+    .badge{
+        right: 0;
+        font-size: 13px;
+        width: 40px;
+        border-radius: 0 8px 0 0;
+    }
+
+    div.body.mat-dialog-content{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .description{
+        font-size: 12px;
+    }
+
+    table{
+        font-size: 12px;
+    }
 }

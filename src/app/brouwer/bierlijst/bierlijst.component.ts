@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { BierdataService } from '../bierdata.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Bier } from '../bier.model';
-import { MatDialog } from '@angular/material';
-import { DetailbierComponent } from '../detailbier/detailbier.component';
+import { Brouwer } from '../brouwer.model';
+import { BrouwerdataService } from '../brouwerdata.service';
 
 @Component({
   selector: 'app-bierlijst',
@@ -12,21 +12,21 @@ import { DetailbierComponent } from '../detailbier/detailbier.component';
 })
 export class BierlijstComponent implements OnInit {
 
-  private _fetchBieren$: Observable<Bier[]> = this._service.bieren$;
+  private _fetchBieren$: Observable<Bier[]> = this._serviceBieren.bieren$;
 
-  constructor(private _service: BierdataService, public dialog: MatDialog) {
+  constructor(private _service: BrouwerdataService, private _serviceBieren: BierdataService) {
 
   }
   ngOnInit() {
 
   }
 
-  get bieren$() {
-    return this._fetchBieren$;
+  getBrouwer$(id: number): Observable<Brouwer> {
+    return this._service.getBrouwer$(id);
   }
 
-  openDialog(bier: Bier) {
-    this.dialog.open(DetailbierComponent, { data: { brouwer: bier.brouwerId, naambier: bier.naam, percentage: bier.percentage, kleur: bier.kleur, biersoort: bier.bierSoort, soortgisting: bier.soortGisting, smaak: bier.smaak, opvat: bier.isOpVat, recent: bier.isRecent, primeur: bier.isPrimeur, omschrijving: bier.omschrijving } });
+  get bieren$() {
+    return this._fetchBieren$;
   }
 }
 

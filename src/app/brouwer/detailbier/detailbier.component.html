@@ -2,34 +2,38 @@
   <div mat-dialog-content class="header">
     <div class="badge"><span>999</span><span>{{data.percentage}}%</span></div>
     <h1>{{data.naambier}}</h1>
-    <h2>Brouwerij de halve maan</h2>
+    <h2>{{data.brouwer}}</h2>
   </div>
   <hr>
   <div mat-dialog-content class="body">
-    <div class="row">
-      <p>{{data.kleur}}</p>
-      <p>{{data.biersoort}}</p>
-      <p>{{data.smaak}}</p>
-      <p>{{data.soortgisting}}</p>
-    </div>
-    <div class="row">
-      <p *ngIf='data.opvat === "Ja"; else nietvat'>Op vat </p>
-      <ng-template #nietvat>
-        <p>Niet op vat </p>
-      </ng-template>
-      <p *ngIf='data.recent === "Ja"; else nietrecent'>Recent bier </p>
-      <ng-template #nietrecent>
-        <p>Geen recent bier </p>
-      </ng-template>
-      <p *ngIf='data.primeur === "Ja"; else geenprimeur'>Primeur</p>
-      <ng-template #geenprimeur>
-        <p>Geen primeur</p>
-      </ng-template>
-    </div>
+    <table>
+      <th>Kleur</th>
+      <th>Soort</th>
+      <tr>
+        <td>
+          {{data.kleur}}
+        </td>
+        <td>
+          {{data.biersoort}}
+        </td>
+      </tr>
+      <th>Smaak</th>
+      <th>Op vat</th>
+      <tr>
+        <td>{{data.smaak}}</td>
+        <td>{{data.isOpvat}}</td>
+      </tr>
+      <th>Primeur</th>
+      <th>Recent</th>
+      <tr>
+        <td>{{data.isPrimeur}}</td>
+        <td>{{data.isRecent}}</td>
+      </tr>
+    </table>
   </div>
   <hr>
   <div mat-dialog-content class="description">
     <p>{{data.omschrijving}}</p>
-    <button>Voeg nu toe aan uw lijst!</button>
+    <button (click)=add()>Voeg nu toe aan uw lijst!</button>
   </div>
 </div>

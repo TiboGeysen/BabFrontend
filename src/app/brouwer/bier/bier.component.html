@@ -1,19 +1,20 @@
-<div class="contentcontainer">
-  <div *ngIf="(bieren$ | async) as bieren; else loadingOrError">
-
-    <div *ngFor="let bier of bieren">
-      {{bier.percentage}}
-    </div>
+<mat-card>
+  <div class="titles">
+    <mat-card-title>{{bier.naam}}</mat-card-title>
+    <mat-card-subtitle>{{brouwer.naam}}</mat-card-subtitle>
   </div>
-</div>
-<ng-template #loadingOrError>
-  <mat-card>
-    <mat-error *ngIf="(loadingError$ | async) as errorMessage; else loading">
-      Error loading the recipe list: {{ errorMessage }}. <br />
-      Please try again later.
-    </mat-error>
-    <ng-template #loading>
-      <mat-spinner></mat-spinner>
-    </ng-template>
-  </mat-card>
-</ng-template>
+  <mat-card-content>
+    <div class="col">
+      <div class="row"><b>Kleur<br></b>{{bier.kleur}}</div>
+      <div class="row"><b>Smaak<br></b>{{bier.smaak}}</div>
+    </div>
+    <div class="col">
+      <div class="row"><b>Percentage<br></b>{{bier.percentage}}%</div>
+      <div class="row"><b>Primeur<br></b>{{bier.isPrimeur}}</div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <i class="material-icons" (click)=add()>add</i>
+    <i class="material-icons" (click)=openDialog()>search</i>
+  </mat-card-actions>
+</mat-card>

@@ -1,10 +1,14 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Bier } from './bier.model';
+import { BierdataService } from './bierdata.service';
+import { Brouwer } from './brouwer.model';
 
 @Pipe({
   name: 'bierfilter'
 })
 export class BierfilterPipe implements PipeTransform {
+
+  constructor(private _service: BierdataService) { }
 
   transform(bieren: Bier[], naamBier: string, smaak: string, kleur: string, percentage: number, naamBrouwer: string): Bier[] {
 
@@ -19,11 +23,9 @@ export class BierfilterPipe implements PipeTransform {
     if (kleur)
       bieren = bieren.filter(bier => bier.kleur.toLowerCase().startsWith(kleur.toLowerCase()));
 
-    //if(naamBrouwer)
-    //bieren = bieren.filter(bier => bier.naamBrouwer.toLowerCase().startsWith(naamBrouwer));
-
     if (percentage)
       bieren = bieren.filter(bier => bier.percentage === percentage);
+
 
     return bieren;
   }

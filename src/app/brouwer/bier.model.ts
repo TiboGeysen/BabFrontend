@@ -1,7 +1,11 @@
 import { Brouwer } from './brouwer.model';
 
 export class Bier {
+
+    private _id;
+
     constructor(
+
         private _brouwerId: number,
         private _naam: string,
         private _percentage: number,
@@ -16,12 +20,15 @@ export class Bier {
     ) { }
 
     static fromJson(json: any): Bier {
-        const bier = new Bier(json.brouwerId, json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur);
+        const bier =
+            new Bier(json.brouwerId, json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur);
+        bier._id = json.id;
         return bier;
     }
 
     toJson(): any {
         return {
+            id: this._id,
             brouwerId: this._brouwerId,
             naam: this._naam,
             percentage: this._percentage,
@@ -63,6 +70,10 @@ export class Bier {
             return "Nee";
     }
 
+    get opVat(): boolean {
+        return this._opVat;
+    }
+
     get soortGisting(): string {
         return this._soortGisting;
     }
@@ -82,11 +93,19 @@ export class Bier {
             return "Nee";
     }
 
+    get recent(): boolean {
+        return this._recent;
+    }
+
     get isPrimeur(): string {
         if (this._primeur === true)
             return "Ja";
         else
             return "Nee";
+    }
+
+    get primeur(): boolean {
+        return this._primeur;
     }
 }
 

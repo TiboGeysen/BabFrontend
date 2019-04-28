@@ -7,21 +7,34 @@
         <i class="material-icons">email</i>
         <input matInput aria-label="name" placeholder="Email" type="text" formControlName="email">
       </div>
+      <div class="error" *ngIf="gebruiker.get('email')['errors'] && gebruiker.get('email').touched">
+        {{ getErrorMessage(gebruiker.get('email')['errors']) }}</div>
       <div class="input">
         <i class="material-icons">perm_identity</i>
         <input matInput aria-label="name" placeholder="Gebruikersnaam of brouwerij" type="text"
           formControlName="gebruikersnaam" />
       </div>
+      <div class="error" *ngIf="gebruiker.get('gebruikersnaam')['errors'] && gebruiker.get('gebruikersnaam').touched">
+        {{ getErrorMessage(gebruiker.get('gebruikersnaam')['errors']) }}</div>
       <div formGroupName="passwordGroup">
         <div class="input">
           <i class="material-icons">lock</i>
           <input matInput aria-label="name" placeholder="Wachtwoord" type="password" formControlName="wachtwoord" />
         </div>
+        <div class="error"
+          *ngIf="gebruiker.get('passwordGroup').get('wachtwoord')['errors'] && gebruiker.get('passwordGroup').get('wachtwoord').touched">
+          {{ getErrorMessage(gebruiker.get('passwordGroup').get('wachtwoord')['errors']) }}</div>
         <div class="input">
           <i class="material-icons">lock</i>
           <input matInput aria-label="name" placeholder="Bevestig wachtwoord" type="password"
             formControlName="herhaalwachtwoord" /></div>
+        <div class="error"
+          *ngIf="gebruiker.get('passwordGroup').get('herhaalwachtwoord')['errors'] && gebruiker.get('passwordGroup').get('herhaalwachtwoord').touched">
+          {{ getErrorMessage(gebruiker.get('passwordGroup').get('herhaalwachtwoord')['errors']) }}</div>
       </div>
+      <div class="error"
+        *ngIf="gebruiker.get('passwordGroup')['errors'] && gebruiker.get('passwordGroup').get('herhaalwachtwoord').touched && gebruiker.get('passwordGroup').get('wachtwoord').touched">
+        {{ getErrorMessage(gebruiker.get('passwordGroup')['errors']) }}</div>
       <button type="submit" [disabled]="!gebruiker.valid">
         Registreer
       </button>

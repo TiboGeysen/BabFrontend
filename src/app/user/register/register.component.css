@@ -14,7 +14,7 @@ form{
     align-items: center;
     flex-direction: row;
     height: 100%;
-    margin-bottom: 10px;
+    margin-top: 10px;
     border: 1px solid gray;
     background-color: lightgray;
     border-radius: 15px;
@@ -44,6 +44,7 @@ button{
     background: transparent;
     border: 1px solid transparent;
     border-radius: 15px;
+    margin-top: 10px;
     height: 37px;
     padding: 10px;
     background-color:  #C60907;
@@ -51,12 +52,44 @@ button{
 }
 
 p{
+    margin-bottom: 4px;
     font-size: 16px;
     color: 		#C60907;
+}
+
+.error{
+    color: red;
+    font-size: 12px;
+    margin-bottom: 4px;
+    margin-top: 0px;
 }
 
 .logo{
     margin-top: 20px;
     height:108px;
     width:160px;
+}
+
+button:disabled,
+button[disabled]{
+    background-color: gray;
+}
+
+@media (max-width: 400px){
+    button{
+        width: 250px;
+    }
+
+    .input{
+        width: 238px;
+    }
+    
+    input{
+        font-size: 12px;
+    }
+
+    .logo{
+        height: 68px;
+        width: 100px;
+    }
 }

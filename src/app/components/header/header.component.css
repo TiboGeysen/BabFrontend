@@ -56,8 +56,52 @@ i{
     font-size: 20px;
 }
 
-.profile{
+.navbarVerySmall i:hover, .profileSmall i:hover {
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 5px;
+    color: #C60907;
+    transition-duration: 500ms;
+}
+
+.profileSmall, .navbarVerySmall, .profile{
     position: absolute;
     right: 0;
 }
 
+.example-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+@media(max-width : 840px){
+    .profile{
+        display: none;
+    }
+}
+
+@media(min-width: 841px){
+    .profileSmall{
+        display:none;
+    }
+}
+
+@media(max-width: 630px){
+    .profileSmall{
+        display: none;
+    }
+
+    .navigatie{
+        display: none;
+    }
+}
+
+@media(min-width: 631px){
+    .navbarVerySmall{
+        display: none;
+    }
+}

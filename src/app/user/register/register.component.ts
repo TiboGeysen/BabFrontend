@@ -30,12 +30,33 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     this.authService.register(this.gebruiker.value.email, this.gebruiker.value.gebruikersnaam, this.gebruiker.get('passwordGroup').value.wachtwoord).subscribe();
   }
+
+  getErrorMessage(errors: any) {
+    if (errors.required) {
+      return 'Veld is verplicht in te vullen';
+    }
+    else if (errors.email) {
+      return 'Email voldoet niet aan de standaarden'
+    }
+    else if (errors.minlength) {
+      return `Te kort, minimaal ${errors.minlength.requiredLength} karakaters, u heeft er ${errors.minlength.actualLength}`;
+    }
+    else if (errors.wachtwoordVerschil) {
+      return 'Wachtwoorden verschillen'
+    }
+    else if (errors.emailAlreadyExists) {
+      return 'Email is al in gebruik';
+    }
+    else if (errors.userAlreadyExists) {
+      return 'Gebruikersnaam is al in gebruik'
+    }
+  }
 }
 
 function comparePassword(control: AbstractControl): { [key: string]: any } {
   const wachtwoord = control.get('wachtwoord');
   const herhaal = control.get('herhaalwachtwoord');
-  return wachtwoord.value === herhaal.value ? null : { 'Wachtwoorden verschillen': true }
+  return wachtwoord.value === herhaal.value ? null : { wachtwoordVerschil: true }
 }
 
 function serverSideValidateEmail(checkAvailabilityFn: (n: string) => Observable<boolean>): ValidatorFn {

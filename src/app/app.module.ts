@@ -16,6 +16,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { MaterialModule } from './material/material.module';
 import { UserModule } from './user/user.module';
 import { BrouwerModule } from './brouwer/brouwer.module';
+import { httpInterceptorProviders } from './http-interceptors';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { BrouwerModule } from './brouwer/brouwer.module';
     AppRoutingModule
 
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

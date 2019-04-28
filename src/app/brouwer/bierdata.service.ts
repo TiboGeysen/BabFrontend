@@ -30,8 +30,36 @@ export class BierdataService {
     );
   }
 
+  get mijnBieren$(): Observable<Bier[]> {
+    return this.http.get(`${environment.apiUrl}/bieren/mijnbieren/`).pipe(
+
+      catchError(err => {
+        this.loadingError$.next(err.statusText);
+        return of(null);
+      }),
+      map(
+        (list: any[]): Bier[] => list.map(Bier.fromJson)
+      )
+    );
+  }
+
+  voegBierAanFavorietenToe$(bier: Bier) {
+    return this.http.post(`${environment.apiUrl}/bieren/favorieten/`, bier.toJson())
+  }
+
+  geefFavorieteBieren$(): Observable<Bier[]> {
+    return this.http.get(`${environment.apiUrl}/bieren/favorieten/`).pipe(
+      map(
+        (list: any[]): Bier[] => list.map(Bier.fromJson)
+      )
+    );
+  }
+
   voegBierToe(bier: Bier) {
     return this.http.post(`${environment.apiUrl}/bieren`, bier.toJson())
   }
+
+
+
 
 }

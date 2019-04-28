@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/user/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  opened: boolean;
+  gebruikerClaims: any;
+
+  constructor(private _service: AuthenticationService) { }
 
   ngOnInit() {
+    //this.gebruikerClaims = this._service.getGebruikersClaims().subscribe((data: any) => this.gebruikerClaims = data);
+  }
+
+  toggle() {
+    this.opened = !this.opened;
   }
 
 }
