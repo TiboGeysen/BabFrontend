@@ -1,0 +1,47 @@
+<div class="contentcontainer">
+  <div class="left">
+    <app-navigation></app-navigation>
+  </div>
+  <div class="right">
+    <div class="wachtwoord">
+      <h1 class="title">Wijzig wachtwoord</h1>
+
+    </div>
+    <div class="gegevens">
+      <h1 class="title">Wijzig gegevens</h1>
+      <form [formGroup]="gebruiker" (ngSubmit)=onSubmit()>
+
+        <div class="input">
+          <i class="material-icons">lock</i>
+          <input matInput aria-label="oud wachtwoord" placeholder="Oud wachtwoord" type="password"
+            formControlName="oldPass">
+        </div>
+        <div class="error" *ngIf="gebruiker.get('oldPass')['errors'] && gebruiker.get('oldPass').touched">
+          {{ getErrorMessage(gebruiker.get('oldPass')['errors']) }}</div>
+        <div formGroupName="passwordGroup">
+          <div class="input">
+            <i class="material-icons">lock</i>
+            <input matInput aria-label="name" placeholder="Nieuw wachtwoord" type="password"
+              formControlName="newPass" />
+          </div>
+          <div class="error"
+            *ngIf="gebruiker.get('passwordGroup').get('newPass')['errors'] && gebruiker.get('passwordGroup').get('newPass').touched">
+            {{ getErrorMessage(gebruiker.get('passwordGroup').get('newPass')['errors']) }}</div>
+          <div class="input">
+            <i class="material-icons">lock</i>
+            <input matInput aria-label="name" placeholder="Bevestig nieuw wachtwoord" type="password"
+              formControlName="herhaalwachtwoord" /></div>
+          <div class="error"
+            *ngIf="gebruiker.get('passwordGroup').get('herhaalwachtwoord')['errors'] && gebruiker.get('passwordGroup').get('herhaalwachtwoord').touched">
+            {{ getErrorMessage(gebruiker.get('passwordGroup').get('herhaalwachtwoord')['errors']) }}</div>
+        </div>
+        <div class="error"
+          *ngIf="gebruiker.get('passwordGroup')['errors'] && gebruiker.get('passwordGroup').get('herhaalwachtwoord').touched && gebruiker.get('passwordGroup').get('wachtwoord').touched">
+          {{ getErrorMessage(gebruiker.get('passwordGroup')['errors']) }}</div>
+        <button type="submit" [disabled]="!gebruiker.valid">
+          Verander wachtwoord
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

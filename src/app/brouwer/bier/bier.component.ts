@@ -13,10 +13,9 @@ import { BierdataService } from '../bierdata.service';
 })
 
 export class BierComponent implements OnInit {
-
-  @Input() bier: Bier;
-  @Input() brouwer$: Observable<Brouwer>;
-  private brouwer: Brouwer;
+  @Input() public bier: Bier;
+  @Input() public brouwer$: Observable<Brouwer>;
+  public brouwer: Brouwer;
 
 
 
@@ -30,7 +29,7 @@ export class BierComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DetailbierComponent, { data: {id: this.brouwer.id, brouwer: this.brouwer.naam, naambier: this.bier.naam, percentage: this.bier.percentage, kleur: this.bier.kleur, biersoort: this.bier.bierSoort, soortgisting: this.bier.soortGisting, smaak: this.bier.smaak, opVat: this.bier.opVat, isOpvat: this.bier.isOpVat, recent: this.bier.recent, isRecent: this.bier.isRecent, primeur: this.bier.primeur, isPrimeur: this.bier.isPrimeur, omschrijving: this.bier.omschrijving } });
+    this.dialog.open(DetailbierComponent, { data: { id: this.brouwer.id, brouwer: this.brouwer.naam, naambier: this.bier.naam, percentage: this.bier.percentage, kleur: this.bier.kleur, biersoort: this.bier.bierSoort, soortgisting: this.bier.soortGisting, smaak: this.bier.smaak, opVat: this.bier.opVat, isOpvat: this.bier.isOpVat, recent: this.bier.recent, isRecent: this.bier.isRecent, primeur: this.bier.primeur, isPrimeur: this.bier.isPrimeur, omschrijving: this.bier.omschrijving } });
   }
 
   add() {

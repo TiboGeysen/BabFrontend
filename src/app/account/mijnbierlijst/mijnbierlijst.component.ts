@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Brouwer } from '../brouwer.model';
-import { BrouwerdataService } from '../brouwerdata.service';
-import { BierdataService } from '../bierdata.service';
-import { Bier } from '../bier.model';
-import { MatTreeModule } from '@angular/material';
-import { map, count } from 'rxjs/operators';
+import { Brouwer } from '../../brouwer/brouwer.model';
+import { BrouwerdataService } from '../../brouwer/brouwerdata.service';
+import { BierdataService } from '../../brouwer/bierdata.service';
+import { Bier } from '../../brouwer/bier.model';
 
 @Component({
   selector: 'app-mijnbierlijst',

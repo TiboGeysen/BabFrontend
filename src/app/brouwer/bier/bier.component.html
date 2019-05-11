@@ -1,20 +1,13 @@
-<mat-card>
-  <div class="titles">
-    <mat-card-title>{{bier.naam}}</mat-card-title>
-    <mat-card-subtitle>{{brouwer.naam}}</mat-card-subtitle>
+<div class="card text-white mb-4">
+  <div class="card-header">
+    <h5>{{bier?.naam}} ({{bier?.percentage}}%)</h5>
+    <h6>{{brouwer?.naam}}</h6>
+    <div class="extra">
+      <span class="badge badge-warning">{{bier?.kleur}}</span>
+      <span class="badge badge-warning">{{bier?.smaak}}</span></div>
   </div>
-  <mat-card-content>
-    <div class="col">
-      <div class="row"><b>Kleur<br></b>{{bier.kleur}}</div>
-      <div class="row"><b>Smaak<br></b>{{bier.smaak}}</div>
-    </div>
-    <div class="col">
-      <div class="row"><b>Percentage<br></b>{{bier.percentage}}%</div>
-      <div class="row"><b>Primeur<br></b>{{bier.isPrimeur}}</div>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
+  <div class="card-footer">
     <i class="material-icons" (click)=add()>add</i>
     <i class="material-icons" (click)=openDialog()>search</i>
-  </mat-card-actions>
-</mat-card>
+  </div>
+</div>

@@ -1,25 +1,82 @@
-<nav class="navbar">
-  <div class="merk">
-    <a [routerLink]="['home']"><img class="logo" src="../../../assets/images/logo.jpg"></a>
-  </div>
-  <div class="navigatie">
-    <a class="item" [routerLink]="['home']" routerLinkActive="active-link">Home</a>
-    <a class="item" [routerLink]="['biervdmaand']" routerLinkActive="active-link">Bier vd maand</a>
-    <a class="item" [routerLink]="['evenementen']" routerLinkActive="active-link">Evenementen</a>
-    <a class="item" [routerLink]="['bieren']" routerLinkActive="active-link">Bieren</a>
-    <a class="item" [routerLink]="['mijnbieren']" routerLinkActive="active-link">Mijn bieren</a>
-  </div>
-  <div class="profile">
-    <a class="item" [routerLink]="['registreer']" routerLinkActive="active-link">
-      <i class="material-icons">account_circle</i> Registreer
-    </a>
-    <a class="item" [routerLink]="['login']" routerLinkActive="active-link">
-      <i class="material-icons">forward</i> Login</a>
-  </div>
-  <div class="profileSmall">
-    <i class="fas fa-bars"></i>
-  </div>
-  <div class="navbarVerySmall">
-    <i class="fas fa-bars"></i>
+<nav class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="#">
+    <div class="merk">
+      <a [routerLink]="['home']"><img class="logo" src="../../../assets/images/logo.jpg"></a>
+    </div>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="material-icons" id="menu">menu</i>
+  </button>
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="item" [routerLink]="['home']" routerLinkActive="active-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="item" [routerLink]="['biervdmaand']" routerLinkActive="active-link">Bier vd maand</a>
+      </li>
+      <li class="nav-item">
+        <a class="item" [routerLink]="['bier/lijst']" routerLinkActive="active-link">Bieren</a>
+      </li>
+    </ul>
+    <ng-template #notlogged>
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item">
+          <a *ngIf="!loggedIn()" class="item" [routerLink]="['registreer']" routerLinkActive="active-link">
+            <i class="material-icons">account_circle</i> Registreer
+          </a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="!loggedIn()" class="item" [routerLink]="['login']" routerLinkActive="active-link">
+            <i class="material-icons">forward</i> Login</a>
+        </li>
+      </ul>
+    </ng-template>
+    <ul class="nav navbar-nav ml-auto" *ngIf="(user$ | async) as user; else notlogged">
+      <li class="nav-item dropdown">
+        <a class="item nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+          <i class="material-icons">
+            person
+          </i> {{user}}<i class="material-icons">
+            arrow_drop_down
+          </i>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['/account/instellingen']" routerLinkActive="active-link"><i
+              class="material-icons">
+              settings
+            </i>Instellingen</a>
+          <a class="dropdown-item" [routerLink]="['/account/mijnbieren']" routerLinkActive="active-link"><i
+              class="material-icons">
+              list
+            </i>Mijn bierlijst</a>
+          <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="dropdown-item" [routerLink]="['/account/addbier']"
+            routerLinkActive="active-link"><i class="material-icons">
+              add
+            </i>Voeg een bier toe</a>
+          <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="dropdown-item" [routerLink]="['/account/beheerbier']"
+            routerLinkActive="active-link"><i class="material-icons">
+              chevron_right
+            </i>Beheer je eigen bieren</a>
+          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/beheerbier']"
+            routerLinkActive="active-link"><i class="material-icons">
+              chevron_right
+            </i>Beheer alle bieren</a>
+          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/beheerbrouwer']"
+            routerLinkActive="active-link"><i class="material-icons">
+              chevron_right
+            </i>Beheer brouwers</a>
+          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/addpost']"
+            routerLinkActive="active-link"><i class="material-icons">
+              add
+            </i>Voeg
+            een nieuwe post toe</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" (click)="logout()">
+            <i class="material-icons">power_settings_new</i> Logout</a>
+        </div>
+      </li>
+    </ul>
   </div>
 </nav>

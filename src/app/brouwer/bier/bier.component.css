@@ -1,28 +1,51 @@
-mat-card{
+.card{
     background-color: #C60907;
     color: white;
-    margin: 5px;
-    width: 150px;
 }
 
-mat-card-content{
+.card-header{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.row{
-    width: 75px;
-}
-
-b{
-    color: black;
-}
-
-mat-card-content div.col{
     flex-direction: column;
+    height: 150px;
+    justify-content: center;
+    padding:0px;
+}
+
+.extra{
+    flex-direction: row;
+}
+
+i{
+    vertical-align: bottom;
+    font-size: 30px;
 }
 
 i:hover{
     cursor: pointer;
+}
+
+div span{
+    margin:5px;
+}
+
+@media(max-width: 320px){
+    .card{
+        width: 200px;
+    }
+
+    .card-header{
+        height:75px;
+    }
+
+    h5{
+        font-size: 14px
+    }
+
+    h6{
+        font-size:12px;
+    }
+
+    .extra{
+        display: none;
+    }
 }

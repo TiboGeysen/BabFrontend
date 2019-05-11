@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder, AbstractControl, Valid
 import { AuthenticationService } from '../authentication.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { map } from 'rxjs/operators';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private authService: AuthenticationService) { }
+  constructor(private fb: FormBuilder, private authService: AuthenticationService, private router: Router) { }
 
   public gebruiker: FormGroup
 
@@ -28,7 +29,19 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.register(this.gebruiker.value.email, this.gebruiker.value.gebruikersnaam, this.gebruiker.get('passwordGroup').value.wachtwoord).subscribe();
+    this.authService.register(this.gebruiker.value.email, this.gebruiker.value.gebruikersnaam, this.gebruiker.get('passwordGroup').value.wachtwoord, ['Admin']).subscribe(
+      val => {
+        if (val) {
+          if (this.authService.redirectUrl) {
+            this.router.navigateByUrl(this.authService.redirectUrl);
+            this.authService.redirectUrl = undefined;
+          }
+          else {
+            this.router.navigate(['/account']);
+          }
+        }
+      }
+    );
   }
 
   getErrorMessage(errors: any) {

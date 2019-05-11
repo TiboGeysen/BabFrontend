@@ -1,13 +1,7 @@
-
-
-
-table{
-    border: 1px solid black;
-    margin-top: 20px;
-    border-spacing: 0px;
-
+.bieren{
+    display: flex;
+    flex-direction: row;
 }
-
 
 p{
     color: #C60907;
@@ -15,47 +9,11 @@ p{
     font-size: 14px
 }
 
-
-tr.items{
-    height: 40px;
-    border: solid black 2px;
-    font-size: 12px;
-    background-color: lightgray;
-}
-
-th, td{
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid gray;
-}
-
-th{
-    height: 30px;
-    width:80px;
-    background-color: #C60907;
-    color: white;
-    font-size: 16px;
-    font-weight: normal;
-    border-bottom: none;
-}
-
-.add:hover{
-    background-color: #C60907;
-    color: white;
-    transition-duration: 1s;
-    cursor: pointer;
-}
-
-.more:hover{
-    background-color: #C60907;
-    color: white;
-    transition-duration: 1s;
-    cursor: pointer;
-}
-
 .filter{
     display:flex;
     flex-direction: column;
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .filter input, select{
@@ -67,4 +25,62 @@ th{
 
 select{
     width: 139px;
+}
+@media(max-width: 389px){
+    .card-columns{
+        
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+}
+
+@media(max-width: 320px){
+    .filter input, select{
+        margin: 5px;
+        padding: 5px;
+        width: 100px;
+        text-align: center;
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 388px) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 48em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
+
+@media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 4;
+        -moz-column-count: 4;
+        column-count: 4;
+    }
+}
+
+@media (min-width: 75em) {
+    .card-columns {
+        -webkit-column-count: 5;
+        -moz-column-count: 5;
+        column-count: 5;
+    }
 }

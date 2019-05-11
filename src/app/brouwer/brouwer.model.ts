@@ -8,6 +8,7 @@ export class Brouwer {
         private _naam: string,
         private _bieren = new Array<Bier>(),
         private _stand: number,
+
     ) { }
 
     static fromJson(json: any): Brouwer {

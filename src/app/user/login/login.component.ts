@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl(this.authService.redirectUrl);
             this.authService.redirectUrl = undefined;
           } else {
-            this.router.navigate(['/voegtoe']);
+            this.router.navigate(['/account']);
           }
         }
       }, err => this.errorMsg = err.error

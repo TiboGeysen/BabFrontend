@@ -2,7 +2,6 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/c
 import { AuthenticationService } from '../user/authentication.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { InjectableAnimationEngine } from '@angular/platform-browser/animations/src/providers';
 
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {

@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,18 @@ export class AuthenticationService {
     return this._user$;
   }
 
+  get string$(): Observable<string> {
+    return this.http.get(`${environment.apiUrl}/bieren/string`).pipe(
+      map((value: any) => {
+        if (value) {
+          let string = value;
+          return string;
+        }
+        return 'Invalid';
+      }));
+  }
+
+
   get token(): string {
     const token = localStorage.getItem(this._tokenKey);
     //null or empty
@@ -56,8 +69,8 @@ export class AuthenticationService {
       );
   }
 
-  register(email: string, gebruikersnaam: string, password: string): Observable<boolean> {
-    return this.http.post(`${environment.apiUrl}/gebruikers/register`, { email, gebruikersnaam, password, passwordConfirmation: password }, { responseType: "text" }).pipe(
+  register(email: string, gebruikersnaam: string, password: string, roles: string[]): Observable<boolean> {
+    return this.http.post(`${environment.apiUrl}/gebruikers/register`, { email, gebruikersnaam, password, passwordConfirmation: password, roles }, { responseType: "text" }).pipe(
       map((token: any) => {
         if (token) {
           localStorage.setItem(this._tokenKey, token);
@@ -68,9 +81,6 @@ export class AuthenticationService {
       ));
   }
 
-  getGebruikersClaims() {
-    return this.http.get(`${environment.apiUrl}/gebruikers/gebruikerClaims`);
-  }
 
 
   logout() {
@@ -78,6 +88,27 @@ export class AuthenticationService {
       localStorage.removeItem(this._tokenKey);
       this._user$.next(null);
     }
+  }
+
+  roleMatch(allowedRoles): boolean {
+    var isMatch = false;
+    var payLoad = parseJwt(localStorage.getItem(this._tokenKey));
+    var role = payLoad.role;
+    allowedRoles.forEach(element => {
+      if (role == element)
+        isMatch = true;
+      return false;
+    });
+    return isMatch;
+  }
+
+  role(): string {
+    var payLoad = parseJwt(localStorage.getItem(this._tokenKey));
+    if (payLoad)
+      var role = payLoad.role;
+    else
+      role = null;
+    return role;
   }
 
   checkEmail = (email: string): Observable<boolean> => {

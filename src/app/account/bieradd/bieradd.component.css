@@ -1,0 +1,12 @@
+.left{
+    width: 30%;
+    vertical-align: top;
+}
+
+.contentcontainer{
+    flex-direction: row;
+}
+
+.right{
+    width: 70%;
+}

@@ -1,0 +1,17 @@
+.left{
+    width: 30%;
+}
+
+.contentcontainer{
+    flex-direction: row;
+}
+
+.right{
+    width: 70%;
+}
+
+.title{
+    border-bottom: #C60907 2px solid;
+    color: #C60907;
+    font-size :20px;
+}

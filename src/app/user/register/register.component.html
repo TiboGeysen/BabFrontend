@@ -1,8 +1,8 @@
 <div class="contentcontainer">
   <div class="form">
-    <a [routerLink]="['/home']"><img class="logo" src="../../../assets/images/logo.jpg"></a>
     <form [formGroup]="gebruiker" (ngSubmit)=onSubmit()>
-      <p>Maak een account aan</p>
+      <h2>Maak een account aan</h2>
+      <hr>
       <div class="input">
         <i class="material-icons">email</i>
         <input matInput aria-label="name" placeholder="Email" type="text" formControlName="email">

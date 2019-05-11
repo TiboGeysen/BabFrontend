@@ -7,16 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { EvenementenpageComponent } from './components/evenementenpage/evenementenpage.component';
 import { BiervdmaandComponent } from './components/biervdmaand/biervdmaand.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { MaterialModule } from './material/material.module';
 import { UserModule } from './user/user.module';
-import { BrouwerModule } from './brouwer/brouwer.module';
 import { httpInterceptorProviders } from './http-interceptors';
+import { LandingpageComponent } from './components/landingpage/landingpage.component';
+import { BrouwerModule } from './brouwer/brouwer.module';
+import { PostModule } from './post/post.module';
+import { ForbiddenComponent } from './components/forbidden/forbidden.component';
 
 @NgModule({
   declarations: [
@@ -25,16 +27,18 @@ import { httpInterceptorProviders } from './http-interceptors';
     FooterComponent,
     HomepageComponent,
     BiervdmaandComponent,
-    EvenementenpageComponent,
     PagenotfoundComponent,
+    LandingpageComponent,
+    ForbiddenComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
     UserModule,
-    BrouwerModule,
+    PostModule,
     AppRoutingModule
+
 
   ],
   providers: [httpInterceptorProviders],

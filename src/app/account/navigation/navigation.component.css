@@ -1,0 +1,23 @@
+.navigation{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #C60907;
+    padding: 10px;
+    width: 80%;
+}
+
+a.item{
+    font-size: 16px;
+    text-align: left;
+}
+
+a.item:hover{
+    color:  #C60907;
+    transition-delay: 50ms;
+    transition-duration: 500ms;
+}
+
+a.item i{
+    vertical-align: middle;
+    font-size: 16px;
+}

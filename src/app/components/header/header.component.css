@@ -1,18 +1,25 @@
 .navbar{
-    height: 80px;
     width: 90%;
     margin-right: 5%;
     margin-left: 5%;
+    padding-left:0px;
+    padding-right: 0px;
     border-bottom: 2px solid        #C60907;
     display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: white;
     align-items: center;
     z-index: 2;
     font-size: 16px;
     color: black;
+}
+
+button.navbar-toggler{
+    padding:0px;
+}
+
+#menu{
+    font-size:30px;
+    color: #C60907;
+    padding:0px;
 }
 
 .logo{
@@ -21,7 +28,6 @@
 }
 
 .merk{
-    padding-left: 20px;
     padding-right: 10px;
 }
 
@@ -31,6 +37,21 @@
     display: inline-flex;
     vertical-align: middle;
     border-bottom: 2px solid transparent;
+}
+
+.dropdown-item{
+    vertical-align: bottom;
+    font-size: 14px;
+    margin-left: 15px;
+    padding: 0px
+}
+
+.dropdown-item i{
+    vertical-align: bottom;
+}
+
+.dropdown-item:hover{
+    background-image: none;
 }
 
 .navigatie .active-link{
@@ -56,19 +77,6 @@ i{
     font-size: 20px;
 }
 
-.navbarVerySmall i:hover, .profileSmall i:hover {
-    cursor: pointer;
-    border: 1px solid grey;
-    border-radius: 3px;
-    padding: 5px;
-    color: #C60907;
-    transition-duration: 500ms;
-}
-
-.profileSmall, .navbarVerySmall, .profile{
-    position: absolute;
-    right: 0;
-}
 
 .example-container {
     position: absolute;
@@ -78,30 +86,9 @@ i{
     right: 0;
   }
 
-@media(max-width : 840px){
-    .profile{
-        display: none;
-    }
-}
-
-@media(min-width: 841px){
-    .profileSmall{
-        display:none;
-    }
-}
-
-@media(max-width: 630px){
-    .profileSmall{
-        display: none;
-    }
-
-    .navigatie{
-        display: none;
-    }
-}
-
-@media(min-width: 631px){
-    .navbarVerySmall{
-        display: none;
-    }
-}
+  @media(max-width: 320px){
+      .navbar{
+          width: 100%;
+          margin:0px;
+      }
+  }

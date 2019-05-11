@@ -3,7 +3,7 @@
   <form [formGroup]="bier" (ngSubmit)=onSubmit()>
     <div class="input">
       <input matInput aria-label="brouwernaam" placeholder="Naam brouwer" type="text" formControlName="brouwersnaam"
-        disabled />
+        readonly />
       <div class="error" *ngIf="bier.get('brouwersnaam')['errors'] && bier.get('brouwersnaam').touched">
         {{ getErrorMessage(bier.get('brouwersnaam')['errors']) }}</div>
     </div>

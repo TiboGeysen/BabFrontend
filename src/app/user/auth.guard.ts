@@ -17,10 +17,14 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
     if (this.authService.user$.getValue()) {
-      return true;
+      let roles = next.data['toegelaten'] as Array<string>;
+      if (roles)
+        if (this.authService.roleMatch(roles))
+          return true;
     }
+
     this.authService.redirectUrl = state.url;
-    this.router.navigate(['/login']);
+    this.router.navigate(['/forbidden']);
     return false;
   }
 

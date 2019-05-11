@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/user/authentication.service';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -8,17 +11,31 @@ import { AuthenticationService } from 'src/app/user/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  opened: boolean;
-  gebruikerClaims: any;
+  user$ = this.authService.user$;
+  _loggedIn: boolean;
+  _naam: string;
 
-  constructor(private _service: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    //this.gebruikerClaims = this._service.getGebruikersClaims().subscribe((data: any) => this.gebruikerClaims = data);
+    this.user$.subscribe((val) => {
+      if (val)
+        this._loggedIn = true;
+      else
+        this._loggedIn = false;
+    })
   }
 
-  toggle() {
-    this.opened = !this.opened;
+  logout() {
+    this.router.navigate(['/login']);
+    this.authService.logout();
   }
 
+  loggedIn(): boolean {
+    return this._loggedIn;
+  }
+
+  roleMatch(role): boolean {
+    return this.authService.roleMatch(role);
+  }
 }

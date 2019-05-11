@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Bier } from '../bier.model';
 import { Brouwer } from '../brouwer.model';
 import { BrouwerdataService } from '../brouwerdata.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bierlijst',
@@ -12,13 +13,13 @@ import { BrouwerdataService } from '../brouwerdata.service';
 })
 export class BierlijstComponent implements OnInit {
 
-  private _fetchBieren$: Observable<Bier[]> = this._serviceBieren.bieren$;
+  private _fetchBieren: Bier[];
 
-  constructor(private _service: BrouwerdataService, private _serviceBieren: BierdataService) {
+  constructor(private _service: BrouwerdataService, private _bierService: BierdataService, private route: ActivatedRoute) {
 
   }
   ngOnInit() {
-
+    this.route.data.subscribe(items => this._fetchBieren = items['bieren']);
   }
 
   getBrouwer$(id: number): Observable<Brouwer> {
@@ -26,7 +27,9 @@ export class BierlijstComponent implements OnInit {
   }
 
   get bieren$() {
-    return this._fetchBieren$;
+
+    return this._fetchBieren;
+
   }
 }
 
