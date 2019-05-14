@@ -4,7 +4,7 @@
     margin-left: 5%;
     padding-left:0px;
     padding-right: 0px;
-    border-bottom: 2px solid        #C60907;
+    border-bottom: 2px solid       rgba(198, 9, 7, 0.5);
     display: flex;
     align-items: center;
     z-index: 2;
@@ -12,9 +12,15 @@
     color: black;
 }
 
+.dropdown-menu{
+    margin-right: 15px;
+    border-radius: 0px;
+}
+
 button.navbar-toggler{
     padding:0px;
 }
+
 
 #menu{
     font-size:30px;
@@ -46,12 +52,13 @@ button.navbar-toggler{
     padding: 0px
 }
 
-.dropdown-item i{
-    vertical-align: bottom;
+a.dropdown-item:hover{
+    background-color: transparent;
+    color: #C60907
 }
 
-.dropdown-item:hover{
-    background-image: none;
+.dropdown-item i{
+    vertical-align: bottom;
 }
 
 .navigatie .active-link{
@@ -70,6 +77,13 @@ button.navbar-toggler{
     opacity: 0.6;
     transition-delay: 250ms;
     transition-duration: 1500ms;
+}
+
+.item#dropdown:hover{
+    border-color: transparent;
+    opacity: 1;
+    background-color: #C60907;
+    color: white;
 }
 
 i{

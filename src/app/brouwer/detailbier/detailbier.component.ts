@@ -10,13 +10,14 @@ import { BierdataService } from '../bierdata.service';
 })
 export class DetailbierComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private _bierService: BierdataService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Bier, private _bierService: BierdataService) { }
 
   ngOnInit() {
   }
 
   add() {
-    this._bierService.voegBierAanFavorietenToe$(new Bier(this.data.id, this.data.naambier, this.data.percentage, this.data.kleur, this.data.biersoort, this.data.opVat, this.data.soortgisting, this.data.smaak, this.data.omschrijving, this.data.recent, this.data.primeur)).subscribe();
+
+    this._bierService.voegBierAanFavorietenToe$(this.data).subscribe();
   }
 
 }

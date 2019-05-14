@@ -35,14 +35,14 @@
     </ng-template>
     <ul class="nav navbar-nav ml-auto" *ngIf="(user$ | async) as user; else notlogged">
       <li class="nav-item dropdown">
-        <a class="item nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+        <a class="item nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" id="dropdown">
           <i class="material-icons">
             person
           </i> {{user}}<i class="material-icons">
             arrow_drop_down
           </i>
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['/account/instellingen']" routerLinkActive="active-link"><i
               class="material-icons">
               settings
@@ -74,7 +74,7 @@
             een nieuwe post toe</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()">
-            <i class="material-icons">power_settings_new</i> Logout</a>
+            <i class="material-icons">power_settings_new</i>Logout</a>
         </div>
       </li>
     </ul>

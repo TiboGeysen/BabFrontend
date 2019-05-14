@@ -19,6 +19,8 @@ import { LandingpageComponent } from './components/landingpage/landingpage.compo
 import { BrouwerModule } from './brouwer/brouwer.module';
 import { PostModule } from './post/post.module';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
+import { AccountComponent } from './account/account/account.component';
+import { AccountModule } from './account/account.module';
 
 @NgModule({
   declarations: [

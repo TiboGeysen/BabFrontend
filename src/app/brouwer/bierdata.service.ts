@@ -16,6 +16,7 @@ export class BierdataService {
   //injection van http
   constructor(private http: HttpClient) { }
 
+
   //we vragen bieren op van onze C# db in JSON formaat (any) en zetten die via pipe & map om naar Bier[]
   get bieren$(): Observable<Bier[]> {
     return this.http.get(`${environment.apiUrl}/bieren/`).pipe(
@@ -58,8 +59,4 @@ export class BierdataService {
   voegBierToe(bier: Bier) {
     return this.http.post(`${environment.apiUrl}/bieren`, bier.toJson())
   }
-
-
-
-
 }

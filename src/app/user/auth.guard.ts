@@ -18,9 +18,13 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): boolean {
     if (this.authService.user$.getValue()) {
       let roles = next.data['toegelaten'] as Array<string>;
-      if (roles)
+      if (roles) {
         if (this.authService.roleMatch(roles))
           return true;
+        this.router.navigate(['/forbidden']);
+        return false;
+      }
+      else return true;
     }
 
     this.authService.redirectUrl = state.url;

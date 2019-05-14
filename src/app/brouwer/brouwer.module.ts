@@ -10,18 +10,18 @@ import { BierfilterPipe } from './bierfilter.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddbierComponent } from '../brouwer/addbier/addbier.component';
 import { DetailbierComponent } from './detailbier/detailbier.component';
-import { AuthGuard } from '../user/auth.guard';
 import { BierResolver } from './BierResolver';
+import { BrowerResolver } from './BrowerResolver';
+import { MaxDirective } from '../directives/MaxDirective';
+import { MinDirective } from '../directives/MinDirective';
 
 
 const routes: Routes = [
-  { path: "lijst", component: BierlijstComponent, resolve: { bieren: BierResolver } },
-  { path: "voegtoe", canActivate: [AuthGuard], component: AddbierComponent }
-
+  { path: "lijst", component: BierlijstComponent, resolve: { bieren: BierResolver, brouwers: BrowerResolver } },
 ];
 
 @NgModule({
-  declarations: [BierComponent, BrouwerComponent, BierlijstComponent, BierfilterPipe, AddbierComponent, DetailbierComponent],
+  declarations: [BierComponent, BrouwerComponent, BierlijstComponent, BierfilterPipe, AddbierComponent, DetailbierComponent, MaxDirective, MinDirective],
   imports: [
     CommonModule,
     HttpClientModule,

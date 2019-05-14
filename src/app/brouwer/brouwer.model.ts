@@ -37,7 +37,7 @@ export class Brouwer {
     get bieren(): Bier[] {
         return this._bieren;
     }
-    addBier(brouwerId: number, naam: string, percentage: number, kleur: string, bierSoort: string, opVat: boolean, soortGisting: string, smaak: string, omschrijving: string, recent: boolean, primeur: boolean) {
-        this._bieren.push(new Bier(brouwerId, naam, percentage, kleur, bierSoort, opVat, soortGisting, smaak, omschrijving, recent, primeur));
+    addBier(naam: string, percentage: number, kleur: string, bierSoort: string, opVat: boolean, soortGisting: string, smaak: string, omschrijving: string, recent: boolean, primeur: boolean) {
+        this._bieren.push(new Bier(naam, percentage, kleur, bierSoort, opVat, soortGisting, smaak, omschrijving, recent, primeur));
     }
 }

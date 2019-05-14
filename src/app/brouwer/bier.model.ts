@@ -5,8 +5,6 @@ export class Bier {
     private _id;
 
     constructor(
-
-        private _brouwerId: number,
         private _naam: string,
         private _percentage: number,
         private _kleur: string,
@@ -16,12 +14,14 @@ export class Bier {
         private _smaak: string,
         private _omschrijving: string,
         private _recent: boolean,
-        private _primeur: boolean
+        private _primeur: boolean,
+        private _brouwerId?: number,
+        private _brouwerNaam?: string,
     ) { }
 
     static fromJson(json: any): Bier {
         const bier =
-            new Bier(json.brouwerId, json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur);
+            new Bier(json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur, json.brouwerId, json.brouwerNaam);
         bier._id = json.id;
         return bier;
     }
@@ -30,6 +30,7 @@ export class Bier {
         return {
             id: this._id,
             brouwerId: this._brouwerId,
+            brouwerNaam: this._brouwerNaam,
             naam: this._naam,
             percentage: this._percentage,
             kleur: this._kleur,
@@ -43,12 +44,12 @@ export class Bier {
         };
     }
 
-    get brouwerId(): number {
-        return this._brouwerId;
-    }
-
     get naam(): string {
         return this._naam;
+    }
+
+    get brouwerNaam(): string {
+        return this._brouwerNaam;
     }
 
     get percentage(): number {
@@ -102,6 +103,10 @@ export class Bier {
             return "Ja";
         else
             return "Nee";
+    }
+
+    get brouwerId(): Number {
+        return this._brouwerId;
     }
 
     get primeur(): boolean {

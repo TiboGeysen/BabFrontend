@@ -14,22 +14,24 @@ import { ActivatedRoute } from '@angular/router';
 export class BierlijstComponent implements OnInit {
 
   private _fetchBieren: Bier[];
+  private _fetchBrouwers: Brouwer[];
 
-  constructor(private _service: BrouwerdataService, private _bierService: BierdataService, private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
 
   }
   ngOnInit() {
+    this.route.data.subscribe(items => this._fetchBrouwers = items['brouwers']);
     this.route.data.subscribe(items => this._fetchBieren = items['bieren']);
   }
 
-  getBrouwer$(id: number): Observable<Brouwer> {
-    return this._service.getBrouwer$(id);
+  get bieren$() {
+    return this._fetchBieren;
   }
 
-  get bieren$() {
 
-    return this._fetchBieren;
 
+  brouwer(id: Number): Brouwer {
+    return this._fetchBrouwers.find(b => b.id == id);
   }
 }
 

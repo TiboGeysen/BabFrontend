@@ -8,6 +8,9 @@ import { PagenotfoundComponent } from '../components/pagenotfound/pagenotfound.c
 import { LandingpageComponent } from '../components/landingpage/landingpage.component';
 import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
 import { ForbiddenComponent } from '../components/forbidden/forbidden.component';
+import { AuthGuard } from '../user/auth.guard';
+import { AccountComponent } from '../account/account/account.component';
+import { AddbierComponent } from '../brouwer/addbier/addbier.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomepageComponent },
@@ -18,10 +21,12 @@ const appRoutes: Routes = [
     data: { preload: true }
 
   },
+
   {
     path: 'account',
     loadChildren: '../../app/account/account.module#AccountModule',
-    data: { preload: true }
+    data: { preload: true },
+    canActivate: [AuthGuard]
 
   },
   {

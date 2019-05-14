@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
-import { MijnbierlijstComponent } from './mijnbierlijst/mijnbierlijst.component';
 import { AuthGuard } from '../user/auth.guard';
 import { Routes, RouterModule } from '@angular/router';
 import { DetailbierComponent } from '../brouwer/detailbier/detailbier.component';
@@ -11,27 +10,32 @@ import { BrouwerModule } from '../brouwer/brouwer.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InstellingenComponent } from '../account/instellingen/instellingen.component';
-import { BierbeheerComponent } from './bierbeheer/bierbeheer.component';
-import { BrouwerbeheerComponent } from './brouwerbeheer/brouwerbeheer.component';
-import { BieraddComponent } from './bieradd/bieradd.component';
 import { AddbierComponent } from '../brouwer/addbier/addbier.component';
-import { PostaddComponent } from './postadd/postadd.component';
+import { AccountComponent } from './account/account.component';
+import { AddpostComponent } from '../post/addpost/addpost.component';
+import { PostModule } from '../post/post.module';
 
 
 const routes: Routes = [
-  { path: "mijnbieren", component: MijnbierlijstComponent },
-  { path: 'instellingen', component: InstellingenComponent },
-  { path: 'addbier', component: BieraddComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
-  { path: 'addpost', component: PostaddComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
-  { path: 'bierbeheer', component: BierbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
-  { path: 'brouwerbeheer', component: BrouwerbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
+  {
+    path: '',
+    component: AccountComponent,
+    children: [{ path: 'instellingen', component: InstellingenComponent },
+    //{ path: "mijnbieren", component: MijnbierlijstComponent },
+    { path: 'addpost', component: AddpostComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
+    { path: 'addbier', component: AddbierComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
+      //{ path: 'bierbeheer', component: BierbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
+      //{ path: 'brouwerbeheer', component: BrouwerbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
+    ]
+  }
 
 ];
 
 @NgModule({
-  declarations: [NavigationComponent, MijnbierlijstComponent, InstellingenComponent, BieraddComponent, BierbeheerComponent, BrouwerbeheerComponent, PostaddComponent],
+  declarations: [NavigationComponent, InstellingenComponent, AccountComponent],
   imports: [
     CommonModule,
+    PostModule,
     BrouwerModule,
     HttpClientModule,
     MaterialModule,
@@ -40,6 +44,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   entryComponents: [DetailbierComponent],
-  exports: [RouterModule]
+  exports: [RouterModule, InstellingenComponent]
 })
 export class AccountModule { }

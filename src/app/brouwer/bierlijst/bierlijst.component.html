@@ -13,7 +13,7 @@
   </div>
   <div *ngIf="bieren$ as bieren; else loading" class="card-columns justify-content-center align-items-center">
     <app-bier *ngFor="let bier of (bieren | bierfilter:naamBier:smaak:kleur:percentage:naamBrouwer)" [bier]="bier"
-      [brouwer$]="getBrouwer$(bier.brouwerId)">
+      [brouwer]="brouwer(bier.brouwerId)">
     </app-bier>
   </div>
   <ng-template #loading>

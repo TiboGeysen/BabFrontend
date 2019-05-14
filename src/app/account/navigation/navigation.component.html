@@ -1,19 +1,23 @@
 <div class="navigation">
-  <a class="item" [routerLink]="['/account/instellingen']" routerLinkActive="active-link"><i
-      class="material-icons">settings</i> Instellingen</a>
-  <a class="item" [routerLink]="['/account/mijnbieren']" routerLinkActive="active-link"><i
-      class="material-icons">list</i> Mijn bieren</a>
-  <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="item" [routerLink]="['/account/addbier']"
-    routerLinkActive="active-link"><i class="material-icons">add</i> Voeg een bier toe</a>
-  <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="item" [routerLink]="['/account/bierbeheer']"
-    routerLinkActive="active-link"><i class="material-icons">chevron_right</i> Beheer je bieren</a>
-  <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['/account/bierbeheer']" routerLinkActive="active-link"><i
-      class="material-icons">chevron_right</i> Beheer bieren</a>
-  <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['/account/brouwerbeheer']"
-    routerLinkActive="active-link"><i class="material-icons">chevron_right</i> Beheer brouwers</a>
-  <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['/account/addpost']" routerLinkActive="active-link"><i
-      class="material-icons">add</i> Voeg
-    een nieuwe post toe</a>
-  <a class="item" (click)="logout()">
-    <i class="material-icons">power_settings_new</i> Afmelden</a>
+  <div class="group"><a class="item" [routerLink]="['instellingen']" routerLinkActive="active-link"><i
+        class="material-icons">settings</i>
+      Instellingen</a>
+    <a class="item" [routerLink]="['mijnbieren']" routerLinkActive="active-link"><i class="material-icons">list</i> Mijn
+      bieren</a>
+    <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="item" [routerLink]="['addbier']" routerLinkActive="active-link"><i
+        class="material-icons">add</i> Voeg een bier toe</a>
+    <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['addpost']" routerLinkActive="active-link"><i
+        class="material-icons">add</i> Voeg
+      een nieuwe post toe</a></div>
+
+  <div class="group">
+    <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="item" [routerLink]="['bierbeheer']"
+      routerLinkActive="active-link"><i class="material-icons">chevron_right</i> Beheer je bieren</a>
+    <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['bierbeheer']" routerLinkActive="active-link"><i
+        class="material-icons">chevron_right</i> Beheer bieren</a>
+    <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['brouwerbeheer']" routerLinkActive="active-link"><i
+        class="material-icons">chevron_right</i> Beheer brouwers</a>
+    <a class="item" (click)="logout()">
+      <i class="material-icons">power_settings_new</i> Afmelden</a>
+  </div>
 </div>

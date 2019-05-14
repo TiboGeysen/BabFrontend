@@ -3,7 +3,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +34,8 @@ export class AuthenticationService {
   get user$(): BehaviorSubject<string> {
     return this._user$;
   }
+
+
 
   get string$(): Observable<string> {
     return this.http.get(`${environment.apiUrl}/bieren/string`).pipe(
