@@ -22,7 +22,7 @@ const routes: Routes = [
     component: AccountComponent,
     children: [{ path: 'instellingen', component: InstellingenComponent },
     //{ path: "mijnbieren", component: MijnbierlijstComponent },
-    { path: 'addpost', component: AddpostComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
+    { path: 'addpost', component: AddpostComponent }, //canActivate: [AuthGuard], data: { toegelaten: ['Admin'] }
     { path: 'addbier', component: AddbierComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
       //{ path: 'bierbeheer', component: BierbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
       //{ path: 'brouwerbeheer', component: BrouwerbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },

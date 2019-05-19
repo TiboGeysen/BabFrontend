@@ -1,54 +1,79 @@
+input, textarea, select, option{
+    text-align: center;
+    font-size: 12px;
+    height: 30px;
+}
+
 .form{
-    display: flex;
-    flex-direction: column;
+    width: 75%;
+    max-width: 400px;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
+.form-row{
+    margin: 0px;
 }
 
-.input{
+
+.form-group{
+    margin-bottom: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    height: 100%;
-    margin-top: 10px;
-    border: 1px solid gray;
-    background-color: lightgray;
-    border-radius: 15px;
-    padding: 5px;
+    background-color: lightgray;  
+    border: 1px solid;
     text-align: center;
-    width: 300px;
-    font-size: 13px;
+    border-color: black;
+    border-radius: 8px;
+    color: white;
+    padding: 0px;
+    vertical-align: middle;
+}
 
+
+input.form-control#override {
+    color: black;
+    background-color: transparent;
+    padding: 5px;
+    margin-right: 30px;
 }
 
 i{
-    padding-right: 10px;
-    opacity: 0.7;
-}
-
-input{
-    border: none;
-    outline: none;
-    background-color: transparent;
-    width: 250px;
-    margin-top: 3px;
-    font-size: 16px;
+    color: gray;
+    padding-left: 10px;
 }
 
 button{
-    width: 312px;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 15px;
-    margin-top: 10px;
-    height: 37px;
-    padding: 10px;
-    background-color:  #C60907;
-    color: white;
+    color:white;
+    background-color: #C60907;
+    margin-bottom: 10px;
+}
+
+button:hover{
+    color:white;
+}
+
+.form-row#check{
+    display: flex;
+    justify-content: center;
+}
+
+
+p{
+    font-size: 16px;
+    color: 		#C60907;
+    margin-bottom: 5px;
+}
+
+.logo{
+    margin-top: 20px;
+    height:108px;
+    width:160px;
+}
+
+a{
+    margin-top: 8px;
+    font-size: 16px;
+    color: 		#C60907;
 }
 
 h2{
@@ -80,21 +105,3 @@ button[disabled]{
     background-color: gray;
 }
 
-@media (max-width: 400px){
-    button{
-        width: 250px;
-    }
-
-    .input{
-        width: 238px;
-    }
-    
-    input{
-        font-size: 12px;
-    }
-
-    .logo{
-        height: 68px;
-        width: 100px;
-    }
-}

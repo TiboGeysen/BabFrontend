@@ -1,15 +1,21 @@
-<form [formGroup]="post" (ngSubmit)=onSubmit()>
+<form [formGroup]="post" (ngSubmit)=onSubmit(Image)>
   <div class="form-row">
-    <div class="form-group col-sm-6">
+    <div class="form-group col-sm-4">
       <input type="text" class="form-control" placeholder="Titel*" aria-label="titel" formControlName="titel">
       <div class="error" *ngIf="post.get('titel')['errors'] && post.get('titel').touched">
         {{ getErrorMessage(post.get('titel')['errors']) }}</div>
     </div>
-    <div class="form-group col-sm-6">
-      <input type="text" class="form-control" placeholder="Link van de foto" aria-label="brouwernaam"
-        formControlName="fotolink">
-      <div class="error" *ngIf="post.get('fotolink')['errors'] && post.get('fotolink').touched">
-        {{ getErrorMessage(post.get('fotolink')['errors']) }}</div>
+    <div class="form-group col-sm-4">
+      <input type="file" (change)="onFileSelected($event)" #Image accept="image/*" class="form-control">
+    </div>
+    <div class="form-group col-sm-4">
+      <select class="form-control" aria-label="categorie" name="categorieen" formControlName="categorie">
+        <option value="" disabled selected>-- Soort categorie* --</option>
+        <option *ngFor="let categorie of categorieen" value={{categorie}}>{{categorie}}</option>
+      </select>
+      <div class="error" *ngIf="post.get('categorie')['errors'] && post.get('categorie').touched">
+        {{ getErrorMessage(post.get('categorie')['errors']) }}</div>
+
     </div>
   </div>
   <div class="form-row">
@@ -20,6 +26,7 @@
         {{ getErrorMessage(post.get('omschrijving')['errors']) }}</div>
     </div>
   </div>
+  <img [src]="imageUrl" style=" width:200px; height: 250px">
   <button type="submit" [disabled]="!post.valid" class="btn btn-block">
     Voeg post toe
   </button>

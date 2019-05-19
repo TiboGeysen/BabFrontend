@@ -1,43 +1,55 @@
 <div class="contentcontainer">
   <div class="form">
     <form [formGroup]="gebruiker" (ngSubmit)=onSubmit()>
-      <h2>Maak een account aan</h2>
+      <p>Maak een account aan</p>
       <hr>
-      <div class="input">
-        <i class="material-icons">email</i>
-        <input matInput aria-label="name" placeholder="Email" type="text" formControlName="email">
+      <div class="form-row">
+        <div class="form-group col-sm-12">
+          <i class="material-icons">email</i>
+          <input id="override" class="form-control" aria-label="name" placeholder="Email" type="text"
+            formControlName="email">
+        </div>
       </div>
       <div class="error" *ngIf="gebruiker.get('email')['errors'] && gebruiker.get('email').touched">
         {{ getErrorMessage(gebruiker.get('email')['errors']) }}</div>
-      <div class="input">
-        <i class="material-icons">perm_identity</i>
-        <input matInput aria-label="name" placeholder="Gebruikersnaam of brouwerij" type="text"
-          formControlName="gebruikersnaam" />
+      <div class="form-row">
+        <div class="form-group col-sm-12">
+          <i class="material-icons">perm_identity</i>
+          <input id="override" class="form-control" aria-label="name" placeholder="Gebruikersnaam of brouwerij"
+            type="text" formControlName="gebruikersnaam">
+        </div>
+
       </div>
       <div class="error" *ngIf="gebruiker.get('gebruikersnaam')['errors'] && gebruiker.get('gebruikersnaam').touched">
         {{ getErrorMessage(gebruiker.get('gebruikersnaam')['errors']) }}</div>
       <div formGroupName="passwordGroup">
-        <div class="input">
-          <i class="material-icons">lock</i>
-          <input matInput aria-label="name" placeholder="Wachtwoord" type="password" formControlName="wachtwoord" />
+        <div class="form-row">
+          <div class="form-group col-sm-12">
+            <i class="material-icons">lock</i>
+            <input id="override" class="form-control" aria-label="name" placeholder="Wachtwoord" type="password"
+              formControlName="wachtwoord" />
+          </div>
+
         </div>
         <div class="error"
           *ngIf="gebruiker.get('passwordGroup').get('wachtwoord')['errors'] && gebruiker.get('passwordGroup').get('wachtwoord').touched">
           {{ getErrorMessage(gebruiker.get('passwordGroup').get('wachtwoord')['errors']) }}</div>
-        <div class="input">
-          <i class="material-icons">lock</i>
-          <input matInput aria-label="name" placeholder="Bevestig wachtwoord" type="password"
-            formControlName="herhaalwachtwoord" /></div>
+        <div class="form-row">
+          <div class="form-group col-sm-12">
+            <i class="material-icons">lock</i>
+            <input id="override" class="form-control" aria-label="name" placeholder="Bevestig wachtwoord"
+              type="password" formControlName="herhaalwachtwoord" /></div>
+
+        </div>
         <div class="error"
           *ngIf="gebruiker.get('passwordGroup').get('herhaalwachtwoord')['errors'] && gebruiker.get('passwordGroup').get('herhaalwachtwoord').touched">
           {{ getErrorMessage(gebruiker.get('passwordGroup').get('herhaalwachtwoord')['errors']) }}</div>
       </div>
-      <div class="error"
-        *ngIf="gebruiker.get('passwordGroup')['errors'] && gebruiker.get('passwordGroup').get('herhaalwachtwoord').touched && gebruiker.get('passwordGroup').get('wachtwoord').touched">
-        {{ getErrorMessage(gebruiker.get('passwordGroup')['errors']) }}</div>
-      <button type="submit" [disabled]="!gebruiker.valid">
+      <button class="btn btn-block" type="submit" [disabled]="!gebruiker.valid">
         Registreer
       </button>
+      <a [routerLink]="['/login']">Al een account? Meld je
+        hier aan</a>
     </form>
   </div>
 </div>
