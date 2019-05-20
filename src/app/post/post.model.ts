@@ -7,7 +7,6 @@ export class Post {
     */
 
     private _id;
-    private _fotoLink: string;
 
     constructor(
 
@@ -15,14 +14,14 @@ export class Post {
         private _omschrijving: string,
         private _datum: Date,
         private _poster: string,
-        private _categorie: string
+        private _categorie: string,
+        private _fotoLink: string
     ) { }
 
     static fromJson(json: any): Post {
         const post =
-            new Post(json.titel, json.omschrijving, json.datum, json.poster, json.categorie);
+            new Post(json.titel, json.omschrijving, json.datum, json.poster, json.categorie, json.fotoLink);
         post._id = json.id;
-        post._fotoLink = json.fotoLink;
         return post;
     }
 
@@ -31,12 +30,12 @@ export class Post {
         return {
 
             id: this._id,
-            cateogire: this._categorie,
             titel: this._titel,
-            fotoLink: this._fotoLink,
             omschrijving: this._omschrijving,
             datum: this._datum,
-            poster: this._poster
+            poster: this._poster,
+            categorie: this._categorie,
+            fotoLink: this._fotoLink,
         };
     }
 
@@ -62,6 +61,10 @@ export class Post {
 
     get datum(): Date {
         return this._datum;
+    }
+
+    set fotoLink(link: string) {
+        this._fotoLink = link;
     }
 }
 

@@ -15,6 +15,7 @@ export class AddpostComponent implements OnInit {
 
   private categorieen: string[] = ["Bierfestival", "Evenementen", "Andere nieuwtjes"];
   public post: FormGroup;
+  public addPost: Post;
 
   selectedFile: File = null;
   imageUrl: string = "/assets/images/defaultupload.svg";
@@ -30,8 +31,16 @@ export class AddpostComponent implements OnInit {
   }
 
   onSubmit(Image) {
-    let post = new Post(this.post.value.titel, this.post.value.omschrijving, new Date(), this._userService.user$.getValue(), this.post.value.categorie)
-    this._postService.voegPostToe(post, this.selectedFile).subscribe();
+
+    this.addPost = new Post(this.post.value.titel, this.post.value.omschrijving, new Date(), this._userService.user$.getValue(), this.post.value.categorie, null)
+    //console.log(post1);
+
+    this._postService.uploadImage(this.selectedFile).subscribe(val => {
+      this.addPost.fotoLink = val;
+      this._postService.voegPostToe(this.addPost).subscribe();
+      console.log(this.addPost);
+    });
+
     this.post.reset();
   }
 

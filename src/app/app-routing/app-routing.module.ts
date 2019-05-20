@@ -26,7 +26,7 @@ const appRoutes: Routes = [
     path: 'account',
     loadChildren: '../../app/account/account.module#AccountModule',
     data: { preload: true },
-    //canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
 
   },
   {

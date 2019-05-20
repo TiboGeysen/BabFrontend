@@ -6,8 +6,8 @@
       <div class="form-row">
         <div class="form-group col-sm-12">
           <i class="material-icons">perm_identity</i>
-          <input style="outline:none;" id="override" class="form-control" aria-label="name" placeholder="Gebruikersnaam"
-            type="text" formControlName="gebruikersnaam" />
+          <input id="override" class="form-control" aria-label="name" placeholder="Gebruikersnaam" type="text"
+            formControlName="gebruikersnaam" />
         </div>
       </div>
       <div class="form-row">
@@ -17,7 +17,7 @@
             formControlName="wachtwoord" />
         </div>
       </div>
-      <button type="submit" [disabled]="!gebruiker.valid" class="btn btn-block">
+      <button type="submit" class="btn btn-block">
         Meld aan
       </button>
       <a [routerLink]="['/registreer']">Nog geen account? Registreer je
