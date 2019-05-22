@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.register(this.gebruiker.value.email, this.gebruiker.value.gebruikersnaam, this.gebruiker.get('passwordGroup').value.wachtwoord, ['Admin']).subscribe(
+    this.authService.register(this.gebruiker.value.email, this.gebruiker.value.gebruikersnaam, this.gebruiker.get('passwordGroup').value.wachtwoord).subscribe(
       val => {
         if (val) {
           if (this.authService.redirectUrl) {

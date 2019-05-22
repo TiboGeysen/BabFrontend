@@ -1,4 +1,10 @@
 <div class="contentcontainer">
+  <div *ngIf=!!error class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{error}}
+    <button type="button" (click)="close()" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="form">
     <a [routerLink]="['/home']"><img class="logo" src="../../../assets/images/logo.jpg"></a>
     <form [formGroup]="gebruiker" (ngSubmit)=onSubmit()>
@@ -22,7 +28,6 @@
       </button>
       <a [routerLink]="['/registreer']">Nog geen account? Registreer je
         hier</a>
-      <div class="error" *ngIf="!!errorMsg">{{errorMsg}}</div>
     </form>
   </div>
 </div>

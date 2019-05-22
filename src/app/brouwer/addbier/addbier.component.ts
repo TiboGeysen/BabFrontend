@@ -21,6 +21,9 @@ export class AddbierComponent implements OnInit {
 
   public bier: FormGroup;
 
+  error: string;
+  success: string;
+
   constructor(private _bierService: BierdataService, private _userService: AuthenticationService, private _brouwerService: BrouwerdataService) { }
 
   ngOnInit() {
@@ -40,10 +43,21 @@ export class AddbierComponent implements OnInit {
     })
   }
 
+  close() {
+    this.error = null;
+    this.success = null;
+  }
+
   onSubmit() {
     let bier = new Bier(this.bier.value.biernaam, this.bier.value.percentage, this.bier.value.kleur, this.bier.value.biersoort,
       this.bier.value.opVat, this.bier.value.soortgisting, this.bier.value.smaak, this.bier.value.omschrijving, this.bier.value.recent, this.bier.value.primeur);
-    this._bierService.voegBierToe(bier).subscribe();
+    this._bierService.voegBierToe(bier).subscribe(
+      () => {
+        this.success = "Het bier is succesvol toegevoegd";
+      }, err => {
+        this.error = "Het bier is niet toegevoegd"
+      }
+    );
 
     this.bier.reset();
     this.bier = new FormGroup({

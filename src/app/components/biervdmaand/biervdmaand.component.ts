@@ -9,16 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class BiervdmaandComponent implements OnInit {
 
-  private _fetchString$: Observable<String>
-    = this._service.string$;
 
   constructor(private _service: AuthenticationService) { }
 
   ngOnInit() {
   }
 
-  get string$(): Observable<String> {
-    return this._fetchString$;
-  }
 
 }

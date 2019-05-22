@@ -5,6 +5,7 @@ import { DetailbierComponent } from '../detailbier/detailbier.component';
 import { Brouwer } from '../brouwer.model';
 import { Observable } from 'rxjs';
 import { BierdataService } from '../bierdata.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-bier',
@@ -17,15 +18,18 @@ export class BierComponent implements OnInit {
   @Input() public brouwer: Brouwer;
 
 
-  constructor(public dialog: MatDialog, private _bierService: BierdataService) {
+  constructor(private _bierService: BierdataService, private modalService: NgbModal) {
 
   }
 
   ngOnInit() {
+
   }
 
-  openDialog() {
-    this.dialog.open(DetailbierComponent, { data: this.bier });
+  open() {
+    const modalRef = this.modalService.open(DetailbierComponent, { centered: true });
+    modalRef.componentInstance.bier = this.bier;
+    modalRef.componentInstance.brouwer = this.brouwer;
   }
 
   add() {

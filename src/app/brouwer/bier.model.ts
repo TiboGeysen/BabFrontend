@@ -48,6 +48,10 @@ export class Bier {
         return this._naam;
     }
 
+    get id(): number {
+        return this._id;
+    }
+
     get brouwerNaam(): string {
         return this._brouwerNaam;
     }
@@ -66,9 +70,9 @@ export class Bier {
 
     get isOpVat(): string {
         if (this._opVat === true)
-            return "Ja";
+            return "Op vat";
         else
-            return "Nee";
+            return "Niet op vat";
     }
 
     get opVat(): boolean {
@@ -89,9 +93,9 @@ export class Bier {
 
     get isRecent(): string {
         if (this._recent === true)
-            return "Ja";
+            return "Recent";
         else
-            return "Nee";
+            return "Niet recent";
     }
 
     get recent(): boolean {
@@ -100,9 +104,9 @@ export class Bier {
 
     get isPrimeur(): string {
         if (this._primeur === true)
-            return "Ja";
+            return "Primeur";
         else
-            return "Nee";
+            return "Geen primeur";
     }
 
     get brouwerId(): Number {

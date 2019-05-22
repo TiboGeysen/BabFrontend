@@ -18,12 +18,5 @@ export class AppComponent {
   ngOnInit() {
 
   }
-  isValid(): boolean {
-    if (this.router.url != "/") {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
+
 }

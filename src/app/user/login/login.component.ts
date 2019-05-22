@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +13,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public gebruiker: FormGroup
-  public errorMsg: string;
+  public error: string;
+
 
   constructor(private authService: AuthenticationService,
     private router: Router) { }
@@ -22,7 +25,10 @@ export class LoginComponent implements OnInit {
       gebruikersnaam: new FormControl(''),
       wachtwoord: new FormControl('')
     })
+  }
 
+  close() {
+    this.error = null;
   }
 
   onSubmit() {
@@ -33,12 +39,16 @@ export class LoginComponent implements OnInit {
           if (this.authService.redirectUrl) {
             this.router.navigateByUrl(this.authService.redirectUrl);
             this.authService.redirectUrl = undefined;
-          } else {
+          }
+          else {
             this.router.navigate(['/account']);
           }
         }
-      }, err => this.errorMsg = err.error
-
-    );
+        else {
+          this.error = `Aanmelden mislukt`;
+        }
+      }), err => {
+        this.error ="Aanmelden mislukt"
+      };
   }
 }

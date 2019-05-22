@@ -1,0 +1,16 @@
+<div class="contentcontainer">
+  <p>ZOEK OP DATUM</p>
+  <div class="filter">
+    <div class="filtertop">
+      <input placeholder="Start datum" type="date" [(ngModel)]="start" />
+      <input placeholder="Eind datum" type="date" [(ngModel)]="eind" />
+    </div>
+  </div>
+  <div *ngIf="posts$ as posts; else loading" class="card-columns justify-content-center align-items-center">
+    <app-post *ngFor="let post of posts" [post]="post">
+    </app-post>
+  </div>
+  <ng-template #loading>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+</div>

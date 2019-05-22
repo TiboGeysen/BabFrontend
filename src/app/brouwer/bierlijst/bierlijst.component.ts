@@ -14,13 +14,13 @@ import { ActivatedRoute } from '@angular/router';
 export class BierlijstComponent implements OnInit {
 
   private _fetchBieren: Bier[];
-  private _fetchBrouwers: Brouwer[];
+  private _brouwers: Brouwer[];
 
   constructor(private route: ActivatedRoute) {
 
   }
   ngOnInit() {
-    this.route.data.subscribe(items => this._fetchBrouwers = items['brouwers']);
+    this.route.data.subscribe(items => this._brouwers = items['brouwers']);
     this.route.data.subscribe(items => this._fetchBieren = items['bieren']);
   }
 
@@ -30,8 +30,8 @@ export class BierlijstComponent implements OnInit {
 
 
 
-  brouwer(id: Number): Brouwer {
-    return this._fetchBrouwers.find(b => b.id == id);
+  brouwer(id: number): Brouwer {
+    return this._brouwers.find(b => b.id == id);
   }
 }
 

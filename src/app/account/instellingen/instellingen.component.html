@@ -1,37 +1,98 @@
-<div class="contentcontainer">
-  <div class="gegevens">
-    <h1 class="title">Wijzig gegevens</h1>
-    <form [formGroup]="gebruiker" (ngSubmit)=onSubmit()>
+<div *ngIf=!!error class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{error}}
+  <button type="button" class="close" (click)="close()" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div *ngIf=!!success class="alert alert-success alert-dismissible fade show" role="alert">
+  {{success}}
+  <button type="button" (click)="close()" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 
-      <div class="input">
-        <i class="material-icons">lock</i>
-        <input matInput aria-label="oud wachtwoord" placeholder="Oud wachtwoord" type="password"
-          formControlName="oldPass">
+
+<div class="flex">
+  <h5>Instellingen</h5>
+  <div class="title">Wijzig email</div>
+  <form [formGroup]="email" (ngSubmit)=onSubmitMail()>
+    <div class="form-row">
+      <div class="form-group col-sm-12">
+        <i class="material-icons">perm_identity</i>
+        <input id="override" class="form-control" aria-label="name" placeholder="Nieuw email-adress" type="text"
+          formControlName="email" />
       </div>
-      <div class="error" *ngIf="gebruiker.get('oldPass')['errors'] && gebruiker.get('oldPass').touched">
-        {{ getErrorMessage(gebruiker.get('oldPass')['errors']) }}</div>
-      <div formGroupName="passwordGroup">
-        <div class="input">
-          <i class="material-icons">lock</i>
-          <input matInput aria-label="name" placeholder="Nieuw wachtwoord" type="password" formControlName="newPass" />
+      <div class="error" *ngIf="email.get('email')['errors'] && email.get('email').touched">
+        {{ getErrorMessage(email.get('email')['errors']) }}</div>
+    </div>
+    <button type="submit" class="btn btn-block" [disabled]="!email.valid">
+      Wijzig
+    </button>
+  </form>
+  <hr>
+  <div class="title">Wijzig gebruikersnaam</div>
+  <form [formGroup]="gebruikersnaam" (ngSubmit)=onSubmitNaam()>
+    <div class="form-row">
+      <div class="form-group col-sm-12">
+        <i class="material-icons">perm_identity</i>
+        <input id="override" class="form-control" aria-label="name" placeholder="Nieuwe gebruikersnaam" type="text"
+          formControlName="gebruikersnaam" />
+      </div>
+    </div>
+    <div class="error"
+      *ngIf="gebruikersnaam.get('gebruikersnaam')['errors'] && gebruikersnaam.get('gebruikersnaam').touched">
+      {{ getErrorMessage(gebruikersnaam.get('gebruikersnaam')['errors']) }}</div>
+
+    <button type="submit" class="btn btn-block" [disabled]=!gebruikersnaam.valid>
+      Wijzig
+    </button>
+  </form>
+  <hr>
+  <!-- <div class="title">Wijzig wachtwoord</div>
+  <form [formGroup]="wachtwoord" (ngSubmit)=onSubmitPass()>
+    <div class="form-row">
+      <div class="form-group col-sm-12">
+        <i class="material-icons">perm_identity</i>
+        <input id="override" class="form-control" aria-label="name" placeholder="Oud wachtwoord" type="text"
+          formControlName="oudWachtwoord" />
+      </div>
+    </div>
+    <div class="error" *ngIf="wachtwoord.get('oudWachtwoord')['errors'] && wachtwoord.get('oudWachtwoord').touched">
+      {{ getErrorMessage(wachtwoord.get('oudWachtwoord')['errors']) }}</div>
+    <div formGroupName="passwordGroup">
+      <div class="form-row">
+        <div class="form-group col-sm-12">
+          <i class="material-icons">perm_identity</i>
+          <input id="override" class="form-control" aria-label="name" placeholder="Nieuw wachtwoord" type="text"
+            formControlName="nieuwWachtwoord" />
         </div>
-        <div class="error"
-          *ngIf="gebruiker.get('passwordGroup').get('newPass')['errors'] && gebruiker.get('passwordGroup').get('newPass').touched">
-          {{ getErrorMessage(gebruiker.get('passwordGroup').get('newPass')['errors']) }}</div>
-        <div class="input">
-          <i class="material-icons">lock</i>
-          <input matInput aria-label="name" placeholder="Bevestig nieuw wachtwoord" type="password"
-            formControlName="herhaalwachtwoord" /></div>
-        <div class="error"
-          *ngIf="gebruiker.get('passwordGroup').get('herhaalwachtwoord')['errors'] && gebruiker.get('passwordGroup').get('herhaalwachtwoord').touched">
-          {{ getErrorMessage(gebruiker.get('passwordGroup').get('herhaalwachtwoord')['errors']) }}</div>
       </div>
       <div class="error"
-        *ngIf="gebruiker.get('passwordGroup')['errors'] && gebruiker.get('passwordGroup').get('herhaalwachtwoord').touched && gebruiker.get('passwordGroup').get('wachtwoord').touched">
-        {{ getErrorMessage(gebruiker.get('passwordGroup')['errors']) }}</div>
-      <button type="submit" [disabled]="!gebruiker.valid">
-        Verander wachtwoord
-      </button>
-    </form>
-  </div>
+        *ngIf="wachtwoord.get('passwordGroup').get('nieuwWachtwoord')['errors'] && wachtwoord.get('passwordGroup').get('nieuwWachtwoord').touched">
+        {{ getErrorMessage(wachtwoord.get('passwordGroup').get('nieuwWachtwoord')['errors']) }}</div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-12">
+        <i class="material-icons">perm_identity</i>
+        <input id="override" class="form-control" aria-label="name" placeholder="Herhaal wachtwoord" type="text"
+          formControlName="herhaalNieuw" />
+      </div>
+    </div>
+    <div class="error"
+      *ngIf="wachtwoord.get('passwordGroup').get('herhaalNieuw')['errors'] && wachtwoord.get('passwordGroup').get('herhaalNieuw').touched">
+      {{ getErrorMessage(wachtwoord.get('passwordGroup').get('herhaalNieuw')['errors']) }}</div>
+
+
+    <div *ngIf="
+              wachtwoord.get('passwordGroup').errors &&
+              wachtwoord.get('passwordGroup').get('herhaalNieuw').touched &&
+              wachtwoord.get('passwordGroup').get('nieuwWachtwoord').touched
+            ">
+      {{ getErrorMessage(wachtwoord.get('passwordGroup').errors) }}
+    </div>
+
+    <button type="submit" class="btn btn-block" [disabled]="!wachtwoord.valid">
+      Wijzig
+    </button>
+  </form> -->
 </div>

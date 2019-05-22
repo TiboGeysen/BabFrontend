@@ -1,13 +1,15 @@
 <div class="card">
-  <div class="card-body">
-    <div class="leftright">
-      <div class="right">
-        <h5 class="card-title">Titel</h5>
-        <h6 class="card-subtitle mb-2">Gepubliceerd door .. op ..</h6>
-      </div>
-      <div class="left"><img src="../../../assets/images/defaultupload.svg" alt="Card image cap"></div>
+  <div class="row no-gutters">
+    <div class="col-md-4 img">
+      <img src="../../../assets/images/defaultupload.svg" class="card-img" alt="...">
     </div>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
+    <div class="col-md-8 content">
+      <div class="card-body">
+        <h5 class="card-title">{{post.titel}}</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.
+          This content is a little bit longer.</p>
+        <p class="card-text"><small>Gepost op {{post.datum | date : "short"}}</small></p>
+      </div>
+    </div>
   </div>
 </div>

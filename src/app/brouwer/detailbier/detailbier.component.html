@@ -1,39 +1,46 @@
-<div class="container">
-  <div mat-dialog-content class="header">
-    <div class="badge"><span>999</span><span>{{data.percentage}}%</span></div>
-    <h1>{{data.naam}}</h1>
-    <h2>{{data.brouwerNaam}}</h2>
+<div class="modal-header">
+  <div class="content">
+    <h5 class="modal-title">{{bier.naam}} ({{bier.percentage}}%)</h5>
+    <h6 class="modal-subtitle">{{brouwer.naam}}</h6>
+    <p>Standnummer 999</p>
   </div>
-  <hr>
-  <div mat-dialog-content class="body">
-    <table>
-      <th>Kleur</th>
-      <th>Soort</th>
-      <tr>
-        <td>
-          {{data.kleur}}
-        </td>
-        <td>
-          {{data.bierSoort}}
-        </td>
-      </tr>
-      <th>Smaak</th>
-      <th>Op vat</th>
-      <tr>
-        <td>{{data.smaak}}</td>
-        <td>{{data.isOpVat}}</td>
-      </tr>
-      <th>Primeur</th>
-      <th>Recent</th>
-      <tr>
-        <td>{{data.isPrimeur}}</td>
-        <td>{{data.isRecent}}</td>
-      </tr>
-    </table>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col">
+      <span class="badge">{{bier.smaak}}</span>
+      <span class="badge">{{bier.bierSoort}}</span>
+      <span class="badge">{{bier.soortGisting}}</span>
+      <span class="badge">{{bier.kleur}}</span>
+    </div>
+    <div class="col align">
+      <span class="badge">{{bier.isRecent}}</span>
+      <span class="badge">{{bier.isPrimeur}}</span>
+      <span class="badge">{{bier.isOpVat}}</span>
+    </div>
   </div>
-  <hr>
-  <div mat-dialog-content class="description">
-    <p>{{data.omschrijving}}</p>
-    <button (click)=add()>Voeg nu toe aan uw lijst!</button>
+</div>
+<hr>
+<div class="modal-body description">
+  <div>{{bier.omschrijving}}</div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-block" (click)="add()">Voeg
+    bier toe aan
+    favorieten</button>
+  <div *ngIf=!!error class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{error}}
+    <button type="button" (click)="close()" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf=!!success class="alert alert-success alert-dismissible fade show" role="alert">
+    {{success}}
+    <button type="button" (click)="close()" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 </div>

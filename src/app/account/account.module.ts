@@ -14,6 +14,13 @@ import { AddbierComponent } from '../brouwer/addbier/addbier.component';
 import { AccountComponent } from './account/account.component';
 import { AddpostComponent } from '../post/addpost/addpost.component';
 import { PostModule } from '../post/post.module';
+import { MijnbierenComponent } from './mijnbieren/mijnbieren.component';
+import { MijnBierResolver } from './MijnBierResolver';
+// import { BrowerResolver } from '../brouwer/BrowerResolver';
+
+import { RatingComponent } from './rating/rating.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MijnBrouwersResolver } from './MijnBrouwersResolver';
 
 
 const routes: Routes = [
@@ -21,7 +28,7 @@ const routes: Routes = [
     path: '',
     component: AccountComponent,
     children: [{ path: 'instellingen', component: InstellingenComponent },
-    //{ path: "mijnbieren", component: MijnbierlijstComponent },
+    { path: "mijnbieren", component: MijnbierenComponent, canActivate: [AuthGuard], resolve: { mijnbieren: MijnBierResolver, mijnbrouwers: MijnBrouwersResolver } },
     { path: 'addpost', component: AddpostComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
     { path: 'addbier', component: AddbierComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
       //{ path: 'bierbeheer', component: BierbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
@@ -32,12 +39,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [NavigationComponent, InstellingenComponent, AccountComponent],
+  declarations: [NavigationComponent, InstellingenComponent, AccountComponent, MijnbierenComponent, RatingComponent],
   imports: [
     CommonModule,
     PostModule,
     BrouwerModule,
     HttpClientModule,
+    NgbModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,

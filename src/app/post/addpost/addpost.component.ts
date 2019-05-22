@@ -12,7 +12,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddpostComponent implements OnInit {
 
-
+  error: string;
+  success: string;
   private categorieen: string[] = ["Bierfestival", "Evenementen", "Andere nieuwtjes"];
   public post: FormGroup;
   public addPost: Post;
@@ -37,7 +38,13 @@ export class AddpostComponent implements OnInit {
 
     this._postService.uploadImage(this.selectedFile).subscribe(val => {
       this.addPost.fotoLink = val;
-      this._postService.voegPostToe(this.addPost).subscribe();
+      this._postService.voegPostToe(this.addPost).subscribe(
+        () => {
+          this.success = "De post is succesvol toegevoegd";
+        }, err => {
+          this.error = "De post is niet toegevoegd"
+        }
+      );
       console.log(this.addPost);
     });
 

@@ -84,6 +84,16 @@ a:hover{
     stroke: #C60907;
     }
 
+    @media(max-width: 320px){
+        
+    .contentcontainer{
+        margin-left: 0%;
+    margin-right: 0%;
+    
+    width: 100%;
+    }
+    }
+
 
 
 

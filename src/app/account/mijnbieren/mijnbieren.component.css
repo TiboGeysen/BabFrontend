@@ -1,0 +1,91 @@
+tr{
+    text-align: center;
+}
+
+
+td{
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+}
+
+th{
+    text-align: center;
+    font-size: 15px;
+    padding: 8px;
+}
+
+div.table-responsive-md{
+    margin-right: 30px;
+}
+
+.geenbieren{
+    color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+@media(max-width:1001px){
+    .del1{
+        display: none;
+    }
+    
+    .info{
+        display: none;
+    }
+}
+
+@media(max-width:840px){
+    .del2{
+        display: none;
+    }
+    
+    .info{
+        display: none;
+    }
+}
+
+@media(max-width:740px){
+    .del3{
+        display: none;
+    }
+    .info{
+        display: none;
+    }
+}
+
+@media(max-width:675px){
+    .del3, .del2{
+        display: table-cell;
+    }
+
+    div.table-responsive-md{
+        margin-right: 0px;
+    }
+}
+
+i:hover{
+    cursor: pointer
+}
+
+@media(max-width:630px){
+    .del4, .del3, .del2, .del1{
+        display: none;
+    }
+    .info{
+        display: table-cell;
+    }
+}
+
+@media(max-width:350px){
+    
+    .del, .info{
+        padding: 4px;
+        padding-top: 8px;
+    }
+}

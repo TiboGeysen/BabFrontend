@@ -15,12 +15,9 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
 import { MaterialModule } from './material/material.module';
 import { UserModule } from './user/user.module';
 import { httpInterceptorProviders } from './http-interceptors';
-import { LandingpageComponent } from './components/landingpage/landingpage.component';
-import { BrouwerModule } from './brouwer/brouwer.module';
 import { PostModule } from './post/post.module';
 import { ForbiddenComponent } from './components/forbidden/forbidden.component';
-import { AccountComponent } from './account/account/account.component';
-import { AccountModule } from './account/account.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,7 +27,6 @@ import { AccountModule } from './account/account.module';
     HomepageComponent,
     BiervdmaandComponent,
     PagenotfoundComponent,
-    LandingpageComponent,
     ForbiddenComponent,
   ],
   imports: [

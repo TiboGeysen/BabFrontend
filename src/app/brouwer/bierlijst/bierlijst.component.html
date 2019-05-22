@@ -11,11 +11,12 @@
       <input matInput placeholder="Smaak" type="text" [(ngModel)]="smaak" />
     </div>
   </div>
-  <div *ngIf="bieren$ as bieren; else loading" class="card-columns justify-content-center align-items-center">
+  <div *ngIf="bieren$ as bieren; else loading" class="card-columns">
     <app-bier *ngFor="let bier of (bieren | bierfilter:naamBier:smaak:kleur:percentage:naamBrouwer)" [bier]="bier"
       [brouwer]="brouwer(bier.brouwerId)">
     </app-bier>
   </div>
+
   <ng-template #loading>
     <mat-spinner></mat-spinner>
   </ng-template>

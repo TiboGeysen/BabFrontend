@@ -11,33 +11,21 @@ import { Brouwer } from './brouwer.model';
 })
 export class BierdataService {
 
-  public loadingError$ = new Subject<string>();
-
   //injection van http
   constructor(private http: HttpClient) { }
 
-
+  //succes message!
   //we vragen bieren op van onze C# db in JSON formaat (any) en zetten die via pipe & map om naar Bier[]
   get bieren$(): Observable<Bier[]> {
     return this.http.get(`${environment.apiUrl}/bieren/`).pipe(
-
-      catchError(err => {
-        this.loadingError$.next(err.statusText);
-        return of(null);
-      }),
       map(
         (list: any[]): Bier[] => list.map(Bier.fromJson)
-      )
+      ),
     );
   }
 
   get mijnBieren$(): Observable<Bier[]> {
     return this.http.get(`${environment.apiUrl}/bieren/mijnbieren/`).pipe(
-
-      catchError(err => {
-        this.loadingError$.next(err.statusText);
-        return of(null);
-      }),
       map(
         (list: any[]): Bier[] => list.map(Bier.fromJson)
       )
@@ -48,12 +36,8 @@ export class BierdataService {
     return this.http.post(`${environment.apiUrl}/bieren/favorieten/`, bier.toJson())
   }
 
-  geefFavorieteBieren$(): Observable<Bier[]> {
-    return this.http.get(`${environment.apiUrl}/bieren/favorieten/`).pipe(
-      map(
-        (list: any[]): Bier[] => list.map(Bier.fromJson)
-      )
-    );
+  verwijderUitFavorieten$(bier: Bier) {
+    return this.http.delete(`${environment.apiUrl}/bieren/favorieten/${bier.id}`);
   }
 
   voegBierToe(bier: Bier) {

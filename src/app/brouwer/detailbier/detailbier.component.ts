@@ -1,7 +1,10 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Bier } from '../bier.model';
 import { BierdataService } from '../bierdata.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
+import { Brouwer } from '../brouwer.model';
 
 @Component({
   selector: 'app-detailbier',
@@ -10,14 +13,32 @@ import { BierdataService } from '../bierdata.service';
 })
 export class DetailbierComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Bier, private _bierService: BierdataService) { }
+
+  @Input() public bier: Bier;
+  @Input() public brouwer: Brouwer;
+  error: string;
+  success: string;
+
+  constructor(private _bierService: BierdataService, public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
   }
 
-  add() {
+  close() {
+    this.error = null;
+    this.success = null;
+  }
 
-    this._bierService.voegBierAanFavorietenToe$(this.data).subscribe();
+  add() {
+    this._bierService.voegBierAanFavorietenToe$(this.bier).subscribe(
+      () => {
+        this.success = "Het bier is met success toegevoegd aan uw lijst";
+      }, err => {
+        if (err) {
+          this.error = "Het bier is niet toegevoegd, het staat al in uw lijst";
+        }
+      }
+    );
   }
 
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ export class AuthenticationService {
 
   private readonly _tokenKey = 'currentUser';
   private _user$: BehaviorSubject<string>;
+  public loadingError$ = new Subject<string>();
 
   public redirectUrl: string;
 
@@ -36,19 +37,6 @@ export class AuthenticationService {
   }
 
 
-
-  get string$(): Observable<string> {
-    return this.http.get(`${environment.apiUrl}/bieren/string`).pipe(
-      map((value: any) => {
-        if (value) {
-          let string = value;
-          return string;
-        }
-        return 'Invalid';
-      }));
-  }
-
-
   get token(): string {
     const token = localStorage.getItem(this._tokenKey);
     //null or empty
@@ -58,6 +46,7 @@ export class AuthenticationService {
   login(gebruikersnaam: string, password: string): Observable<boolean> {
     return this.http.post(`${environment.apiUrl}/gebruikers`,
       { gebruikersnaam, password }, { responseType: "text" }).pipe(
+
         map((token: any) => {
           if (token) {
             localStorage.setItem(this._tokenKey, token);
@@ -70,8 +59,22 @@ export class AuthenticationService {
       );
   }
 
-  register(email: string, gebruikersnaam: string, password: string, roles: string[]): Observable<boolean> {
-    return this.http.post(`${environment.apiUrl}/gebruikers/register`, { email, gebruikersnaam, password, passwordConfirmation: password, roles }, { responseType: "text" }).pipe(
+  veranderNaam(gebruikersnaam: string) {
+    return this.http.put(`${environment.apiUrl}/gebruikers/naam/${gebruikersnaam}`, gebruikersnaam);
+  }
+
+  veranderMail(mail: string){
+    return this.http.put(`${environment.apiUrl}/gebruikers/mail/${mail}`, mail);
+  }
+
+  register(email: string, gebruikersnaam: string, password: string): Observable<boolean> {
+    return this.http.post(`${environment.apiUrl}/gebruikers/register`, { email, gebruikersnaam, password, passwordConfirmation: password }, { responseType: "text" }).pipe(
+
+      catchError(err => {
+        this.loadingError$.next(err.statusText);
+        return of(null);
+      }),
+
       map((token: any) => {
         if (token) {
           localStorage.setItem(this._tokenKey, token);

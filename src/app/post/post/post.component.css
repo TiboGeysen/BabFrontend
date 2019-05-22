@@ -1,28 +1,21 @@
 .card{
     width: 100%;
-    max-width: 100%;
-    background-color: #C60907;
+}
+
+.img{
+    background-color: lightgray;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content{
+    background-color:  #C60907;
     color: white;
 }
 
-.card-subtitle{
-    color: white;
-    opacity: 0.8;
-}
-
-.leftright{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.left{
-    width: 40%;
-}
-
-.right{
-    width: 60%;
+small{
+    color: lightgray;
 }
 
 img{

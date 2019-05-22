@@ -14,10 +14,11 @@ import { BierResolver } from './BierResolver';
 import { BrowerResolver } from './BrowerResolver';
 import { MaxDirective } from '../directives/MaxDirective';
 import { MinDirective } from '../directives/MinDirective';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes: Routes = [
-  { path: "lijst", component: BierlijstComponent, resolve: { bieren: BierResolver, brouwers: BrowerResolver } },
+  { path: "lijst", component: BierlijstComponent, resolve: { bieren: BierResolver , brouwers: BrowerResolver} },
 ];
 
 @NgModule({
@@ -26,6 +27,7 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     MaterialModule,
+    NgbModule,
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild(routes)

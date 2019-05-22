@@ -1,9 +1,14 @@
 <div class="contentcontainer">
-  <div class="message">
-    Animation
-    Error 403 Forbidden
+  <div class="gif left">
+    <img src="../../../assets/images/forbidden.png">
   </div>
-  <div>
-    <a class="button" [routerLink]="['/home']">Terug naar home</a>
+  <div class="message right">
+    <p>U heeft onvoldoende rechten om de pagina die u wenst te zien, te mogen zien.</p>
+    <div class="row">
+
+      <a class="button" [routerLink]="['/login']">Meld je nu aan</a>
+      <a class="button" [routerLink]="['/home']">Terug naar home</a>
+    </div>
+
   </div>
 </div>

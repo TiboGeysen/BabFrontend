@@ -5,21 +5,25 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from '../components/homepage/homepage.component';
 import { BiervdmaandComponent } from '../components/biervdmaand/biervdmaand.component';
 import { PagenotfoundComponent } from '../components/pagenotfound/pagenotfound.component';
-import { LandingpageComponent } from '../components/landingpage/landingpage.component';
 import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
 import { ForbiddenComponent } from '../components/forbidden/forbidden.component';
 import { AuthGuard } from '../user/auth.guard';
+import { PostResolver } from '../post/PostResolver';
 import { AccountComponent } from '../account/account/account.component';
 import { AddbierComponent } from '../brouwer/addbier/addbier.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomepageComponent },
-  { path: 'biervdmaand', component: BiervdmaandComponent },
+
+  {
+    path: 'home',
+    loadChildren: '../../app/post/post.module#PostModule',
+    data: { preload: true }
+  },
+
   {
     path: 'bier',
     loadChildren: '../../app/brouwer/brouwer.module#BrouwerModule',
     data: { preload: true }
-
   },
 
   {
@@ -29,10 +33,13 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
 
   },
+
+  { path: 'biervdmaand', component: BiervdmaandComponent },
+
   {
     path: 'forbidden', component: ForbiddenComponent
   },
-  { path: '', component: LandingpageComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PagenotfoundComponent }
 ];
 

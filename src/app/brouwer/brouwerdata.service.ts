@@ -10,11 +10,17 @@ import { Brouwer } from './brouwer.model';
 })
 export class BrouwerdataService {
 
-  public loadingError$ = new Subject<string>();
-
   //injection van http
   constructor(private http: HttpClient) { }
 
+  get mijnBrouwers$(): Observable<Brouwer[]> {
+    return this.http.get(`${environment.apiUrl}/brouwers/mijnbrouwers`).pipe(
+      map(
+        (list: any[]): Brouwer[] => list.map(Brouwer.fromJson)
+      )
+
+    );
+  }
 
   //we vragen bieren op van onze C# db in JSON formaat (any) en zetten die via pipe & map om naar Bier[]
   get brouwers$(): Observable<Brouwer[]> {

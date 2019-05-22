@@ -1,6 +1,8 @@
 .card{
     background-color: #C60907;
     color: white;
+    display: inline-block;
+    width: 100%;
 }
 
 .card-header{
@@ -11,8 +13,10 @@
     padding:0px;
 }
 
+
 .extra{
     flex-direction: row;
+    height: 28px;
 }
 
 i{
@@ -29,9 +33,7 @@ div span{
 }
 
 @media(max-width: 320px){
-    .card{
-        width: 200px;
-    }
+    
 
     .card-header{
         height:75px;
