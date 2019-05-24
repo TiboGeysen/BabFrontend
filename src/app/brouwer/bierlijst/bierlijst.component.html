@@ -14,21 +14,18 @@
   </div>
   <div class="filter">
     <div class="filtertop">
-      <input matInput placeholder="Naam bier" type="text" [(ngModel)]="naamBier" data-cy="filterInput"
-        (keyup)="filter$.next($event.target.value)" [value]="filterData" />
-      <!-- <input matInput placeholder="Naam brouwer" type="text" [(ngModel)]="naamBrouwer" />
-      <input matInput placeholder="Percentage" type="number" min="0" [(ngModel)]="percentage" max="40" /> -->
+      <input matInput placeholder="Naam bier" type="text" [(ngModel)]="naamBier" data-cy="filterInput" />
+      <input matInput placeholder="Percentage" type="number" min="0" [(ngModel)]="percentage" max="40" />
     </div>
-    <!-- 
     <div class="filterbottom">
       <input matInput placeholder="Kleur" type="text" [(ngModel)]="kleur" />
       <input matInput placeholder="Smaak" type="text" [(ngModel)]="smaak" />
-    </div> -->
+    </div>
   </div>
   <div *ngIf="brouwers$ as brouwers; else loading" class="card-columns">
     <div *ngFor="let brouwer of brouwers">
-      <app-bier data-cy="bierCard" *ngFor="let bier of brouwer.bieren" [bier]="bier" [brouwer]="brouwer"
-        (error)="error = $event" (success)="success = $event">
+      <app-bier *ngFor="let bier of (brouwer.bieren | bierfilter:naamBier:smaak:kleur:percentage)" [bier]="bier"
+        [brouwer]="brouwer" (error)="error = $event" (success)="success = $event">
       </app-bier>
     </div>
   </div>

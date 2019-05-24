@@ -55,11 +55,11 @@ export class MijnbierenComponent implements OnInit {
       .subscribe(
         (newRating: number) => {
           this._fetchBieren.find(bier => bier.id === bier.id).rating = newRating;
-          this.success = "De rating bier is met success ontvangen";
+          this.success = "De rating is met success ontvangen";
         }, () => {
           this._fetchBieren.find(bier => bier.id === bier.id).rating = 0;
 
-          this.error = "De rating bier is niet verwijderd!";
+          this.error = "De rating is niet verwijderd!";
         }
       );
   }

@@ -3,7 +3,7 @@
         class="material-icons">settings</i>
       Instellingen</a>
     <a class="item" [routerLink]="['mijnbieren']" routerLinkActive="active-link"><i class="material-icons">list</i> Mijn
-      bieren</a>
+      bierlijst</a>
     <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="item" [routerLink]="['addbier']" routerLinkActive="active-link"><i
         class="material-icons">add</i> Voeg een bier toe</a>
     <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['addpost']" routerLinkActive="active-link"><i
@@ -12,7 +12,7 @@
 
   <div class="group">
     <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="item" [routerLink]="['bierbeheer']"
-      routerLinkActive="active-link"><i class="material-icons">chevron_right</i> Beheer bieren</a>
+      routerLinkActive="active-link"><i class="material-icons">chevron_right</i> Beheer je bieren</a>
     <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['adminbeheer']" routerLinkActive="active-link"><i
         class="material-icons">chevron_right</i> Beheer brouwers</a>
     <a class="item" (click)="logout()">

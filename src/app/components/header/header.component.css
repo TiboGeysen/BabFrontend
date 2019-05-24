@@ -81,6 +81,12 @@ a.dropdown-item:hover{
     transition-duration: 1500ms;
 }
 
+.active-link{
+    border-bottom: #C60907 2px solid;
+    color: #C60907;
+    opacity: 0.6;
+}
+
 .item#dropdown:hover{
     border-color: transparent;
     opacity: 1;

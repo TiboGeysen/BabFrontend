@@ -2,15 +2,10 @@ import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomepageComponent } from '../components/homepage/homepage.component';
-import { BiervdmaandComponent } from '../components/biervdmaand/biervdmaand.component';
 import { PagenotfoundComponent } from '../components/pagenotfound/pagenotfound.component';
 import { SelectivePreloadStrategy } from './SelectivePreloadStrategy';
 import { ForbiddenComponent } from '../components/forbidden/forbidden.component';
 import { AuthGuard } from '../user/auth.guard';
-import { PostResolver } from '../post/PostResolver';
-import { AccountComponent } from '../account/account/account.component';
-import { AddbierComponent } from '../brouwer/addbier/addbier.component';
 
 const appRoutes: Routes = [
 
@@ -33,8 +28,6 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
 
   },
-
-  { path: 'biervdmaand', component: BiervdmaandComponent },
 
   {
     path: 'forbidden', component: ForbiddenComponent

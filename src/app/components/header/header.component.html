@@ -14,9 +14,6 @@
         <a class="item" [routerLink]="['home']" routerLinkActive="active-link">Home</a>
       </li>
       <li class="nav-item">
-        <a class="item" [routerLink]="['biervdmaand']" routerLinkActive="active-link">Bier vd maand</a>
-      </li>
-      <li class="nav-item">
         <a class="item" [routerLink]="['bier/lijst']" routerLinkActive="active-link">Bieren</a>
       </li>
     </ul>
@@ -55,23 +52,21 @@
             routerLinkActive="active-link"><i class="material-icons">
               add
             </i>Voeg een bier toe</a>
-          <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="dropdown-item" [routerLink]="['/account/bierbeheer']"
-            routerLinkActive="active-link"><i class="material-icons">
-              chevron_right
-            </i>Beheer je eigen bieren</a>
-          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/bierbeheer']"
-            routerLinkActive="active-link"><i class="material-icons">
-              chevron_right
-            </i>Beheer alle bieren</a>
-          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/brouwerbeheer']"
-            routerLinkActive="active-link"><i class="material-icons">
-              chevron_right
-            </i>Beheer brouwers</a>
           <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/addpost']"
             routerLinkActive="active-link"><i class="material-icons">
               add
             </i>Voeg
             een nieuwe post toe</a>
+          <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="dropdown-item" [routerLink]="['/account/bierbeheer']"
+            routerLinkActive="active-link"><i class="material-icons">
+              chevron_right
+            </i>Beheer je eigen bieren</a>
+
+          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/adminbeheer']"
+            routerLinkActive="active-link"><i class="material-icons">
+              chevron_right
+            </i>Beheer brouwers</a>
+
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="logout()">
             <i class="material-icons">power_settings_new</i>Logout</a>

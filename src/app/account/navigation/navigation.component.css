@@ -14,9 +14,15 @@ a.item{
     margin-right: 0px;
 }
 
+.active-link{
+    background-color: white;
+    color: #C60907;
+}
+
 a.item:hover{
     transition-delay: 50ms;
     transition-duration: 500ms;
+    color: black;
 }
 
 a.item, i{

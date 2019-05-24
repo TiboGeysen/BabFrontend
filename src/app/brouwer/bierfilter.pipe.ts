@@ -12,9 +12,9 @@ export class BierfilterPipe implements PipeTransform {
 
   constructor() { }
 
-  transform(bieren: Bier[], naamBier: string, smaak: string, kleur: string, percentage: number, naamBrouwer: string): Bier[] {
+  transform(bieren: Bier[], naamBier: string, smaak: string, kleur: string, percentage: number): Bier[] {
 
-    if (!naamBier && !smaak && !kleur && !percentage && !naamBrouwer)
+    if (!naamBier && !smaak && !kleur && !percentage)
       return bieren;
     if (naamBier)
       bieren = bieren.filter(bier => compare(bier.naam.toLowerCase(), naamBier.toLowerCase()));
@@ -27,8 +27,6 @@ export class BierfilterPipe implements PipeTransform {
 
     if (percentage)
       bieren = bieren.filter(bier => bier.percentage >= percentage && bier.percentage < (percentage + 1));
-    if (naamBrouwer)
-      bieren = bieren.filter(bier => compare(bier.brouwerNaam.toLowerCase(), naamBrouwer.toLowerCase()));
     return bieren;
   }
 }

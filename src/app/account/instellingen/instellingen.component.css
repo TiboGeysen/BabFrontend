@@ -65,6 +65,10 @@ button:hover{
     color:white;
 }
 
+h5{
+    color: #C60907;
+}
+
 .error{
     color: red;
     font-size: 12px;

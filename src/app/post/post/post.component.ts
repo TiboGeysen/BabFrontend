@@ -9,7 +9,7 @@ import { Post } from '../post.model';
 export class PostComponent implements OnInit {
 
   @Input() public post: Post;
-  @Input() public image: File;
+  @Input() public image: String;
   imageUrl: string = "/assets/images/defaultupload.svg";
 
 
@@ -17,12 +17,9 @@ export class PostComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    var reader = new FileReader();
-    reader.onload = (event: any) => {
-      this.imageUrl = event.target.result;
-    }
-    reader.readAsDataURL(this.image);
-    console.log(this.imageUrl);
+
+    console.log(this.image);
+
   }
 }
 

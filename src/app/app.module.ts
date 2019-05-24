@@ -10,7 +10,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { BiervdmaandComponent } from './components/biervdmaand/biervdmaand.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 import { MaterialModule } from './material/material.module';
 import { UserModule } from './user/user.module';
@@ -25,7 +24,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     FooterComponent,
     HomepageComponent,
-    BiervdmaandComponent,
     PagenotfoundComponent,
     ForbiddenComponent,
   ],

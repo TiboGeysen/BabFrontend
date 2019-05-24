@@ -22,6 +22,7 @@ import { EditbrouwerComponent } from './editbrouwer/editbrouwer.component';
 
 const routes: Routes = [
   { path: "lijst", component: BierlijstComponent, resolve: { bieren: BierResolver, brouwers: BrowerResolver } },
+  { path: "", redirectTo: "lijst", pathMatch: "full" },
 ];
 
 @NgModule({

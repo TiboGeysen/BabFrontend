@@ -17,6 +17,7 @@ export class PostlijstComponent implements OnInit {
   }
   ngOnInit() {
     this.route.data.subscribe(items => this._fetchPosts = items['posts']);
+    console.log(this._fetchPosts);
   }
 
   get posts$() {
