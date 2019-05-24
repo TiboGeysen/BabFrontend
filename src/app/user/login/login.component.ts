@@ -13,7 +13,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
 
   public gebruiker: FormGroup
-  public error: string;
+  error: string;
 
 
   constructor(private authService: AuthenticationService,
@@ -44,11 +44,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/account']);
           }
         }
-        else {
-          this.error = `Aanmelden mislukt`;
-        }
-      }), err => {
-        this.error ="Aanmelden mislukt"
-      };
+      }, err => {
+        this.error = "Aanmelden mislukt, vul de juiste gegevens in"
+      });
   }
 }

@@ -40,6 +40,8 @@ button.navbar-toggler{
 .item{
     margin-right: 15px;
     padding: 5px;
+    
+    padding-left: 0px;
     display: inline-flex;
     vertical-align: middle;
     border-bottom: 2px solid transparent;

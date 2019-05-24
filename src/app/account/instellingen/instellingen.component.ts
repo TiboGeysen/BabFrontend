@@ -30,17 +30,14 @@ export class InstellingenComponent implements OnInit {
       gebruikersnaam: ['', Validators.required, serverSideValidateUsername(this.authService.checkUsername)]
     })
 
-
-
-    /* this.wachtwoord = this.fb.group({
-       oudWachtwoord: ['', [Validators.required, Validators.minLength(8)]],
-       passwordGroup: this.fb.group({
-         nieuwWachtwoord: ['', [Validators.required, Validators.minLength(8)]],
-         herhaalNieuw: ['', Validators.required]
-       }, { validator: comparePassword })
-     });
-  */
-
+    this.wachtwoord = this.fb.group({
+      oudWachtwoord: ['', [Validators.required, Validators.minLength(8)]],
+      passwordGroup: this.fb.group({
+        nieuwWachtwoord: ['', [Validators.required, Validators.minLength(8)]],
+        herhaalNieuw: ['', Validators.required]
+      },
+        { validator: comparePassword })
+    })
   }
 
   getErrorMessage(errors: any) {
@@ -64,10 +61,10 @@ export class InstellingenComponent implements OnInit {
     }
   }
 
-  /* onSubmitPass() {
-
-    this.authService.veranderPass(this.wachtwoord.value.oudWachtwoord, this.wachtwoord.value.nieuwWachtwoord, this.wachtwoord.value.herhaalNieuw).subscribe(
-      () => {
+  onSubmitPass() {
+    this.authService.veranderPass(this.wachtwoord.value.oudWachtwoord, this.wachtwoord.get("passwordGroup").value.nieuwWachtwoord).subscribe(
+      (val) => {
+        console.log(val);
         this.success = "Uw wachtwoord is met success aangepast";
       }, err => {
         this.error = "Uw wachtwoord is niet aangepast";
@@ -75,7 +72,7 @@ export class InstellingenComponent implements OnInit {
     )
 
     this.wachtwoord.reset();
-  } */
+  }
 
   onSubmitNaam() {
     console.log(this.gebruikersnaam.value.gebruikersnaam);
@@ -104,8 +101,8 @@ export class InstellingenComponent implements OnInit {
 }
 
 function comparePassword(control: AbstractControl): { [key: string]: any } {
-  const wachtwoord = control.get('wachtwoord');
-  const herhaal = control.get('herhaalwachtwoord');
+  const wachtwoord = control.get('nieuwWachtwoord');
+  const herhaal = control.get('herhaalNieuw');
   return wachtwoord.value === herhaal.value ? null : { wachtwoordVerschil: true }
 }
 

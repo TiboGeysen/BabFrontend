@@ -2,7 +2,7 @@
   <div class="content">
     <h5 class="modal-title">{{bier.naam}} ({{bier.percentage}}%)</h5>
     <h6 class="modal-subtitle">{{brouwer.naam}}</h6>
-    <p>Standnummer 999</p>
+    <p>Standnummer {{brouwer.stand}}</p>
   </div>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col">
       <span class="badge">{{bier.smaak}}</span>
-      <span class="badge">{{bier.bierSoort}}</span>
+      <span class="badge">{{bier.biersoort}}</span>
       <span class="badge">{{bier.soortGisting}}</span>
       <span class="badge">{{bier.kleur}}</span>
     </div>

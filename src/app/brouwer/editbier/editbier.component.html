@@ -1,0 +1,94 @@
+<div class="modal-header">
+  <div class="content">
+    <h5 class="modal-title">Wijzigen {{bier.naam}}</h5>
+    <h6 class="modal-subtitle">{{brouwer.naam}}</h6>
+  </div>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="bierForm" (ngSubmit)=edit()>
+    <div class="form-row">
+
+      <div class="form-group col-sm-6">
+        <input type="text" class="form-control" placeholder="Naam bier*" aria-label="biernaam"
+          formControlName="biernaam">
+        <div class="error" *ngIf="bierForm.get('biernaam')['errors'] && bierForm.get('biernaam').touched">
+          {{ getErrorMessage(bierForm.get('biernaam')['errors']) }}</div>
+      </div>
+      <div class="form-group col-sm-6">
+        <input type="number" class="form-control" placeholder="Percentage*" aria-label="percentage"
+          formControlName="percentage" min=0 max=40>
+        <div class="error" *ngIf="bierForm.get('percentage')['errors'] && bierForm.get('percentage').touched">
+          {{ getErrorMessage(bierForm.get('percentage')['errors']) }}</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+        <select class="form-control" name="kleuren" formControlName="kleur">
+          <option *ngFor="let kleur of kleuren" value={{kleur}}>{{kleur}}</option>
+        </select>
+        <div class="error" *ngIf="bierForm.get('kleur')['errors'] && bierForm.get('kleur').touched">
+          {{ getErrorMessage(bierForm.get('kleur')['errors']) }}
+        </div>
+      </div>
+      <div class="form-group col-sm-6">
+        <select class="form-control" name="smaken" formControlName="smaak">
+          <option *ngFor="let smaak of smaken" value={{smaak}}>{{smaak}}</option>
+        </select>
+        <div class="error" *ngIf="bierForm.get('smaak')['errors'] && bierForm.get('smaak').touched">
+          {{ getErrorMessage(bierForm.get('smaak')['errors']) }}
+        </div>
+
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-6">
+        <select class="form-control" aria-label="soort" name="soort" formControlName="soort">
+          <option *ngFor="let soort of soorten" value={{soort}}>{{soort}}</option>
+        </select>
+        <div class="error" *ngIf="bierForm.get('soort')['errors'] && bierForm.get('soort').touched">
+          {{ getErrorMessage(bierForm.get('soort')['errors']) }}</div>
+      </div>
+      <div class="form-group col-sm-6">
+        <select class="form-control" aria-label="gisting" name="gistingen" formControlName="soortgisting">
+          <option *ngFor="let gisting of gistingen" value={{gisting}}>{{gisting}}</option>
+        </select>
+        <div class="error" *ngIf="bierForm.get('soortgisting')['errors'] && bierForm.get('soortgisting').touched">
+          {{ getErrorMessage(bierForm.get('soortgisting')['errors']) }}</div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-sm-12">
+        <textarea class="form-control" placeholder="Geef een omschrijving voor je bier*" formControlName="omschrijving"
+          aria-label="omschrijving"></textarea>
+        <div class="error" *ngIf="bierForm.get('omschrijving')['errors'] && bierForm.get('omschrijving').touched">
+          {{ getErrorMessage(bierForm.get('omschrijving')['errors']) }}</div>
+      </div>
+    </div>
+    <div class="form-row" id="check">
+      <div class="form-check form-check-inline col-lg-3">
+        <input class="form-check-input" type="checkbox" id="opvat" formControlName="opVat">
+        <label class="form-check-label" for="opvat">Op vat?</label>
+        <div class="error" *ngIf="bierForm.get('opVat')['errors'] && bierForm.get('opVat').touched">
+          {{ getErrorMessage(bierForm.get('opVat')['errors']) }}</div>
+      </div>
+      <div class="form-check form-check-inline col-lg-5">
+        <input class="form-check-input" type="checkbox" id="primeur" formControlName="primeur">
+        <label class="form-check-label" for="primeur">Primeur?</label>
+        <div class="error" *ngIf="bierForm.get('primeur')['errors'] && bierForm.get('primeur').touched">
+          {{ getErrorMessage(bierForm.get('primeur')['errors']) }}</div>
+      </div>
+      <div class="form-check form-check-inline col-lg-3">
+        <input class="form-check-input" type="checkbox" id="recent" formControlName="recent">
+        <label class="form-check-label" for="recent">Recent?</label>
+        <div class="error" *ngIf="bierForm.get('recent')['errors'] && bierForm.get('recent').touched">
+          {{ getErrorMessage(bierForm.get('recent')['errors']) }}</div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="!bierForm.valid" class=" btn btn-block">
+      Sla wijzigingen op
+    </button>
+  </form>
+</div>

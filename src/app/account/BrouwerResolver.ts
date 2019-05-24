@@ -7,13 +7,12 @@ import { BrouwerdataService } from '../brouwer/brouwerdata.service';
 @Injectable({
     providedIn: 'root'
 })
-export class MijnBrouwersResolver implements Resolve<Brouwer[]> {
+export class BrouwerResolver implements Resolve<Brouwer> {
 
     constructor(private service: BrouwerdataService) { }
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Brouwer[]> {
-        return this.service.brouwers$;
-
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Brouwer> {
+        return this.service.brouwer$;
     }
 
 

@@ -16,11 +16,15 @@ import { AddpostComponent } from '../post/addpost/addpost.component';
 import { PostModule } from '../post/post.module';
 import { MijnbierenComponent } from './mijnbieren/mijnbieren.component';
 import { MijnBierResolver } from './MijnBierResolver';
-// import { BrowerResolver } from '../brouwer/BrowerResolver';
 
 import { RatingComponent } from './rating/rating.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MijnBrouwersResolver } from './MijnBrouwersResolver';
+import { BeheerlijstComponent } from './beheerlijst/beheerlijst.component';
+import { BrouwerResolver } from './BrouwerResolver';
+import { BierResolver } from '../brouwer/BierResolver';
+import { AdminbeheerlijstComponent } from './adminbeheerlijst/adminbeheerlijst.component';
+import { BrowerResolver } from '../brouwer/BrowerResolver';
 
 
 const routes: Routes = [
@@ -31,15 +35,15 @@ const routes: Routes = [
     { path: "mijnbieren", component: MijnbierenComponent, canActivate: [AuthGuard], resolve: { mijnbieren: MijnBierResolver, mijnbrouwers: MijnBrouwersResolver } },
     { path: 'addpost', component: AddpostComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
     { path: 'addbier', component: AddbierComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
-      //{ path: 'bierbeheer', component: BierbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
-      //{ path: 'brouwerbeheer', component: BrouwerbeheerComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
+    { path: 'bierbeheer', component: BeheerlijstComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] }, resolve: { brouwer: BrouwerResolver } },
+    { path: 'adminbeheer', component: AdminbeheerlijstComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] }, resolve: { brouwers: BrowerResolver } },
     ]
   }
 
 ];
 
 @NgModule({
-  declarations: [NavigationComponent, InstellingenComponent, AccountComponent, MijnbierenComponent, RatingComponent],
+  declarations: [NavigationComponent, InstellingenComponent, AccountComponent, MijnbierenComponent, RatingComponent, BeheerlijstComponent, AdminbeheerlijstComponent],
   imports: [
     CommonModule,
     PostModule,

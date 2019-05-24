@@ -55,15 +55,15 @@
             routerLinkActive="active-link"><i class="material-icons">
               add
             </i>Voeg een bier toe</a>
-          <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="dropdown-item" [routerLink]="['/account/beheerbier']"
+          <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="dropdown-item" [routerLink]="['/account/bierbeheer']"
             routerLinkActive="active-link"><i class="material-icons">
               chevron_right
             </i>Beheer je eigen bieren</a>
-          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/beheerbier']"
+          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/bierbeheer']"
             routerLinkActive="active-link"><i class="material-icons">
               chevron_right
             </i>Beheer alle bieren</a>
-          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/beheerbrouwer']"
+          <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/brouwerbeheer']"
             routerLinkActive="active-link"><i class="material-icons">
               chevron_right
             </i>Beheer brouwers</a>

@@ -19,7 +19,6 @@ export class MijnbierenComponent implements OnInit {
 
 
   private _fetchBrouwers: Brouwer[];
-  private _fetchInt: Number[];
   private _fetchBieren: Bier[];
   public success: string;
   public error: string;
@@ -50,8 +49,7 @@ export class MijnbierenComponent implements OnInit {
       () => {
         this.fetchBieren();
         this.success = "Het bier is met success verwijderd";
-      }, (err: HttpErrorResponse) => {
-        console.log(err);
+      }, (err) => {
         if (err) {
           this.error = "Het bier is niet verwijderd!";
         }
@@ -66,7 +64,7 @@ export class MijnbierenComponent implements OnInit {
     return this._fetchBieren;
   }
 
-  brouwer(id: Number): Brouwer {
+  brouwer(id: number): Brouwer {
     return this._fetchBrouwers.find(b => b.id == id);
   }
 }

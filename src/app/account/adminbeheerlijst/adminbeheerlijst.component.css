@@ -1,0 +1,25 @@
+div.title:first-child{
+    margin-top: 0px;
+}
+
+div.title{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: white;
+    background-color: #C60907;
+}
+
+div.title i, div.title div {
+    font-size: 24px;
+    margin: 5px;
+}
+
+i:hover{
+    cursor: pointer;
+}
+

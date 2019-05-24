@@ -25,11 +25,15 @@ export class BierdataService {
   }
 
   get mijnBieren$(): Observable<Bier[]> {
-    return this.http.get(`${environment.apiUrl}/bieren/mijnbieren/`).pipe(
+    return this.http.get(`${environment.apiUrl}/bieren/mijnbieren`).pipe(
       map(
         (list: any[]): Bier[] => list.map(Bier.fromJson)
       )
     );
+  }
+
+  editBier$(bier: Bier) {
+    return this.http.put(`${environment.apiUrl}/bieren/${bier.id}/`, bier.toJson())
   }
 
   voegBierAanFavorietenToe$(bier: Bier) {
@@ -42,5 +46,9 @@ export class BierdataService {
 
   voegBierToe(bier: Bier) {
     return this.http.post(`${environment.apiUrl}/bieren`, bier.toJson())
+  }
+
+  verwijderBier$(bier: Bier) {
+    return this.http.delete(`${environment.apiUrl}/bieren/${bier.id}`);
   }
 }

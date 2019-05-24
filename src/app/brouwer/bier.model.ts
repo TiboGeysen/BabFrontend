@@ -8,7 +8,7 @@ export class Bier {
         private _naam: string,
         private _percentage: number,
         private _kleur: string,
-        private _bierSoort: string,
+        private _biersoort: string,
         private _opVat: boolean,
         private _soortGisting: string,
         private _smaak: string,
@@ -21,7 +21,7 @@ export class Bier {
 
     static fromJson(json: any): Bier {
         const bier =
-            new Bier(json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur, json.brouwerId, json.brouwerNaam);
+            new Bier(json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur, json.brouwerId, json.brouwernaam);
         bier._id = json.id;
         return bier;
     }
@@ -30,11 +30,11 @@ export class Bier {
         return {
             id: this._id,
             brouwerId: this._brouwerId,
-            brouwerNaam: this._brouwerNaam,
+            brouwernaam: this._brouwerNaam,
             naam: this._naam,
             percentage: this._percentage,
             kleur: this._kleur,
-            bierSoort: this._bierSoort,
+            biersoort: this._biersoort,
             opVat: this._opVat,
             soortGisting: this._soortGisting,
             smaak: this._smaak,
@@ -52,20 +52,21 @@ export class Bier {
         return this._id;
     }
 
-    get brouwerNaam(): string {
-        return this._brouwerNaam;
-    }
 
     get percentage(): number {
         return this._percentage;
+    }
+
+    get brouwerNaam(): string {
+        return this._brouwerNaam;
     }
 
     get kleur(): string {
         return this._kleur
     }
 
-    get bierSoort(): string {
-        return this._bierSoort;
+    get biersoort(): string {
+        return this._biersoort;
     }
 
     get isOpVat(): string {
@@ -109,12 +110,63 @@ export class Bier {
             return "Geen primeur";
     }
 
-    get brouwerId(): Number {
+    get brouwerId(): number {
         return this._brouwerId;
     }
 
     get primeur(): boolean {
         return this._primeur;
+    }
+
+    set id(id: number) {
+        this._id = id;
+    }
+
+    set brouwerNaam(naam: string) {
+        this._brouwerNaam = naam;
+    }
+
+    set brouwerId(id: number) {
+        this._brouwerId = id;
+    }
+
+    set naam(naam: string) {
+        this._naam = naam;
+    }
+    set percentage(pct: number) {
+        this._percentage = pct;
+    }
+
+    set kleur(kleur: string) {
+        this._kleur = kleur;
+    }
+
+    set biersoort(biersoort: string) {
+        this._biersoort = biersoort;
+    }
+
+    set opVat(opvat: boolean) {
+        this._opVat = opvat;
+    }
+
+    set soortGisting(soort: string) {
+        this._soortGisting = soort;
+    }
+
+    set smaak(smaak: string) {
+        this._smaak = smaak;
+    }
+
+    set omschrijving(omschrijving: string) {
+        this._omschrijving = omschrijving;
+    }
+
+    set recent(recent: boolean) {
+        this._recent = recent;
+    }
+
+    set primeur(primeur: boolean) {
+        this._primeur = primeur;
     }
 }
 

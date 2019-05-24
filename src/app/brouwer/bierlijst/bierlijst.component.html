@@ -1,5 +1,17 @@
 <div class="contentcontainer">
   <p>ZOEK HET GEWENSTE BIER</p>
+  <div *ngIf=!!error class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{error}}
+    <button type="button" class="close" (click)="close()" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf=!!success class="alert alert-success alert-dismissible fade show" role="alert">
+    {{success}}
+    <button type="button" (click)="close()" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="filter">
     <div class="filtertop">
       <input matInput placeholder="Naam bier" type="text" [(ngModel)]="naamBier" />
@@ -13,7 +25,7 @@
   </div>
   <div *ngIf="bieren$ as bieren; else loading" class="card-columns">
     <app-bier *ngFor="let bier of (bieren | bierfilter:naamBier:smaak:kleur:percentage:naamBrouwer)" [bier]="bier"
-      [brouwer]="brouwer(bier.brouwerId)">
+      [brouwer]="brouwer(bier.brouwerId)" (error)="error = $event" (success)="success = $event">
     </app-bier>
   </div>
 

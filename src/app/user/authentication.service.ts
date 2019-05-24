@@ -63,8 +63,12 @@ export class AuthenticationService {
     return this.http.put(`${environment.apiUrl}/gebruikers/naam/${gebruikersnaam}`, gebruikersnaam);
   }
 
-  veranderMail(mail: string){
+  veranderMail(mail: string) {
     return this.http.put(`${environment.apiUrl}/gebruikers/mail/${mail}`, mail);
+  }
+
+  veranderPass(oud: string, nieuw: string) {
+    return this.http.put(`${environment.apiUrl}/gebruikers/pass/${oud}/${nieuw}`, { oud, nieuw });
   }
 
   register(email: string, gebruikersnaam: string, password: string): Observable<boolean> {

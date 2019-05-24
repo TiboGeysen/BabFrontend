@@ -1,0 +1,27 @@
+<div *ngFor="let brouwer of brouwers$">
+  <div class="title">
+    <div>{{brouwer.naam}}</div>
+    <i (click)=open(brouwer) class="material-icons">
+      edit
+    </i>
+    <i (click)=delete(brouwer) class="material-icons">
+      delete
+    </i>
+    <i (click)=addbier(brouwer.id) class="material-icons">
+      add
+    </i>
+  </div>
+  <div *ngIf=!!error class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{error}}
+    <button type="button" class="close" (click)="close()" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div *ngIf=!!success class="alert alert-success alert-dismissible fade show" role="alert">
+    {{success}}
+    <button type="button" (click)="close()" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <app-beheerlijst [_fetchBrouwer]="brouwer" [_bieren]="bieren$(brouwer)" [_admin]="true"></app-beheerlijst>
+</div>

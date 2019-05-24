@@ -22,6 +22,31 @@ export class BrouwerdataService {
     );
   }
 
+  getBrouwer$(id: number): Observable<Brouwer> {
+    return this.http.get(`${environment.apiUrl}/brouwers/${id}`, { responseType: "json" }).pipe(
+      map(
+        (list: any): Brouwer => list
+      )
+    );
+  }
+
+  editBrouwer$(brouwer: Brouwer) {
+    return this.http.put(`${environment.apiUrl}/brouwers/${brouwer.id}/`, brouwer.toJson())
+  }
+
+
+  verwijderBrouwer$(brouwer: Brouwer) {
+    return this.http.delete(`${environment.apiUrl}/brouwers/${brouwer.id}`);
+  }
+
+  get brouwer$(): Observable<Brouwer> {
+    return this.http.get(`${environment.apiUrl}/brouwers/brouwer`, { responseType: "json" }).pipe(
+      map(
+        (list: any): Brouwer => list
+      )
+    );
+  }
+
   //we vragen bieren op van onze C# db in JSON formaat (any) en zetten die via pipe & map om naar Bier[]
   get brouwers$(): Observable<Brouwer[]> {
     return this.http.get(`${environment.apiUrl}/brouwers`).pipe(

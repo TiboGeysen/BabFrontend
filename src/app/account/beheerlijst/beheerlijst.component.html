@@ -1,0 +1,52 @@
+<div *ngIf=!!error class="alert alert-danger alert-dismissible fade show" role="alert">
+  {{error}}
+  <button type="button" class="close" (click)="close()" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div *ngIf=!!success class="alert alert-success alert-dismissible fade show" role="alert">
+  {{success}}
+  <button type="button" (click)="close()" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="table-responsive-md" *ngIf="brouwerbieren.length > 0; else empty">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Naam</th>
+        <th scope="col" class="del2">Kleur</th>
+        <th scope="col" class="del1">Smaak</th>
+        <th scope="col">Edit</th>
+        <th scope="col" class="del">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let bier of brouwerbieren">
+        <td>{{bier.naam}}</td>
+        <td class="del2">{{bier.kleur}}</td>
+        <td class="del1">{{bier.smaak}}</td>
+        <td class="del"><i (click)=open(bier) class="material-icons">
+            edit
+          </i></td>
+        <td>
+          <i (click)=delete(bier) class="material-icons">
+            delete
+          </i>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #empty>
+  <div class="geenbieren">
+    <div *ngIf="!admin">
+        <div>Je lijst is nog leeg, u heeft nog geen bieren aangemaakt</div>
+        <a routerLink="/account/addbier">Start nu met het aanmaken van bieren</a>
+    </div>
+    <div *ngIf="admin">
+        <div>De lijst van deze brouwer is nog leeg</div>
+    </div>
+  </div>
+</ng-template>

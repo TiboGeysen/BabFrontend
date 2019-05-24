@@ -16,6 +16,9 @@ export class BierlijstComponent implements OnInit {
   private _fetchBieren: Bier[];
   private _brouwers: Brouwer[];
 
+  error: string;
+  success: string;
+
   constructor(private route: ActivatedRoute) {
 
   }
@@ -27,6 +30,13 @@ export class BierlijstComponent implements OnInit {
   get bieren$() {
     return this._fetchBieren;
   }
+
+  close() {
+    this.error = null;
+    this.success = null;
+  }
+
+
 
 
 

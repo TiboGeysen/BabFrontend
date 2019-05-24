@@ -1,0 +1,45 @@
+i:hover{
+    cursor: pointer;
+}
+
+tr{
+    text-align: center;
+}
+
+
+td{
+    text-align: center;
+    font-size: 12px;
+    padding: 8px;
+}
+
+th{
+    text-align: center;
+    font-size: 15px;
+    padding: 8px;
+}
+
+div.table-responsive-md{
+    margin-right: 30px;
+}
+
+.geenbieren{
+    color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+@media(max-width:675px){
+    div.table-responsive-md{
+        margin-right: 0px;
+    }
+}
+
+@media(max-width:400px){
+    .del1{
+        display: none;
+    }
+}

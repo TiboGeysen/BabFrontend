@@ -48,8 +48,46 @@
     </button>
   </form>
   <hr>
-  <!-- <div class="title">Wijzig wachtwoord</div>
+  <div class="title">Wijzig wachtwoord</div>
   <form [formGroup]="wachtwoord" (ngSubmit)=onSubmitPass()>
+    <div class="form-row">
+      <div class="form-group col-sm-12">
+        <i class="material-icons">perm_identity</i>
+        <input id="override" class="form-control" aria-label="name" placeholder="Oud wachtwoord" type="password"
+          formControlName="oudWachtwoord" />
+      </div>
+    </div>
+    <div class="error" *ngIf="wachtwoord.get('oudWachtwoord')['errors'] && wachtwoord.get('oudWachtwoord').touched">
+      {{ getErrorMessage(wachtwoord.get('oudWachtwoord')['errors']) }}</div>
+
+    <div formGroupName="passwordGroup">
+      <div class="form-row">
+        <div class="form-group col-sm-12">
+          <i class="material-icons">lock</i>
+          <input id="override" class="form-control" aria-label="name" placeholder="Nieuw wachtwoord" type="password"
+            formControlName="nieuwWachtwoord" />
+        </div>
+
+      </div>
+      <div class="error"
+        *ngIf="wachtwoord.get('passwordGroup').get('nieuwWachtwoord')['errors'] && wachtwoord.get('passwordGroup').get('nieuwWachtwoord').touched">
+        {{ getErrorMessage(wachtwoord.get('passwordGroup').get('nieuwWachtwoord')['errors']) }}</div>
+      <div class="form-row">
+        <div class="form-group col-sm-12">
+          <i class="material-icons">lock</i>
+          <input id="override" class="form-control" aria-label="name" placeholder="Bevestig nieuw wachtwoord"
+            type="password" formControlName="herhaalNieuw" /></div>
+
+      </div>
+      <div class="error"
+        *ngIf="wachtwoord.get('passwordGroup').get('herhaalNieuw')['errors'] && wachtwoord.get('passwordGroup').get('herhaalNieuw').touched">
+        {{ getErrorMessage(wachtwoord.get('passwordGroup').get('herhaalNieuw')['errors']) }}</div>
+    </div>
+    <button type="submit" class="btn btn-block" [disabled]="!wachtwoord.valid">
+      Wijzig
+    </button>
+  </form>
+  <!-- 
     <div class="form-row">
       <div class="form-group col-sm-12">
         <i class="material-icons">perm_identity</i>
