@@ -44,6 +44,17 @@ export class BierdataService {
     return this.http.delete(`${environment.apiUrl}/bieren/favorieten/${bier.id}`);
   }
 
+  getRatings$(bieren: Bier[]): Observable<any> {
+    const idQueryParam = bieren.map(bier => `id=${bier.id}`).join('&');
+    return this.http.get(
+      `${environment.apiUrl}/bieren/rated/?${idQueryParam}`
+    );
+  }
+
+  rateBier(bier: Bier, rating: number) {
+    return this.http.put(`${environment.apiUrl}/bieren/rate/${bier.id}/${rating}`, { id: bier.toJson().id, rating: rating });
+  }
+
   voegBierToe(bier: Bier) {
     return this.http.post(`${environment.apiUrl}/bieren`, bier.toJson())
   }

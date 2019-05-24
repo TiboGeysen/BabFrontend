@@ -33,7 +33,8 @@
         <td class="del2">{{bier.kleur}}</td>
         <td class="del1">{{bier.smaak}}</td>
         <td>
-          <app-rating></app-rating>
+          <app-rating [rating]="bier.rating" (ratingClick)="adjustRating($event, bier)">
+          </app-rating>
         </td>
         <td class="del" colspan="2"><i (click)=delete(bier) class="material-icons">
             delete

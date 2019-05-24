@@ -37,13 +37,13 @@ export class EditbrouwerComponent implements OnInit {
 
   edit() {
     //edit stuff
-
     let brouwer = new Brouwer(this.brouwerForm.value.naam, this.brouwer.bieren, this.brouwerForm.value.stand);
     brouwer.id = this.brouwer.id;
 
     this._service.editBrouwer$(brouwer).subscribe(
-      () => {
+      (val) => {
         this.activeModal.close('Save');
+        console.log(val);
       }, err => {
         this.activeModal.close('Unsave');
       }

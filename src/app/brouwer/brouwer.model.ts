@@ -7,13 +7,12 @@ export class Brouwer {
     constructor(
         private _naam: string,
         private _bieren = new Array<Bier>(),
-        private _stand: number,
-        private _favorieten = new Array<Bier>(),
+        private _stand: number
 
     ) { }
 
     static fromJson(json: any): Brouwer {
-        const brouwer = new Brouwer(json.naam, json.bieren.map(Bier.fromJson), json.stand, json.favorieten.map(Bier.fromJson));
+        const brouwer = new Brouwer(json.naam, json.bieren.map(Bier.fromJson), json.stand);
         brouwer._id = json.id;
         return brouwer;
     }
@@ -23,7 +22,6 @@ export class Brouwer {
             id: this._id,
             naam: this._naam,
             bieren: this._bieren.map(bier => bier.toJson()),
-            favorieten: this._favorieten.map(bier => bier.toJson()),
             stand: this._stand
         };
     }
@@ -40,9 +38,6 @@ export class Brouwer {
         return this._bieren;
     }
 
-    get favorieten(): Bier[] {
-        return this._favorieten;
-    }
 
     get stand(): number {
         return this._stand;
@@ -50,6 +45,18 @@ export class Brouwer {
 
     set id(id: number) {
         this._id = id;
+    }
+
+    set stand(stand: number) {
+        this._stand = stand;
+    }
+
+    set naam(naam: string) {
+        this._naam = naam;
+    }
+
+    set bieren(bieren: Bier[]) {
+        this._bieren = bieren;
     }
 
     addBier(naam: string, percentage: number, kleur: string, bierSoort: string, opVat: boolean, soortGisting: string, smaak: string, omschrijving: string, recent: boolean, primeur: boolean) {

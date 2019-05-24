@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BierdataService } from '../bierdata.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Bier } from '../bier.model';
 import { Brouwer } from '../brouwer.model';
 import { BrouwerdataService } from '../brouwerdata.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bierlijst',
@@ -13,22 +14,45 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BierlijstComponent implements OnInit {
 
-  private _fetchBieren: Bier[];
+  public filterData: string = '';
   private _brouwers: Brouwer[];
+  private _fetchBrouwers$: Observable<Brouwer[]> = this._brouwerService.brouwers$;
+
+  public filter$ = new Subject<string>();
 
   error: string;
   success: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private _brouwerService: BrouwerdataService, private _router: Router) {
 
   }
   ngOnInit() {
-    this.route.data.subscribe(items => this._brouwers = items['brouwers']);
-    this.route.data.subscribe(items => this._fetchBieren = items['bieren']);
+
+    this.filter$
+      .pipe(
+        distinctUntilChanged(),
+        debounceTime(250)
+      )
+      .subscribe(val => {
+        const params = val ? { queryParams: { filter: val } } : undefined;
+        this._router.navigate(['/bier/lijst'], params);
+        console.log(this._brouwers);
+      });
+
+    this.route.queryParams.subscribe(params => {
+      this._brouwerService
+        .getBrouwers$(params['filter'])
+        .subscribe(val => (this._brouwers = val));
+      if (params['filter']) {
+        this.filterData = params['filter'];
+      }
+    });
+
   }
 
-  get bieren$() {
-    return this._fetchBieren;
+
+  get brouwers$() {
+    return this._brouwers;
   }
 
   close() {

@@ -17,11 +17,12 @@ export class Bier {
         private _primeur: boolean,
         private _brouwerId?: number,
         private _brouwerNaam?: string,
+        private _rating?: number
     ) { }
 
     static fromJson(json: any): Bier {
         const bier =
-            new Bier(json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur, json.brouwerId, json.brouwernaam);
+            new Bier(json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur, json.brouwerId, json.brouwernaam, json.rating);
         bier._id = json.id;
         return bier;
     }
@@ -40,12 +41,18 @@ export class Bier {
             smaak: this._smaak,
             omschrijving: this._omschrijving,
             recent: this._recent,
-            primeur: this._primeur
+            primeur: this._primeur,
+            rating: this._rating,
+
         };
     }
 
     get naam(): string {
         return this._naam;
+    }
+
+    get rating(): number {
+        return this._rating;
     }
 
     get id(): number {
@@ -128,6 +135,10 @@ export class Bier {
 
     set brouwerId(id: number) {
         this._brouwerId = id;
+    }
+
+    set rating(rating: number){
+        this._rating = rating;
     }
 
     set naam(naam: string) {

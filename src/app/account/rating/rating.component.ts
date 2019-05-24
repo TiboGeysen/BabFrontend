@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
+import { Bier } from 'src/app/brouwer/bier.model';
 
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.css']
 })
-export class RatingComponent implements OnInit {
+export class RatingComponent {
 
-  constructor() { }
+  @Input() rating: number;
+  @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
+  @Input() bier: Bier;
+  public ratingChange$ = new Subject<number>();
 
-  ngOnInit() {
+  onClick(rating: number): void {
+    this.rating = rating;
+    this.ratingClick.emit({
+      rating: rating
+    })
   }
-
 }

@@ -56,6 +56,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   entryComponents: [DetailbierComponent],
-  exports: [RouterModule, InstellingenComponent]
+  exports: [RouterModule, InstellingenComponent],
 })
 export class AccountModule { }
