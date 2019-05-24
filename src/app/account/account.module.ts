@@ -31,12 +31,15 @@ const routes: Routes = [
   {
     path: '',
     component: AccountComponent,
-    children: [{ path: 'instellingen', component: InstellingenComponent },
-    { path: "mijnbieren", component: MijnbierenComponent, canActivate: [AuthGuard], resolve: { mijnbieren: MijnBierResolver, mijnbrouwers: MijnBrouwersResolver } },
-    { path: 'addpost', component: AddpostComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
-    { path: 'addbier', component: AddbierComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
-    { path: 'bierbeheer', component: BeheerlijstComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] }, resolve: { brouwer: BrouwerResolver } },
-    { path: 'adminbeheer', component: AdminbeheerlijstComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] }, resolve: { brouwers: BrowerResolver } },
+    children: [
+
+      { path: 'instellingen', component: InstellingenComponent },
+      { path: "mijnbieren", component: MijnbierenComponent, canActivate: [AuthGuard], resolve: { mijnbieren: MijnBierResolver, mijnbrouwers: MijnBrouwersResolver } },
+      { path: 'addpost', component: AddpostComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
+      { path: 'addbier', component: AddbierComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
+      { path: 'bierbeheer', component: BeheerlijstComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] }, resolve: { brouwer: BrouwerResolver } },
+      { path: 'adminbeheer', component: AdminbeheerlijstComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] }, resolve: { brouwers: BrowerResolver } },
+      { path: '', redirectTo: "instellingen", pathMatch: "full" }
     ]
   }
 

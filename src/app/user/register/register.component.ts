@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
             this.authService.redirectUrl = undefined;
           }
           else {
-            this.router.navigate(['/account']);
+            this.router.navigate(['/account/instellingen']);
           }
         }
       }

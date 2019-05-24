@@ -18,7 +18,8 @@
         {{ getErrorMessage(post.get('titel')['errors']) }}</div>
     </div>
     <div class="form-group col-sm-4">
-      <input type="file" (change)="onFileSelected($event)" #Image accept="image/*" class="form-control">
+      <input type="file" (change)="onFileSelected($event)" #Image hidden accept="image/*" class="form-control">
+      <button class="btn btn-block img" (click)="Image.click()">Upload file</button>
     </div>
     <div class="form-group col-sm-4">
       <select class="form-control" aria-label="categorie" name="categorieen" formControlName="categorie">

@@ -40,30 +40,30 @@
           </i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['/account/instellingen']" routerLinkActive="active-link"><i
+          <a class="dropdown-item" [routerLink]="['/account/instellingen']" routerLinkActive="active-link-drop"><i
               class="material-icons">
               settings
             </i>Instellingen</a>
-          <a class="dropdown-item" [routerLink]="['/account/mijnbieren']" routerLinkActive="active-link"><i
+          <a class="dropdown-item" [routerLink]="['/account/mijnbieren']" routerLinkActive="active-link-drop"><i
               class="material-icons">
               list
             </i>Mijn bierlijst</a>
           <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="dropdown-item" [routerLink]="['/account/addbier']"
-            routerLinkActive="active-link"><i class="material-icons">
+            routerLinkActive="active-link-drop"><i class="material-icons">
               add
             </i>Voeg een bier toe</a>
           <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/addpost']"
-            routerLinkActive="active-link"><i class="material-icons">
+            routerLinkActive="active-link-drop"><i class="material-icons">
               add
             </i>Voeg
             een nieuwe post toe</a>
           <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="dropdown-item" [routerLink]="['/account/bierbeheer']"
-            routerLinkActive="active-link"><i class="material-icons">
+            routerLinkActive="active-link-drop"><i class="material-icons">
               chevron_right
             </i>Beheer je eigen bieren</a>
 
           <a *ngIf="roleMatch(['Admin'])" class="dropdown-item" [routerLink]="['/account/adminbeheer']"
-            routerLinkActive="active-link"><i class="material-icons">
+            routerLinkActive="active-link-drop"><i class="material-icons">
               chevron_right
             </i>Beheer brouwers</a>
 

@@ -9,6 +9,11 @@ form{
     margin-right: 8px;
 }
 
+button.btn.img.btn-block{
+    font-size: 12px;
+    height: 30px;
+}
+
 
 textarea{
     height: 50px;
