@@ -23,7 +23,13 @@
       <div class="error" *ngIf="bier.get('biernaam')['errors'] && bier.get('biernaam').touched">
         {{ getErrorMessage(bier.get('biernaam')['errors']) }}</div>
     </div>
-    <div class="form-group col-sm-4">
+    <div class="form-group col-sm-2">
+      <input type="number" class="form-control" placeholder="Aantal jetons*" aria-label="jetons"
+        formControlName="aantalJetons" min=1 max=2>
+      <div class="error" *ngIf="bier.get('aantalJetons')['errors'] && bier.get('aantalJetons').touched">
+        {{ getErrorMessage(bier.get('aantalJetons')['errors']) }}</div>
+    </div>
+    <div class="form-group col-sm-2">
       <input type="number" class="form-control" placeholder="Percentage*" aria-label="percentage"
         formControlName="percentage" min=0 max=40>
       <div class="error" *ngIf="bier.get('percentage')['errors'] && bier.get('percentage').touched">
@@ -84,17 +90,25 @@
       <div class="error" *ngIf="bier.get('opVat')['errors'] && bier.get('opVat').touched">
         {{ getErrorMessage(bier.get('opVat')['errors']) }}</div>
     </div>
-    <div class="form-check form-check-inline col-lg-5">
-      <input class="form-check-input" type="checkbox" id="primeur" formControlName="primeur">
+    <div class="form-check form-check-inline col-lg-3">
+      <input title="Bier voor het allereerst op een festival (ook andere festivallen)" class="form-check-input"
+        type="checkbox" id="primeur" formControlName="primeur">
       <label class="form-check-label" for="primeur">Is dit bier een primeur?</label>
       <div class="error" *ngIf="bier.get('primeur')['errors'] && bier.get('primeur').touched">
         {{ getErrorMessage(bier.get('primeur')['errors']) }}</div>
     </div>
     <div class="form-check form-check-inline col-lg-3">
-      <input class="form-check-input" type="checkbox" id="recent" formControlName="recent">
-      <label class="form-check-label" for="recent">Is dit bier recent?</label>
+      <input title="Bier geproduceerd in het afgelopen jaar en nog niet op het festival geweest"
+        class="form-check-input" type="checkbox" id="recent" formControlName="recent">
+      <label class="form-check-label" for="recent">Is dit een recent bier?</label>
       <div class="error" *ngIf="bier.get('recent')['errors'] && bier.get('recent').touched">
         {{ getErrorMessage(bier.get('recent')['errors']) }}</div>
+    </div>
+    <div class="form-check form-check-inline col-lg-2">
+      <input class="form-check-input" type="checkbox" id="opfles" formControlName="opFles">
+      <label class="form-check-label" for="opfles">Op fles?</label>
+      <div class="error" *ngIf="bier.get('opFles')['errors'] && bier.get('opFles').touched">
+        {{ getErrorMessage(bier.get('opFles')['errors']) }}</div>
     </div>
   </div>
 

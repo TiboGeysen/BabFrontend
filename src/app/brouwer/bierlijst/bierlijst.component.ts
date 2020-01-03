@@ -18,6 +18,12 @@ export class BierlijstComponent implements OnInit {
   private _brouwers: Brouwer[];
   private _fetchBrouwers$: Observable<Brouwer[]> = this._brouwerService.brouwers$;
 
+
+  private kleuren: string[] = ["Blond", "Amber", "Bruin", "Rood/roze", "Zwart"];
+  private soorten: string[] = ["Abdijbier", "Blond tot amberkleurig", "Brut", "Buiten categorie", "Dubbel", "Fruitbier", "Geuze", "Honingbier", "IPA en soortgelijke bieren", "Kerst-/winterbier", "Mengbier", "Vlaams oudbruin", "Pils", "Saison", "Speciaal bier", "Stout/porter", "Tafelbier", "Trappistenbier", "Tripel", "Witbier"]; private tap: string[] = ["Op vat", "In fles"];
+  private gistingen: string[] = ["Lage gisting", "Hoge gisting", "Hoge gisting met hergisting", "Spontane gisting", "Gemengde gisting"];
+  private smaken: string[] = ["Lichtbitter", "Bitter", "Zeer bitter", "Moutig", "Kruidig", "Fruitig", "Zoet", "Zeer zoet", "Licht zurig", "Zuur", "Zeer zuur", "Glutenvrij"];
+
   public filter$ = new Subject<string>();
 
   error: string;
@@ -36,7 +42,6 @@ export class BierlijstComponent implements OnInit {
       .subscribe(val => {
         const params = val ? { queryParams: { filter: val } } : undefined;
         this._router.navigate(['/bier/lijst'], params);
-        console.log(this._brouwers);
       });
 
     this.route.queryParams.subscribe(params => {
@@ -52,7 +57,7 @@ export class BierlijstComponent implements OnInit {
 
 
   get brouwers$() {
-    return this._brouwers;
+    return this._brouwers.sort(compare);
   }
 
   close() {
@@ -67,6 +72,16 @@ export class BierlijstComponent implements OnInit {
   brouwer(id: number): Brouwer {
     return this._brouwers.find(b => b.id == id);
   }
+}
+
+function compare(a, b) {
+  if (a.naam < b.naam) {
+    return -1;
+  }
+  if (a.naam > b.naam) {
+    return 1;
+  }
+  return 0;
 }
 
 

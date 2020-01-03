@@ -1,0 +1,41 @@
+input, textarea, select, option{
+    text-align: center;
+    font-size: 12px;
+    height: 30px;
+}
+
+form{
+    margin-right: 8px;
+}
+
+input:focus, textarea:focus, select:focus {outline-color: #C60907 !important ;}
+
+textarea{
+    height: 50px;
+}
+
+.form-group{
+    margin-bottom: 0.5rem;
+}
+
+button{
+    color:white;
+    background-color: #C60907;
+    margin-bottom: 10px;
+}
+
+button:hover{
+    color:white;
+}
+
+.error{
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+    text-align: center;
+}
+
+.form-row#check{
+    display: flex;
+    justify-content: center;
+}

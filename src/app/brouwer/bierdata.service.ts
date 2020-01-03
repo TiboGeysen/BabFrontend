@@ -56,7 +56,11 @@ export class BierdataService {
   }
 
   voegBierToe(bier: Bier) {
-    return this.http.post(`${environment.apiUrl}/bieren`, bier.toJson())
+    return this.http.post(`${environment.apiUrl}/bieren/`, bier.toJson())
+  }
+
+  voegBierToeAdmin(bier: Bier, id: number) {
+    return this.http.post(`${environment.apiUrl}/bieren/${id}/`, bier.toJson())
   }
 
   verwijderBier$(bier: Bier) {

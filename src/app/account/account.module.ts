@@ -25,6 +25,7 @@ import { BrouwerResolver } from './BrouwerResolver';
 import { BierResolver } from '../brouwer/BierResolver';
 import { AdminbeheerlijstComponent } from './adminbeheerlijst/adminbeheerlijst.component';
 import { BrowerResolver } from '../brouwer/BrowerResolver';
+import { TasksComponent } from './tasks/tasks.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'addpost', component: AddpostComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] } },
       { path: 'addbier', component: AddbierComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] } },
       { path: 'bierbeheer', component: BeheerlijstComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin', 'Brouwer'] }, resolve: { brouwer: BrouwerResolver } },
+      { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] }, resolve: { brouwers: BrowerResolver } },
       { path: 'adminbeheer', component: AdminbeheerlijstComponent, canActivate: [AuthGuard], data: { toegelaten: ['Admin'] }, resolve: { brouwers: BrowerResolver } },
       { path: '', redirectTo: "instellingen", pathMatch: "full" }
     ]
@@ -46,7 +48,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [NavigationComponent, InstellingenComponent, AccountComponent, MijnbierenComponent, RatingComponent, BeheerlijstComponent, AdminbeheerlijstComponent],
+  declarations: [NavigationComponent, InstellingenComponent, AccountComponent, MijnbierenComponent, RatingComponent, BeheerlijstComponent, AdminbeheerlijstComponent, TasksComponent],
   imports: [
     CommonModule,
     PostModule,

@@ -18,15 +18,44 @@
       <input matInput placeholder="Percentage" type="number" min="0" [(ngModel)]="percentage" max="40" />
     </div>
     <div class="filterbottom">
-      <input matInput placeholder="Kleur" type="text" [(ngModel)]="kleur" />
-      <input matInput placeholder="Smaak" type="text" [(ngModel)]="smaak" />
+      <label for="kleur">Kleur</label>
+
+      <select id="kleur" class="form-control" aria-label="kleur" [(ngModel)]="kleur">
+        <option value="" selected="selected">Reset kleur</option>
+        <option *ngFor="let kleur of kleuren" value={{kleur}}>{{kleur}}</option>
+      </select>
+
+      <label for="smaak">Smaak</label>
+      <select id="smaak" class="form-control" aria-label="smaak" [(ngModel)]="smaak">
+        <option value="" selected="selected">Reset smaak</option>
+        <option *ngFor="let smaak of smaken" value={{smaak}}>{{smaak}}</option>
+      </select>
+      <label for="gisting">Gisting</label>
+      <select id="gisting" class="form-control" aria-label="gisting" [(ngModel)]="gisting">
+        <option value="" selected="selected">Reset gisting</option>
+        <option *ngFor="let gisting of gistingen" value={{gisting}}>{{gisting}}</option>
+      </select>
+
+      <label for="soortbier">Soort bier</label>
+      <select id="soortbier" class="form-control" aria-label="gisting" [(ngModel)]="soort">
+        <option value="" selected="selected">Reset soort bier</option>
+        <option *ngFor="let soort of soorten" value={{soort}}>{{soort}}</option>
+      </select>
+
+      <label for="brouwer">Brouwer</label>
+      <select id="brouwer" class="form-control" aria-label="brouwer" [(ngModel)]="id">
+        <option value="" selected="selected">Reset brouwer</option>
+        <option *ngFor="let brouwer of brouwers$" value={{brouwer.id}}>{{brouwer.naam}}</option>
+      </select>
     </div>
   </div>
   <div *ngIf="brouwers$ as brouwers; else loading" class="card-columns">
     <div *ngFor="let brouwer of brouwers">
-      <app-bier *ngFor="let bier of (brouwer.bieren | bierfilter:naamBier:smaak:kleur:percentage)" [bier]="bier"
-        [brouwer]="brouwer" (error)="error = $event" (success)="success = $event">
-      </app-bier>
+      <ng-container *ngFor="let bier of (brouwer.bieren | bierfilter:naamBier:smaak:kleur:percentage:gisting:soort:id)">
+        <app-bier [bier]="bier" *ngIf="bier.aanwezig" [brouwer]="brouwer" (error)="error = $event"
+          (success)="success = $event">
+        </app-bier>
+      </ng-container>
     </div>
   </div>
 

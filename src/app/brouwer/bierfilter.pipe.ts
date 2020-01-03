@@ -12,10 +12,11 @@ export class BierfilterPipe implements PipeTransform {
 
   constructor() { }
 
-  transform(bieren: Bier[], naamBier: string, smaak: string, kleur: string, percentage: number): Bier[] {
+  transform(bieren: Bier[], naamBier: string, smaak: string, kleur: string, percentage: number, gisting: string, soort: string, id: number): Bier[] {
 
-    if (!naamBier && !smaak && !kleur && !percentage)
-      return bieren;
+
+    if (!naamBier && !smaak && !kleur && !percentage && !gisting && !soort && !id)
+      return bieren.sort(sortCompare);
     if (naamBier)
       bieren = bieren.filter(bier => compare(bier.naam.toLowerCase(), naamBier.toLowerCase()));
 
@@ -27,7 +28,17 @@ export class BierfilterPipe implements PipeTransform {
 
     if (percentage)
       bieren = bieren.filter(bier => bier.percentage >= percentage && bier.percentage < (percentage + 1));
-    return bieren;
+
+    if (gisting)
+      bieren = bieren.filter(bier => compare(bier.soortGisting.toLowerCase(), gisting.toLowerCase()));
+
+    if (soort)
+      bieren = bieren.filter(bier => compare(bier.biersoort.toLowerCase(), soort.toLowerCase()));
+
+    if (id)
+      bieren = bieren.filter(bier => compare(bier.brouwerId.toString(), id.toString()));
+    return bieren.sort(sortCompare);
+
   }
 }
 
@@ -44,3 +55,14 @@ function compare(listString: string, filterString: string): boolean {
     gevonden = true;
   return gevonden;
 }
+
+function sortCompare(a, b) {
+  if (a.naam < b.naam) {
+    return -1;
+  }
+  if (a.naam > b.naam) {
+    return 1;
+  }
+  return 0;
+}
+

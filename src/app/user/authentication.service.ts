@@ -76,6 +76,7 @@ export class AuthenticationService {
 
       catchError(err => {
         this.loadingError$.next(err.statusText);
+        console.log(err);
         return of(null);
       }),
 

@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit {
           }
         }
       }, err => {
+        console.log(err);
         this.error = "Aanmelden mislukt, vul de juiste gegevens in"
       });
   }

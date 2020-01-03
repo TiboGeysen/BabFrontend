@@ -15,6 +15,9 @@ export class EditbrouwerComponent implements OnInit {
   error: string;
   success: string;
 
+  private soorten: string[] = ["Brouwerij", "Bierfirma", "Biervereniging"];
+
+
 
   public brouwerForm: FormGroup;
 
@@ -27,6 +30,7 @@ export class EditbrouwerComponent implements OnInit {
     this.brouwerForm = new FormGroup({
       naam: new FormControl(this.brouwer.naam, [Validators.required, Validators.maxLength(30), Validators.minLength(1)]),
       stand: new FormControl(this.brouwer.stand, [Validators.required, Validators.max(999), Validators.min(0)]),
+      soort: new FormControl(this.brouwer.soort, [Validators.required, Validators.max(999), Validators.min(0)]),
     })
   }
 
@@ -37,14 +41,15 @@ export class EditbrouwerComponent implements OnInit {
 
   edit() {
     //edit stuff
-    let brouwer = new Brouwer(this.brouwerForm.value.naam, this.brouwer.bieren, this.brouwerForm.value.stand);
+    let brouwer = new Brouwer(this.brouwerForm.value.naam, this.brouwer.bieren, this.brouwerForm.value.stand, this.brouwerForm.value.soort);
     brouwer.id = this.brouwer.id;
+    brouwer.mail = this.brouwer.mail;
 
     this._service.editBrouwer$(brouwer).subscribe(
       (val) => {
         this.activeModal.close('Save');
-        console.log(val);
       }, err => {
+        console.log(err)
         this.activeModal.close('Unsave');
       }
     );

@@ -5,6 +5,7 @@ import { BrouwerdataService } from 'src/app/brouwer/brouwerdata.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditbrouwerComponent } from 'src/app/brouwer/editbrouwer/editbrouwer.component';
+import { DetailaddbierComponent } from 'src/app/brouwer/detailaddbier/detailaddbier.component';
 
 @Component({
   selector: 'app-adminbeheerlijst',
@@ -48,13 +49,28 @@ export class AdminbeheerlijstComponent implements OnInit {
       } else if (result == "Unsave") {
 
         this.error = "De brouwer is niet gewijzigd";
+
         this.closeModal();
       }
     });
   }
 
-  addbier(id: number) {
+  addbier(brouwer: Brouwer) {
     //modal to add bier for certain brewer => add
+    const modalRef = this.modalService.open(DetailaddbierComponent, { centered: true });
+    modalRef.componentInstance.brouwer = brouwer;
+
+    modalRef.result.then((result) => {
+      if (result == "Save") {
+        this.success = "Het bier voor " + brouwer.naam + " is met success aangemaakt"
+        this.closeModal();
+      } else if (result == "Unsave") {
+
+        this.error = "Het bier is niet aangemaakt";
+
+        this.closeModal();
+      }
+    });
   }
 
   delete(brouwer: Brouwer) {

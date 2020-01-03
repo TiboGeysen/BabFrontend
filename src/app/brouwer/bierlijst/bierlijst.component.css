@@ -1,6 +1,6 @@
 .card-columns{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -10,7 +10,6 @@ p{
     font-weight: bold;
     font-size: 14px
 }
-
 .filter{
     display:flex;
     flex-direction: column;
@@ -18,12 +17,17 @@ p{
     font-size: 14px;
 }
 
-.filter input, select{
+.filter input, .filter select{
     margin: 5px;
     padding: 5px;
     width: 125px;
     text-align: center;
     border: 1px solid black;
+}
+
+.filterbottom{
+    flex-direction: row;
+    display: flex;
 }
 
 select{
@@ -60,6 +64,7 @@ select{
 @media (min-width: 768px) {
     .card-columns {
         column-count: 3;
+
     }
 }
 
@@ -73,4 +78,5 @@ select{
     .card-columns {
         column-count: 5;
     }
+
 }

@@ -10,11 +10,14 @@ export class Bier {
         private _kleur: string,
         private _biersoort: string,
         private _opVat: boolean,
+        private _opFles: boolean,
         private _soortGisting: string,
         private _smaak: string,
         private _omschrijving: string,
         private _recent: boolean,
+        private _aanwezig: boolean,
         private _primeur: boolean,
+        private _aantalJetons: number,
         private _brouwerId?: number,
         private _brouwerNaam?: string,
         private _rating?: number
@@ -22,7 +25,7 @@ export class Bier {
 
     static fromJson(json: any): Bier {
         const bier =
-            new Bier(json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.primeur, json.brouwerId, json.brouwernaam, json.rating);
+            new Bier(json.naam, json.percentage, json.kleur, json.biersoort, json.opVat, json.opFles, json.soortGisting, json.smaak, json.omschrijving, json.recent, json.aanwezig, json.primeur, json.aantalJetons, json.brouwerId, json.brouwernaam, json.rating);
         bier._id = json.id;
         return bier;
     }
@@ -36,11 +39,14 @@ export class Bier {
             percentage: this._percentage,
             kleur: this._kleur,
             biersoort: this._biersoort,
+            opFles: this._opFles,
             opVat: this._opVat,
             soortGisting: this._soortGisting,
             smaak: this._smaak,
             omschrijving: this._omschrijving,
+            aantalJetons: this._aantalJetons,
             recent: this._recent,
+            aanwezig: this._aanwezig,
             primeur: this._primeur,
             rating: this._rating,
 
@@ -83,8 +89,19 @@ export class Bier {
             return "Niet op vat";
     }
 
+    get isOpFles(): string {
+        if (this._opFles === true)
+            return "Op fles";
+        else
+            return "Niet op fles";
+    }
+
     get opVat(): boolean {
         return this._opVat;
+    }
+
+    get opFles(): boolean {
+        return this._opFles;
     }
 
     get soortGisting(): string {
@@ -97,6 +114,10 @@ export class Bier {
 
     get omschrijving(): string {
         return this._omschrijving;
+    }
+
+    get aanwezig(): boolean {
+        return this._aanwezig;
     }
 
     get isRecent(): string {
@@ -125,8 +146,20 @@ export class Bier {
         return this._primeur;
     }
 
+    get aantalJetons(): number {
+        return this._aantalJetons;
+    }
+
+    set aantalJetons(aantal: number) {
+        this._aantalJetons = aantal;
+    }
+
     set id(id: number) {
         this._id = id;
+    }
+
+    set aanwezig(aanwezig: boolean) {
+        this._aanwezig = aanwezig;
     }
 
     set brouwerNaam(naam: string) {
@@ -137,7 +170,7 @@ export class Bier {
         this._brouwerId = id;
     }
 
-    set rating(rating: number){
+    set rating(rating: number) {
         this._rating = rating;
     }
 
@@ -154,6 +187,10 @@ export class Bier {
 
     set biersoort(biersoort: string) {
         this._biersoort = biersoort;
+    }
+
+    set opFles(opfles: boolean) {
+        this._opFles = opfles;
     }
 
     set opVat(opvat: boolean) {

@@ -18,9 +18,11 @@ export class EditbierComponent implements OnInit {
   success: string;
 
   private kleuren: string[] = ["Blond", "Amber", "Bruin", "Rood/roze", "Zwart"];
-  private soorten: string[] = ["Abdijbier", "Blond tot amberkleurig", "Brut", "Buiten categorie", "Dubbel", "Fruitbier", "Geuze", "Honingbier", "IPA en soortgelijke bieren", "Kerst-/winterbier", "Mengbier", "Vlaams oudbruin", "Pils", "Saison", "Speciaal bier", "Sout", "Tafelbier", "Trappistenbier", "Tripel", "Witbier"]; private tap: string[] = ["Op vat", "In fles"];
+  private soorten: string[] = ["Abdijbier", "Blond tot amberkleurig", "Brut", "Buiten categorie", "Dubbel", "Fruitbier", "Geuze", "Honingbier", "IPA en soortgelijke bieren", "Kerst-/winterbier", "Mengbier", "Vlaams oudbruin", "Pils", "Saison", "Speciaal bier", "Stout/porter", "Tafelbier", "Trappistenbier", "Tripel", "Witbier"];
+  private tap: string[] = ["Op vat", "In fles"];
   private gistingen: string[] = ["Lage gisting", "Hoge gisting", "Hoge gisting met hergisting", "Spontane gisting", "Gemengde gisting"];
   private smaken: string[] = ["Lichtbitter", "Bitter", "Zeer bitter", "Moutig", "Kruidig", "Fruitig", "Zoet", "Zeer zoet", "Licht zurig", "Zuur", "Zeer zuur", "Glutenvrij"];
+
 
   public bierForm: FormGroup;
 
@@ -29,19 +31,20 @@ export class EditbierComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.bier);
-
     this.bierForm = new FormGroup({
-      biernaam: new FormControl(this.bier.naam, [Validators.required, Validators.maxLength(30), Validators.minLength(1)]),
-      percentage: new FormControl(this.bier.percentage, [Validators.required]),
+      biernaam: new FormControl(this.bier.naam, [Validators.required, Validators.maxLength(40), Validators.minLength(1)]),
+      percentage: new FormControl(this.bier.percentage, [Validators.required, Validators.max(40), Validators.min(0)]),
+      aantalJetons: new FormControl(this.bier.aantalJetons, [Validators.required, Validators.max(2), Validators.min(1)]),
       kleur: new FormControl(this.bier.kleur, [Validators.required]),
       soort: new FormControl(this.bier.biersoort, [Validators.required]),
       smaak: new FormControl(this.bier.smaak, Validators.required),
       soortgisting: new FormControl(this.bier.soortGisting, Validators.required),
-      omschrijving: new FormControl(this.bier.omschrijving, [Validators.required, Validators.maxLength(150), Validators.minLength(10)]),
+      omschrijving: new FormControl(this.bier.omschrijving, [Validators.required, Validators.maxLength(210), Validators.minLength(10)]),
       opVat: new FormControl(this.bier.opVat, Validators.required),
+      opFles: new FormControl(this.bier.opFles, Validators.required),
       recent: new FormControl(this.bier.recent, Validators.required),
       primeur: new FormControl(this.bier.primeur, Validators.required),
+      aanwezig: new FormControl(this.bier.aanwezig, Validators.required)
     })
   }
 
@@ -54,7 +57,7 @@ export class EditbierComponent implements OnInit {
     //edit stuff
 
     let bier = new Bier(this.bierForm.value.biernaam, this.bierForm.value.percentage, this.bierForm.value.kleur, this.bierForm.value.soort,
-      this.bierForm.value.opVat, this.bierForm.value.soortgisting, this.bierForm.value.smaak, this.bierForm.value.omschrijving, this.bierForm.value.recent, this.bierForm.value.primeur);
+      this.bierForm.value.opVat, this.bierForm.value.opFles, this.bierForm.value.soortgisting, this.bierForm.value.smaak, this.bierForm.value.omschrijving, this.bierForm.value.recent, this.bierForm.value.aanwezig, this.bierForm.value.primeur, this.bierForm.value.aantalJetons);
 
 
     bier.id = this.bier.id;
@@ -80,10 +83,10 @@ export class EditbierComponent implements OnInit {
       return `Te lang, maximaal ${errors.maxlength.requiredLength} karakaters, u heeft er ${errors.maxlength.actualLength}`;
     }
     else if (errors.min) {
-      return `Te laag, minimaal percentage bedraagt 0, uw percentage is ${errors.min.actual}`;
+      return `De ingevulde waarde is te laag`;
     }
     else if (errors.max) {
-      return `Te hoog, maximaal percentage bedraagt 40, uw percentage is ${errors.max.actual}`;
+      return `De ingevulde waarde is te hoog`;
     }
   }
 }

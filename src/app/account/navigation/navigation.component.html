@@ -8,7 +8,11 @@
         class="material-icons">add</i> Voeg een bier toe</a>
     <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['addpost']" routerLinkActive="active-link"><i
         class="material-icons">add</i> Voeg
-      een nieuwe post toe</a></div>
+      een nieuwe post toe</a>
+    <a *ngIf="roleMatch(['Admin'])" class="item" [routerLink]="['tasks']" routerLinkActive="active-link"><i
+        class="material-icons">picture_as_pdf</i> Tasks</a>
+  </div>
+
 
   <div class="group">
     <a *ngIf="roleMatch(['Admin', 'Brouwer'])" class="item" [routerLink]="['bierbeheer']"

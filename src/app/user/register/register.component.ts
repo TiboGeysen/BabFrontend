@@ -40,7 +40,8 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/account/instellingen']);
           }
         }
-      }
+      },
+      err => { console.log(err); }
     );
   }
 
@@ -50,6 +51,9 @@ export class RegisterComponent implements OnInit {
     }
     else if (errors.email) {
       return 'Email voldoet niet aan de standaarden'
+    }
+    else if (errors.pattern) {
+      return 'Wachtwoord moet een hoofdletter en kleine letter bevatten'
     }
     else if (errors.minlength) {
       return `Te kort, minimaal ${errors.minlength.requiredLength} karakaters, u heeft er ${errors.minlength.actualLength}`;

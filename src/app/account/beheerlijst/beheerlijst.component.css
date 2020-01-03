@@ -13,6 +13,13 @@ td{
     padding: 8px;
 }
 
+button.btn.btn-block{
+    color:white;
+    background-color: #C60907;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
 th{
     text-align: center;
     font-size: 15px;

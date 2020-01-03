@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EditbierComponent } from './editbier/editbier.component';
 import { BeheerbierComponent } from './beheerbier/beheerbier.component';
 import { EditbrouwerComponent } from './editbrouwer/editbrouwer.component';
+import { DetailaddbierComponent } from './detailaddbier/detailaddbier.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [BierComponent, BrouwerComponent, BierlijstComponent, BierfilterPipe, AddbierComponent, DetailbierComponent, MaxDirective, MinDirective, EditbierComponent, BeheerbierComponent, EditbrouwerComponent],
+  declarations: [BierComponent, BrouwerComponent, BierlijstComponent, BierfilterPipe, AddbierComponent, DetailbierComponent, MaxDirective, MinDirective, EditbierComponent, BeheerbierComponent, EditbrouwerComponent, DetailaddbierComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -38,6 +39,6 @@ const routes: Routes = [
   ],
 
   exports: [BierfilterPipe, BierComponent, DetailbierComponent, RouterModule, AddbierComponent, BeheerbierComponent],
-  entryComponents: [DetailbierComponent, EditbierComponent, EditbrouwerComponent]
+  entryComponents: [DetailbierComponent, EditbierComponent, EditbrouwerComponent, DetailaddbierComponent]
 })
 export class BrouwerModule { }

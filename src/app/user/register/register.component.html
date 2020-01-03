@@ -33,6 +33,7 @@
         </div>
         <div class="error"
           *ngIf="gebruiker.get('passwordGroup').get('wachtwoord')['errors'] && gebruiker.get('passwordGroup').get('wachtwoord').touched">
+          {{ getErrorMessage(gebruiker.get('passwordGroup').get('wachtwoord')['errors']) }}
           {{ getErrorMessage(gebruiker.get('passwordGroup').get('wachtwoord')['errors']) }}</div>
         <div class="form-row">
           <div class="form-group col-sm-12">
