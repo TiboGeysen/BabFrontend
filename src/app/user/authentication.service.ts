@@ -102,7 +102,13 @@ export class AuthenticationService {
   roleMatch(allowedRoles): boolean {
     var isMatch = false;
     var payLoad = parseJwt(localStorage.getItem(this._tokenKey));
+
+    if (payLoad == null){
+      return false;
+    }
+
     var role = payLoad.role;
+
     allowedRoles.forEach(element => {
       if (role == element)
         isMatch = true;

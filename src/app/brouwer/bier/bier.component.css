@@ -5,6 +5,24 @@
     width: 100%;
 }
 
+.card-green{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: green;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    margin-bottom: 0.75rem;
+}
+
+.material-icons{
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
 .card-header{
     display: flex;
     flex-direction: column;

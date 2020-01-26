@@ -51,6 +51,11 @@ export class BierdataService {
     );
   }
 
+  rateBestBier(biernaam: String, brouwernaam: String) {
+    return this.http.post(`${environment.apiUrl}/rating/${biernaam}/${brouwernaam}`, { bier: biernaam, brouwer: brouwernaam });
+
+  }
+
   rateBier(bier: Bier, rating: number) {
     return this.http.put(`${environment.apiUrl}/bieren/rate/${bier.id}/${rating}`, { id: bier.toJson().id, rating: rating });
   }

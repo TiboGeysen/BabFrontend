@@ -6,6 +6,7 @@ import { Brouwer } from '../brouwer.model';
 import { BrouwerdataService } from '../brouwerdata.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/user/authentication.service';
 
 @Component({
   selector: 'app-bierlijst',
@@ -29,7 +30,7 @@ export class BierlijstComponent implements OnInit {
   error: string;
   success: string;
 
-  constructor(private route: ActivatedRoute, private _brouwerService: BrouwerdataService, private _router: Router) {
+  constructor(private service: AuthenticationService, private route: ActivatedRoute, private _brouwerService: BrouwerdataService, private _router: Router) {
 
   }
   ngOnInit() {
@@ -53,6 +54,10 @@ export class BierlijstComponent implements OnInit {
       }
     });
 
+  }
+
+  roleMatch(role): boolean {
+    return this.service.roleMatch(role);
   }
 
 

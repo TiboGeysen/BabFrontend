@@ -1,4 +1,4 @@
-<div class="card text-white">
+<div [ngClass]="{'card': checked != 'green', 'card-green': checked == 'green', 'text-white': true}">
   <div class="card-header" data-cy="brouwer-naam">
     <h5>{{bier?.naam}} ({{bier?.percentage}}%)</h5>
     <h6>{{brouwer?.naam}}</h6>
@@ -9,5 +9,6 @@
   <div class="card-footer">
     <i class="material-icons" (click)=add()>add</i>
     <i class="material-icons" (click)=open()>search</i>
+    <i *ngIf="roleMatch(['Admin', 'SuperUser'])" class="material-icons" (click)=rate()>star</i>
   </div>
 </div>
